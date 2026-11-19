@@ -75,6 +75,8 @@
   "kind1.tower": "Tower",
   "kind1.other": "Place",
   "prompt.about": "About {name}",
+  "prompt.metroEnter": "Go down to the metro: {name}",
+  "prompt.metroExit": "Go up to the street",
   "card.year": "Year",
   "fact.height": "Height",
   "fact.architect": "Architect",

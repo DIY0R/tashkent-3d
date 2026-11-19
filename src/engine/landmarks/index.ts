@@ -57,6 +57,7 @@ export function loadLandmark(id: string): Promise<LandmarkModule | null> {
       return m
     }).catch((err) => {
       console.error(`[landmarks] ${id} failed to load`, err)
+      pending.delete(id) // a download that failed (network) may be tried again
       return null
     })
     pending.set(id, p)
@@ -117,6 +118,7 @@ export class LandmarkManager {
   buildRadius = 1800
   private static readonly FAR: Record<string, number> = { 'tv-tower': 12000, 'nest-one': 9000, 'hotel-uzbekistan': 5000, 'islamic-civilization-center': 5000, 'hazrati-imam': 4000 }
   private frame = 0
+  private readonly retries = new Map<string, number>()
   private lastX = 0
   private lastZ = 0
 
@@ -174,8 +176,12 @@ export class LandmarkManager {
     p.loading = true
     void loadLandmark(p.id).then((m) => {
       p.loading = false
-      if (m) p.module = m
-      else p.failed = true
+      if (m) { p.module = m; return }
+      p.failed = true
+      // retry a download that failed (flaky network) a few times, 8 s, 16 s, 24 s later
+      const tries = (this.retries.get(p.id) ?? 0) + 1
+      this.retries.set(p.id, tries)
+      if (tries <= 3 && loaderById.has(p.id)) window.setTimeout(() => { p.failed = false }, 8000 * tries)
     })
   }
 

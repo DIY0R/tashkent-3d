@@ -53,6 +53,12 @@ export interface MapGlobalResult {
 }
 export type MapResult = MapTileResult | MapGlobalResult
 
+/** Transfer list without duplicates: a failed result shares one empty array between its fields,
+ * and a buffer listed twice makes postMessage throw (the reply would never arrive). */
+function transfer(arrays: ArrayBufferView[]): ArrayBuffer[] {
+  return [...new Set(arrays.map((a) => a.buffer as ArrayBuffer))]
+}
+
 function pack(list: { p: number[] }[], ox: number, oz: number): Packed {
   let n = 0
   for (const f of list) n += f.p.length
@@ -172,8 +178,8 @@ const scope = self as unknown as DedicatedWorkerGlobalScope
 scope.onmessage = (e: MessageEvent<MapRequest>) => {
   const req = e.data
   if (req.type === 'tile') {
-    void loadTile(req).then((r) => scope.postMessage(r, [r.roads.pts.buffer, r.roads.off.buffer, r.walks.pts.buffer, r.plazas.pts.buffer, r.buildings.pts.buffer, r.buildings.off.buffer]))
+    void loadTile(req).then((r) => scope.postMessage(r, transfer([r.roads.pts, r.roads.off, r.walks.pts, r.plazas.pts, r.buildings.pts, r.buildings.off])))
   } else {
-    void loadGlobal(req).then((r) => scope.postMessage(r, [r.green.pts.buffer, r.water.pts.buffer, r.waterways.pts.buffer]))
+    void loadGlobal(req).then((r) => scope.postMessage(r, transfer([r.green.pts, r.water.pts, r.waterways.pts])))
   }
 }

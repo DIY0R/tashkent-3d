@@ -69,6 +69,8 @@ class MapData {
     this.inFlight--
     const key = `${msg.tx}_${msg.tz}`
     this.tiles.set(key, msg.ok ? { ...msg, used: ++this.clock } : null)
+    // a failed request (network hiccup) may be asked again a little later
+    if (!msg.ok) setTimeout(() => { if (this.tiles.get(key) === null) this.tiles.delete(key) }, 5000)
     this.version++
     this.evict()
     this.pump()

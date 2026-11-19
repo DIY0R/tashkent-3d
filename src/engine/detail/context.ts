@@ -1,4 +1,5 @@
 /** Per-tile query structures for the detail/props generators (worker side). */
+import { HIDDEN_OSM } from '../world/hiddenOsm'
 import type { GlobalLabel, TileData } from '../world/types'
 import { hash32, rnd, type RGB } from './geo'
 
@@ -328,7 +329,7 @@ export class TileCtx {
       const bld: Bld = {
         id: b.id, ring, k: b.k, ht, mh, code, seed, s1, s2, s3, bay, wall, wallTop, nFloors, fh: wallH / nFloors,
         cx: sx / (n / 2), cz: sz / (n / 2), area: Math.abs(signedArea(ring)), obb,
-        minX, minZ, maxX, maxZ, lm: !!b.lm, edges,
+        minX, minZ, maxX, maxZ, lm: !!b.lm || HIDDEN_OSM.has(b.id as number), edges,
       }
       const bi = this.blds.length
       this.blds.push(bld)

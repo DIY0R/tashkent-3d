@@ -75,6 +75,8 @@
   "kind1.tower": "Башня",
   "kind1.other": "Место",
   "prompt.about": "О месте: {name}",
+  "prompt.metroEnter": "Спуститься в метро: {name}",
+  "prompt.metroExit": "Выйти на улицу",
   "card.year": "Год",
   "fact.height": "Высота",
   "fact.architect": "Архитектор",

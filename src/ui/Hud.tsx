@@ -161,6 +161,9 @@ export function Hud({ night }: { night: boolean }) {
   useNearby()
 
   const near = landmarkById(nearId)
+  const metroPrompt = useStore((s) => s.metroPrompt)
+  const metro = useStore((s) => s.metro)
+  const metroInteract = useStore((s) => s.metroInteract)
   // instruments make way for the documents (pause, places, settings, map)
   // the engine asks for a clear view during the opening camera move and in photo mode (P)
   const hudHidden = useStore((s) => s.hudHidden)
@@ -190,7 +193,14 @@ export function Hud({ night }: { night: boolean }) {
         <Key className="tk-key-bare">F</Key>
       </button>
       {panel === null && !locked && <div className="tk-takecontrol on-scene">{t('start.click')}</div>}
-      {panel === null && near && (
+      {panel === null && metroPrompt && (
+        // data-metro-prompt turns off the engine's own fallback prompt (src/engine/metro/Metro.ts)
+        <button type="button" data-metro-prompt="" className={`tk-prompt tk-plate tk-click tk-in${near && !metro ? ' tk-prompt-2' : ''}`} onClick={metroInteract}>
+          <Key>G</Key>
+          {metroPrompt.action === 'enter' ? t('prompt.metroEnter', { name: metroPrompt.name[lang] || metroPrompt.name.uz }) : t('prompt.metroExit')}
+        </button>
+      )}
+      {panel === null && near && !metro && (
         <button type="button" className="tk-prompt tk-plate tk-click tk-in" onClick={() => open('card', { cardId: near.id })}>
           <Key>E</Key>
           {t('prompt.about', { name: pick(lang, near.name) })}

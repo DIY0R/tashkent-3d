@@ -75,6 +75,8 @@
   "kind1.tower": "Minora",
   "kind1.other": "Joy",
   "prompt.about": "{name} haqida",
+  "prompt.metroEnter": "Metroga tushish: {name}",
+  "prompt.metroExit": "Koʻchaga chiqish",
   "card.year": "Yili",
   "fact.height": "Balandligi",
   "fact.architect": "Meʼmor",

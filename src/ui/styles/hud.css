@@ -138,6 +138,9 @@
 .tk-hints .tk-key { background: var(--hud-plate); }
 .tk-prompt { left: 50%; bottom: 34px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 18px 0 10px; font: 500 15px/1 var(--font-cond); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; border: 0; transition: box-shadow var(--dur-fast) var(--ease-out); }
 .tk-prompt .tk-key { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); height: 24px; min-width: 26px; font-size: 13px; }
+/* second prompt (metro entrance next to a landmark) sits above the first */
+.tk-prompt.tk-prompt-2 { bottom: 86px; }
+.tk-hud:has(.tk-prompt-2) .tk-takecontrol { bottom: 144px; }
 .tk-takecontrol { left: 50%; bottom: 92px; transform: translateX(-50%); font: 500 13.5px/1 var(--font-cond); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
 .tk-touchbar { right: var(--m); top: 66px; display: none; gap: 8px; }
 .tk-touchbar button { height: 44px; min-width: 44px; padding: 0 14px; font: 500 14px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; border: 0; }
@@ -187,6 +190,7 @@
   .tk-touchbar { display: flex; top: 100px; }
   .tk-fps { top: 64px; }
   .tk-prompt { bottom: 64px; max-width: calc(100vw - 24px); }
+  .tk-prompt.tk-prompt-2 { bottom: 116px; }
   .tk-lcard { top: auto; left: 0; width: auto; max-height: 76vh; box-shadow: inset 0 1px 0 var(--hair); }
   .tk-lcard figure img { height: 190px; }
   .tk-lcard .body { padding: 16px 18px 20px; }
@@ -244,6 +248,7 @@ html.tk-touch .tk-readout dd:last-child { margin-right: 0; }
 /* the prompt: above the controls, never under a thumb */
 html.tk-touch .tk-prompt { left: calc(var(--m) + var(--sl)); right: calc(var(--m) + var(--sr)); bottom: calc(var(--sb) + 176px); transform: none; width: fit-content; max-width: calc(100vw - 24px - var(--sl) - var(--sr)); margin-inline: auto; height: 42px; padding: 0 14px; font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; display: block; line-height: 42px; }
 html.tk-touch .gm-tour { bottom: calc(var(--sb) + 176px); }
+html.tk-touch .tk-prompt.tk-prompt-2 { bottom: calc(var(--sb) + 226px); }
 html.tk-touch .tk-lcard { top: auto; left: 0; width: auto; max-height: 72vh; padding-bottom: var(--sb); box-shadow: inset 0 1px 0 var(--hair); }
 
 @media (orientation: landscape) and (max-height: 520px) {
@@ -253,6 +258,7 @@ html.tk-touch .tk-lcard { top: auto; left: 0; width: auto; max-height: 72vh; pad
   html.tk-touch .tk-minimap-view { width: 80px; height: 80px; }
   /* between the joystick thumb and the buttons */
   html.tk-touch .tk-prompt, html.tk-touch .gm-tour { bottom: calc(var(--sb) + 14px); max-width: calc(100vw - 420px - var(--sl) - var(--sr)); }
+  html.tk-touch .tk-prompt.tk-prompt-2 { bottom: calc(var(--sb) + 62px); }
   html.tk-touch .tk-lcard { left: auto; top: 0; width: min(400px, 56vw); max-height: none; padding-right: var(--sr); }
   html.tk-touch .tk-lcard figure img { height: 130px; }
 }

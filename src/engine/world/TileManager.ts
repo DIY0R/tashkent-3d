@@ -132,6 +132,8 @@ export class TileManager {
   private readonly result: CollideResult = { x: 0, z: 0, hit: false }
   private stampId = 1
   private lastScan = -1
+  /** failed requests per tile key (transient errors are retried, see onWorkerMessage) */
+  private readonly retries = new Map<string, number>()
   private readonly scanPos = new THREE.Vector2(1e9, 1e9)
   private queue: Tile[] = []
   private disposed = false
@@ -418,7 +420,15 @@ export class TileManager {
       if (job?.key) {
         const t = this.tiles.get(job.key)
         if (t) t.state = 'missing'
-        if (!msg.missing) console.warn(`[tiles] ${job.key}: ${msg.message}`)
+        if (!msg.missing) {
+          console.warn(`[tiles] ${job.key}: ${msg.message}`)
+          // a failed request (flaky network, browser out of request slots) is retried a few times
+          // instead of leaving a hole in the city until the tile is evicted
+          const key = job.key
+          const n = (this.retries.get(key) ?? 0) + 1
+          this.retries.set(key, n)
+          if (t && n <= 5) window.setTimeout(() => { if (this.tiles.get(key) === t && t.state === 'missing') { t.state = 'loading'; this.lastScan = -1 } }, 1500 * n)
+        }
       } else if (!msg.missing) console.warn(`[tiles] global.json: ${msg.message}`)
       return
     }
@@ -514,6 +524,7 @@ export class TileManager {
     t.collision = msg.collision
     t.stamp = msg.collision ? new Uint32Array(msg.collision.edges.length / 6) : null
     t.state = 'ready'
+    this.retries.delete(key)
     releaseGroupAfterUpload(g) // building, road and decal buffers live on the GPU only
     this.group.add(g)
     this.skyline?.setTileVisible(t.tx, t.tz, true)

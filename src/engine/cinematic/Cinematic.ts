@@ -99,6 +99,7 @@ export class Cinematic {
   private tour: Tour | null = null
   /** sideways shift of the projection behind the start menu, fraction of the width */
   private shift = 0
+  private dead = false
 
   private attract = false
   private skipIntro = false
@@ -180,6 +181,7 @@ export class Cinematic {
 
   /** Called every frame before the player update. */
   sync(st: AppState) {
+    if (this.dead) return
     if (st.teleport !== this.lastTeleport) {
       this.lastTeleport = st.teleport
       // a place was picked on the start screen: the game begins there, without the opening move
@@ -528,6 +530,7 @@ export class Cinematic {
 
   /** Called every frame right after `player.update`: the camera then holds the player's own view. */
   update(dt: number) {
+    if (this.dead) return
     const cam = this.engine.camera
     if (this.fade !== this.fadeTarget) {
       const step = dt * this.fadeRate
@@ -581,6 +584,19 @@ export class Cinematic {
     if (this.debugFrames > 30 && tiles.manifest && tiles.pendingCount === 0 && tiles.readyFraction(cam.x, cam.z, 1500) >= 1) {
       ;(window as unknown as { __ready?: boolean }).__ready = true
     }
+  }
+
+  /** Emergency stop after an error: every shot off for good, the player has the camera. */
+  abort() {
+    this.dead = true
+    this.phase = null
+    this.tour = null
+    this.fade = this.fadeTarget = 1
+    this.shift = 0
+    this.engine.camera.clearViewOffset()
+    this.engine.renderer.domElement.style.opacity = ''
+    store.setState({ cinematic: null, hudHidden: false, photoMode: false, tourLandmarkId: null, tourIndex: 0, tourCount: 0 })
+    try { this.engine.refreshStream() } catch { /* ignore */ }
   }
 
   private publish() {

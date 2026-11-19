@@ -54,13 +54,15 @@ export function backdropPath(): CameraPath {
     // south: Chorsu dome, Kukeldash
     { p: at(ch, -380, 100, -150), t: at(ch, 0, 12, 0), fov: 48 },
     { p: at(ch, -330, 110, 600), t: at(kk, 0, 10, 0), fov: 50 },
-    // Tashkent City: Nest One from the west and south-west
-    { p: at(no, -1200, 150, -500), t: at(no, 0, 110, 0), fov: 50 },
-    { p: at(no, -600, 140, 150), t: at(no, 0, 120, 0), fov: 48 },
-    { p: at(no, 100, 150, 520), t: at(no, 700, 50, -150), fov: 52 },
+    // Tashkent City: Nest One (266 m) from the west and south-west, kept high and well clear of the towers
+    { p: at(no, -1350, 200, -650), t: at(no, 0, 130, 0), fov: 50 },
+    { p: at(no, -850, 210, 220), t: at(no, 0, 140, 0), fov: 48 },
+    { p: at(no, 50, 200, 760), t: at(no, 800, 50, -150), fov: 52 },
     // east to the Navoi theatre (it faces west) and back to the square
-    { p: at(nv, -900, 130, 100), t: at(nv, 0, 15, 0), fov: 50 },
-    { p: at(nv, -300, 80, -150), t: at(nv, 0, 12, 0), fov: 48 },
+    { p: at(nv, -900, 150, 100), t: at(nv, 0, 15, 0), fov: 50 },
+    { p: at(nv, -300, 110, -150), t: at(nv, 0, 12, 0), fov: 48 },
+    // north of the 60 m apartment blocks west of the square, then down to the first key
+    { p: at(sq, -430, 100, 60), t: at(sq, 60, 26, -30), fov: 47 },
   ]
   return new CameraPath(keys, true, 50)
 }

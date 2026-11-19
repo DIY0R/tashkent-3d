@@ -4,6 +4,7 @@
  * and the collision grid, and transfers them to the main thread.
  */
 import earcut from 'earcut'
+import { HIDDEN_OSM } from './hiddenOsm'
 import type {
   BuildingBuffers,
   CollisionData,
@@ -921,7 +922,8 @@ async function buildTile(req: Extract<WorkerRequest, { type: 'tile' }>): Promise
   let count = 0
   for (const b of data.buildings ?? []) {
     if (!b.p || b.p.length < 6) continue
-    if (b.lm && modeled.has(b.lm)) {
+    const hiddenBy = b.lm ?? HIDDEN_OSM.get(b.id as number)
+    if (hiddenBy && modeled.has(hiddenBy)) {
       // footprint is replaced by a hand-made model: keep collision only
       const ring = ringToWorld(b.p, ox, oz, true)
       for (let i = 0; i < ring.length; i += 2) {

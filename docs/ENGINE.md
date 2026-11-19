@@ -346,7 +346,7 @@ up vector: no roll. Keys are placed relative to landmark positions from `content
 
 | What | When | Notes |
 |---|---|---|
-| Backdrop | `store.attract` is true (the UI sets it while the start screen is shown) | closed loop of 15.4 km at 24 m/s (about 11 min): Amir Temur Square -> TV tower -> Minor mosque -> Hazrati Imam -> Chorsu, Kukeldash -> Tashkent City -> Navoi theatre -> square. Lighting clock is fixed at 18.3 (`GOLDEN_HOUR`) unless the URL has `?t=`; `store.timeOfDay` is not touched. The loop stays on its first frame (the square and Hotel Uzbekistan) until `store.ready`. On wide screens the projection is shifted up to 15 % to the right, because the start menu is on the left. |
+| Backdrop | `store.attract` is true (the UI sets it while the start screen is shown) | closed loop of 15.7 km at 24 m/s (about 11 min): Amir Temur Square -> TV tower -> Minor mosque -> Hazrati Imam -> Chorsu, Kukeldash -> Tashkent City -> Navoi theatre -> square. Lighting clock is fixed at 18.3 (`GOLDEN_HOUR`) unless the URL has `?t=`; `store.timeOfDay` is not touched. The loop stays on its first frame (the square and Hotel Uzbekistan) until `store.ready`. On wide screens the projection is shifted up to 15 % to the right, because the start menu is on the left. |
 | Opening move | `attract` goes false (Start) | picture dips to black (0.3 s, waits up to 2 s for the tiles round the player), then 9 s from 125 m up behind the player down into the player's own camera: the last key is that camera, so nothing jumps at the hand-over. The clock blends from 18.3 back to `store.timeOfDay`. Any key or click skips. Not played when a teleport was requested on the start screen (a place was picked), with `prefers-reduced-motion`, or with `?intro=0`. |
 | Tour | `playTour` / `requestTour` | see below |
 | Photo mode | P key or `setPhotoMode` | see below |
@@ -445,7 +445,7 @@ name) in one of three other colour schemes, with their own name on the walls.
   the floor (`renderOrder -20`) clears depth in `onBeforeRender` and blends over it with a
   constant factor, then the real hall is drawn. No render target, no stencil.
 - Per station: 7-8 draw calls with the character (mirrored hall, floor, hall, track pits, two
-  trains + their mirrors when present), 20-45 k triangles including the mirrored copy.
+  trains + their mirrors when present; 10 at most), 11 k (Kosmonavtlar) to 30 k triangles including the mirrored copy.
 - One train per track, 50 s cycle offset by 25 s: 10 s arriving, 15 s at the platform with the
   doors open (door leaves slide in the vertex shader), 12 s leaving.
 

@@ -103,6 +103,21 @@ export class Engine {
     this.renderer.domElement.style.width = '100%'
     this.renderer.domElement.style.height = '100%'
     container.appendChild(this.renderer.domElement)
+    // WebGL context loss (GPU reset, memory pressure on phones): three.js would re-upload
+    // everything on restore, but static geometry has already dropped its CPU copy
+    // (perf/memory.ts), so drawing again would throw every frame. Stop drawing and start afresh
+    // once the browser gives the context back (at most once a minute, to never loop).
+    this.renderer.domElement.addEventListener('webglcontextlost', () => {
+      console.warn('[engine] WebGL context lost')
+      this.stop()
+    })
+    this.renderer.domElement.addEventListener('webglcontextrestored', () => {
+      let last = 0
+      try { last = Number(sessionStorage.getItem('tk.ctxReload')) || 0 } catch { /* storage unavailable */ }
+      if (Date.now() - last < 60000) return
+      try { sessionStorage.setItem('tk.ctxReload', String(Date.now())) } catch { /* ignore */ }
+      location.reload()
+    })
 
     this.env = new Environment(this.scene)
     this.sky = new Sky(this.env.shared)
@@ -197,6 +212,11 @@ export class Engine {
       maxTiles: q.maxTiles,
       shadows: q.shadowMapSize > 0,
     }
+  }
+
+  private cinematicFailed(err: unknown) {
+    console.error('[cinematic] switched off', err)
+    this.cinematic.abort()
   }
 
   /** Re-reads the streaming radius (mode, quality, scripted camera on or off). */
@@ -309,7 +329,8 @@ export class Engine {
     if (st.mouseSensitivity !== 1) { inp.lookX *= st.mouseSensitivity; inp.lookY *= st.mouseSensitivity }
     if (st.invertMouse) inp.lookY = -inp.lookY
     const cine = this.cinematic
-    cine.sync(st)
+    // a failing scripted camera must never stop the game: it is switched off and the player keeps the view
+    try { cine.sync(st) } catch (err) { this.cinematicFailed(err) }
     const blocked = st.inputBlocked || cine.blocksInput
     if (blocked && !inp.blocked) inp.keys.clear()
     inp.blocked = blocked
@@ -317,7 +338,7 @@ export class Engine {
     this.player.update(dt)
     // a scripted camera, when one runs, replaces the view the player has just set
     perf.section('cinematic')
-    cine.update(dt)
+    try { cine.update(dt) } catch (err) { this.cinematicFailed(err) }
     const cam = this.camera
     perf.section('tiles')
     this.tiles.update(cam.position)
