@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+pipeline/node_modules/
+
+# build output
+dist/
+dist-*/
+
+# generated city data (about 50 MB, 2500 files). Rebuild with: npm run build-data
+public/tiles/
+
+# raw OpenStreetMap download and intermediate files (pipeline cache)
+data/raw/
+
+# working screenshots of the team; the README uses docs/media/ instead
+docs/screenshots/
+
+# local environment, logs, editor and OS files
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.tsbuildinfo

@@ -1,0 +1,258 @@
+/*
+ * In-game HUD, landmark card, shared atoms (key caps, buttons, plates).
+ * Visual language: docs/design/GAME-UI.md. Class names are the ones the components already use.
+ */
+
+.tk-serif { font-family: var(--font-display); }
+.tk-muted { color: var(--muted-foreground); }
+
+/* instrument surface: dark glass, hairline, sharp corners */
+.tk-plate {
+  background: var(--hud-plate);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px var(--hair);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+}
+
+.tk-key {
+  font: 600 12px/1 var(--font-cond);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 24px; height: 22px; padding: 0 6px;
+  border: 1px solid oklch(1 0 0 / 0.42); border-radius: 3px;
+  color: var(--foreground); background: oklch(1 0 0 / 0.07);
+  font-variant-numeric: tabular-nums; white-space: nowrap; flex: none;
+  text-shadow: none;
+}
+.tk-key svg { width: 12px; height: 12px; }
+.tk-key-bare { background: transparent; }
+.tk-key-sm { height: 20px; min-width: 20px; font-size: 11px; }
+@media (hover: none) and (pointer: coarse) { .tk-key { display: none; } }
+
+/* buttons: the primary one is a turquoise tile with two cut corners */
+.tk-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 44px; padding: 0 22px; border: 0; border-radius: 0;
+  font: 600 15px/1 var(--font-cond); letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap;
+  background: none; color: var(--foreground);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.tk-btn:disabled { opacity: 0.45; cursor: default; }
+.tk-btn-primary {
+  background: var(--primary); color: var(--primary-foreground);
+  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 11px 100%, 0 calc(100% - 11px));
+}
+.tk-btn-primary:hover:not(:disabled), .tk-btn-primary:focus-visible { background: var(--primary-hover); outline: none; }
+.tk-btn-primary .tk-key { background: transparent; border-color: color-mix(in oklch, currentColor 50%, transparent); color: inherit; }
+.tk-btn-outline { box-shadow: inset 0 0 0 1px var(--hair-strong); }
+.tk-btn-outline:hover:not(:disabled), .tk-btn-outline:focus-visible { background: var(--focus-fill); box-shadow: inset 0 0 0 1px var(--primary); outline: none; }
+.tk-btn .tk-key { height: 20px; min-width: 20px; font-size: 11px; }
+.tk-btn-lg { height: 52px; font-size: 17px; padding: 0 28px; }
+
+.tk-iconbtn { width: 34px; height: 34px; border-radius: var(--radius); background: oklch(0.09 0.02 250 / 0.7); color: var(--foreground); display: grid; place-items: center; border: 0; padding: 0; box-shadow: inset 0 0 0 1px var(--hair); transition: background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+.tk-iconbtn:hover, .tk-iconbtn:focus-visible { background: oklch(0.2 0.04 220 / 0.9); box-shadow: inset 0 0 0 1px var(--primary); outline: none; }
+
+/* ---------- motion: short, from the edge the thing belongs to ---------- */
+@keyframes tk-in-left { from { opacity: 0; transform: translateX(-14px); } }
+@keyframes tk-in-right { from { opacity: 0; transform: translateX(18px); } }
+@keyframes tk-in-top { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes tk-in-bottom { from { opacity: 0; transform: translateY(8px); } }
+@keyframes tk-in { from { opacity: 0; } }
+.tk-in-left { animation: tk-in-left 260ms var(--ease-snap); }
+.tk-in-right { animation: tk-in-right 260ms var(--ease-snap); }
+.tk-in-top { animation: tk-in-top var(--dur) var(--ease-out); }
+.tk-in-bottom { animation: tk-in-bottom var(--dur) var(--ease-out); }
+.tk-in { animation: tk-in var(--dur) var(--ease-out); }
+
+/* ---------- HUD root ---------- */
+.tk-hud { position: fixed; inset: 0; pointer-events: none; --m: 28px; }
+.tk-hud::before, .tk-hud::after { content: ""; position: absolute; left: 0; right: 0; pointer-events: none; }
+.tk-hud::before { top: 0; height: 170px; background: linear-gradient(oklch(0.09 0.02 250 / 0.5), oklch(0.09 0.02 250 / 0)); }
+.tk-hud::after { bottom: 0; height: 150px; background: linear-gradient(oklch(0.09 0.02 250 / 0), oklch(0.09 0.02 250 / 0.42)); }
+.tk-hud > * { position: absolute; z-index: 1; }
+.tk-click { pointer-events: auto; }
+.tk-catcher { position: fixed; inset: 0; }
+
+/* where you are: district as a small label over the street name, turquoise rule on the left */
+.tk-loc { left: var(--m); top: 24px; max-width: calc(50vw - 250px); display: flex; flex-direction: column-reverse; padding-left: 14px; border-left: 3px solid var(--primary); }
+.tk-loc-name { font: 600 22px/1.2 var(--font-display); letter-spacing: -0.005em; margin-top: 3px; }
+.tk-loc-district { font: 500 13px/1.2 var(--font-cond); letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary); }
+
+.tk-compass { left: 50%; top: 22px; transform: translateX(-50%); width: 400px; height: 36px; overflow: hidden; }
+.tk-compass-fade { position: absolute; inset: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.tk-compass svg { display: block; position: absolute; left: 50%; top: 0; will-change: transform; font-family: var(--font-cond); letter-spacing: 0.04em; }
+.tk-compass-needle { position: absolute; left: 50%; top: 0; width: 0; height: 0; margin-left: -5px; border: 5px solid transparent; border-top: 6px solid var(--primary); }
+.tk-dest { left: 50%; top: 65px; transform: translateX(-50%); font-size: 13px; font-weight: 500; white-space: nowrap; display: flex; gap: 8px; align-items: center; }
+.tk-mark { width: 9px; height: 9px; background: var(--primary); clip-path: var(--star); display: block; flex: none; }
+
+.tk-clock { right: var(--m); top: 22px; height: 36px; display: flex; align-items: center; gap: 10px; padding: 0 10px 0 12px; font: 500 17px/1 var(--font-cond); letter-spacing: 0.05em; border: 0; font-variant-numeric: tabular-nums; transition: box-shadow var(--dur-fast) var(--ease-out); }
+.tk-clock svg { color: var(--primary); }
+.tk-clock:hover, .tk-clock[aria-expanded="true"], .tk-minimap:hover, .tk-mode:hover, .tk-prompt:hover, .tk-touchbar button:hover { box-shadow: inset 0 0 0 1px var(--primary); }
+
+.tk-timepop { right: var(--m); top: 66px; width: 324px; padding: 18px; background: oklch(0.1 0.02 250 / 0.86); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--foreground); box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-panel); border-radius: var(--radius); pointer-events: auto; }
+.tk-timepop h4 { font: 500 12.5px/1 var(--font-cond); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-foreground); display: flex; justify-content: space-between; align-items: baseline; margin: 0; }
+.tk-timepop h4 b { color: var(--foreground); font: 500 24px/1 var(--font-cond); letter-spacing: 0.03em; font-variant-numeric: tabular-nums; }
+.tk-range { position: relative; height: 34px; margin-top: 14px; }
+.tk-range .track { position: absolute; left: 0; right: 0; top: 8px; height: 4px; background: oklch(1 0 0 / 0.16); }
+.tk-range .fill { position: absolute; left: 0; top: 8px; height: 4px; background: var(--primary); }
+.tk-range .thumb { position: absolute; top: 1px; width: 5px; height: 18px; margin-left: -2.5px; background: var(--foreground); pointer-events: none; }
+.tk-range .ticks { position: absolute; left: 0; right: 0; top: 23px; display: flex; justify-content: space-between; font: 500 11.5px/1 var(--font-cond); letter-spacing: 0.06em; color: var(--muted-foreground); font-variant-numeric: tabular-nums; pointer-events: none; }
+.tk-range input { position: absolute; left: -2px; right: -2px; top: 0; width: calc(100% + 4px); height: 20px; margin: 0; opacity: 0; cursor: pointer; }
+.tk-range:has(input:focus-visible) .thumb { outline: 2px solid var(--ring); outline-offset: 2px; }
+.tk-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 18px; }
+.tk-presets button { outline-offset: -2px; height: 34px; font: 500 13px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: oklch(1 0 0 / 0.06); border: 0; transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+.tk-presets button:hover { background: var(--focus-fill); color: var(--foreground); }
+.tk-presets button[aria-pressed="true"] { background: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+.tk-switchrow { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 16px; font-size: 13.5px; color: var(--dim); }
+.tk-switch { width: 36px; height: 18px; border-radius: 0; background: oklch(1 0 0 / 0.2); position: relative; border: 0; flex: none; transition: background-color var(--dur-fast) var(--ease-out); }
+.tk-switch::after { content: ""; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; background: var(--foreground); transition: transform var(--dur-fast) var(--ease-out); }
+.tk-switch[aria-checked="true"] { background: var(--primary); }
+.tk-switch[aria-checked="true"]::after { transform: translateX(18px); background: var(--primary-foreground); }
+
+/* minimap: a square plan with turquoise corner ticks */
+.tk-minimap { left: var(--m); bottom: var(--m); width: 212px; padding: 3px; border: 0; text-align: left; display: block; transition: box-shadow var(--dur-fast) var(--ease-out); }
+.tk-minimap::before, .tk-minimap::after { content: ""; position: absolute; width: 12px; height: 12px; border: 2px solid var(--primary); pointer-events: none; z-index: 2; }
+.tk-minimap::before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+.tk-minimap::after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+.tk-minimap-view { position: relative; width: 206px; height: 206px; overflow: hidden; background: var(--map-ground); }
+.tk-minimap-view canvas { display: block; width: 100%; height: 100%; }
+.tk-north { position: absolute; right: 6px; top: 6px; display: flex; flex-direction: column; align-items: center; gap: 2px; font: 600 11.5px/1 var(--font-cond); letter-spacing: 0.04em; color: var(--foreground); text-shadow: var(--hud-text-shadow); }
+.tk-minimap-foot { display: flex; justify-content: space-between; align-items: center; height: 30px; padding: 0 8px; font: 500 12.5px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-foreground); }
+.tk-minimap-foot span { display: flex; gap: 7px; align-items: center; }
+.tk-mapscale { display: flex; align-items: center; gap: 8px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; text-transform: none; letter-spacing: 0.04em; }
+.tk-mapscale i { display: block; width: 48px; height: 5px; border: 1px solid var(--muted-foreground); border-top: 0; }
+
+.tk-mode { right: var(--m); bottom: var(--m); display: flex; align-items: center; gap: 10px; padding: 4px 10px 4px 4px; height: 40px; border: 0; transition: box-shadow var(--dur-fast) var(--ease-out); }
+.tk-seg { display: flex; height: 32px; overflow: hidden; }
+.tk-seg span { display: flex; align-items: center; padding: 0 14px; font: 500 14px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-foreground); transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+.tk-seg span[data-on="true"] { background: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+.tk-readout { right: var(--m); bottom: calc(var(--m) + 50px); display: grid; grid-template-columns: auto auto; column-gap: 16px; row-gap: 6px; align-items: baseline; padding: 10px 12px; margin: 0; }
+.tk-readout dt { font: 500 12px/1 var(--font-cond); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-foreground); }
+.tk-readout dd { text-align: right; font: 500 17px/1 var(--font-cond); letter-spacing: 0.03em; margin: 0; font-variant-numeric: tabular-nums; min-width: 84px; }
+.tk-hints { right: var(--m); bottom: calc(var(--m) + 52px); display: flex; gap: 18px; font: 500 13.5px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; transition: opacity var(--dur) var(--ease-out); }
+.tk-hints span { display: flex; gap: 8px; align-items: center; }
+.tk-hints .tk-key { background: var(--hud-plate); }
+.tk-prompt { left: 50%; bottom: 34px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 18px 0 10px; font: 500 15px/1 var(--font-cond); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; border: 0; transition: box-shadow var(--dur-fast) var(--ease-out); }
+.tk-prompt .tk-key { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); height: 24px; min-width: 26px; font-size: 13px; }
+.tk-takecontrol { left: 50%; bottom: 92px; transform: translateX(-50%); font: 500 13.5px/1 var(--font-cond); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
+.tk-touchbar { right: var(--m); top: 66px; display: none; gap: 8px; }
+.tk-touchbar button { height: 44px; min-width: 44px; padding: 0 14px; font: 500 14px/1 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; border: 0; }
+.tk-fps { left: var(--m); top: 92px; padding: 7px 10px; font: 400 12.5px/1 var(--font-cond); letter-spacing: 0.05em; font-variant-numeric: tabular-nums; color: var(--muted-foreground); }
+.tk-fps b { color: var(--primary); font-weight: 600; }
+
+/* ---------- landmark card: a glass column on the right edge ---------- */
+.tk-lcard { outline: none; position: fixed; right: 0; top: 0; bottom: 0; width: 440px; max-width: 100vw; display: flex; flex-direction: column; background: oklch(0.095 0.02 250 / 0.84); -webkit-backdrop-filter: blur(20px) saturate(1.15); backdrop-filter: blur(20px) saturate(1.15); color: var(--foreground); box-shadow: inset 1px 0 0 var(--hair), -24px 0 60px -20px oklch(0.05 0.02 250 / 0.6); overflow: hidden; z-index: 30; }
+.tk-lcard-scroll { overflow-y: auto; min-height: 0; flex: 1; scrollbar-width: thin; scrollbar-color: oklch(1 0 0 / 0.25) transparent; }
+.tk-lcard figure { position: relative; margin: 0; }
+.tk-lcard figure::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; background: linear-gradient(oklch(0.095 0.02 250 / 0), oklch(0.095 0.02 250 / 0.92)); pointer-events: none; }
+.tk-lcard figure img { display: block; width: 100%; height: 300px; object-fit: cover; background: var(--muted); animation: tk-in 320ms var(--ease-out); }
+.tk-lcard figcaption { padding: 8px 28px 0; font-size: 11.5px; color: var(--muted-foreground); }
+.tk-lcard figcaption a { text-decoration: underline; text-underline-offset: 2px; }
+.tk-lcard figcaption a:hover { color: var(--primary); }
+.tk-lcard .x { position: absolute; right: 14px; top: 14px; z-index: 2; }
+.tk-lcard .nav { position: absolute; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 4px; z-index: 1; }
+.tk-lcard .nav .n { height: 34px; padding: 0 10px; display: grid; place-items: center; font: 500 13px/1 var(--font-cond); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; text-shadow: var(--hud-text-shadow); }
+.tk-lcard .body { padding: 20px 28px 28px; }
+.tk-lcard .kind { font: 500 12.5px/1.3 var(--font-cond); letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary); }
+.tk-lcard h2 { font: 600 27px/1.16 var(--font-display); letter-spacing: -0.01em; margin: 8px 0 0; text-wrap: balance; }
+.tk-lcard p { margin: 14px 0 0; font-size: 14.5px; line-height: 1.58; color: var(--dim); }
+.tk-facts { margin: 22px 0 0; border-top: 1px solid var(--hair); }
+.tk-facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-size: 14px; }
+.tk-facts dt { font: 500 12.5px/1.3 var(--font-cond); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-foreground); flex: 0 1 auto; max-width: 60%; }
+.tk-facts dd { font-weight: 500; text-align: right; margin: 0; font-variant-numeric: tabular-nums; }
+.tk-facts .full { display: block; line-height: 1.5; color: var(--dim); }
+.tk-lcard .actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 28px; border-top: 1px solid var(--hair); background: oklch(0.08 0.02 250 / 0.5); flex: none; }
+.tk-lcard .dist { font: 500 13px/1.3 var(--font-cond); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+
+/* ---------- small screens: not broken ---------- */
+@media (max-width: 900px) {
+  .tk-hud { --m: 12px; }
+  .tk-loc { top: 12px; max-width: calc(50vw - 130px); padding-left: 10px; }
+  .tk-loc-name { font-size: 15px; }
+  .tk-loc-district { font-size: 11.5px; }
+  .tk-compass { width: 220px; top: 12px; }
+  .tk-compass .num { display: none; }
+  .tk-clock { top: 56px; }
+  .tk-clock .tk-key { display: none; }
+  .tk-timepop { top: 100px; max-width: calc(100vw - 24px); }
+  .tk-dest { top: 54px; }
+  .tk-minimap { width: 138px; }
+  .tk-minimap-view { width: 132px; height: 132px; }
+  .tk-minimap-foot { display: none; }
+  .tk-hints { display: none; }
+  .tk-touchbar { display: flex; top: 100px; }
+  .tk-fps { top: 64px; }
+  .tk-prompt { bottom: 64px; max-width: calc(100vw - 24px); }
+  .tk-lcard { top: auto; left: 0; width: auto; max-height: 76vh; box-shadow: inset 0 1px 0 var(--hair); }
+  .tk-lcard figure img { height: 190px; }
+  .tk-lcard .body { padding: 16px 18px 20px; }
+  .tk-lcard figcaption { padding: 8px 18px 0; }
+  .tk-lcard .actions { padding: 12px 18px; }
+  .tk-lcard h2 { font-size: 21px; }
+}
+@media (max-width: 560px) {
+  .tk-compass { display: none; }
+  .tk-loc { max-width: calc(100vw - 150px); }
+  .tk-clock { top: 12px; }
+  .tk-touchbar { top: 56px; }
+  .tk-timepop { top: 56px; }
+}
+
+/* ==========================================================================
+   Phones and other touch screens (html.tk-touch is set by the engine's touch controls).
+   Zones: top row = location + compass + clock; under it = minimap (left) and
+   Places / Menu (right); bottom = the touch controls alone; the prompt sits above them.
+   ========================================================================== */
+:root { --st: env(safe-area-inset-top, 0px); --sr: env(safe-area-inset-right, 0px); --sb: env(safe-area-inset-bottom, 0px); --sl: env(safe-area-inset-left, 0px); }
+
+/* touch buttons of the engine: same glass as the HUD, in the bottom right corner */
+[data-touch-controls] [data-touch]:not([data-touch="stick"]) { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-color: oklch(1 0 0 / 0.3) !important; }
+[data-touch-controls] [data-touch="jump"] { right: calc(18px + var(--sr)) !important; bottom: calc(22px + var(--sb)) !important; width: 68px !important; height: 68px !important; }
+[data-touch-controls] [data-touch="down"] { right: calc(98px + var(--sr)) !important; bottom: calc(26px + var(--sb)) !important; width: 54px !important; height: 54px !important; }
+[data-touch-controls] [data-touch="mode"] { right: calc(25px + var(--sr)) !important; bottom: calc(104px + var(--sb)) !important; width: 54px !important; height: 54px !important; }
+
+html.tk-touch .tk-hud { --m: 12px; --top: calc(var(--st) + 10px); --row2: calc(var(--st) + 56px); }
+html.tk-touch .tk-hud::after { height: 190px; }
+/* nothing but the touch controls in the bottom zone */
+html.tk-touch .tk-mode, html.tk-touch .tk-hints, html.tk-touch .tk-takecontrol, html.tk-touch .tk-minimap-foot { display: none; }
+
+html.tk-touch .tk-loc { left: calc(var(--m) + var(--sl)); top: var(--top); height: 36px; justify-content: center; padding-left: 9px; border-left-width: 2px; max-width: calc(100vw - var(--sl) - var(--sr) - 276px); }
+html.tk-touch .tk-loc-name, html.tk-touch .tk-loc-district { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html.tk-touch .tk-loc-name { font-size: 13px; line-height: 1.25; margin-top: 2px; }
+html.tk-touch .tk-loc-district { font-size: 10.5px; letter-spacing: 0.12em; }
+html.tk-touch .tk-compass { display: block; left: auto; transform: none; right: calc(var(--m) + var(--sr) + 98px); top: var(--top); width: 132px; }
+html.tk-touch .tk-compass .num { display: none; }
+html.tk-touch .tk-clock { right: calc(var(--m) + var(--sr)); top: var(--top); padding: 0 10px; gap: 7px; font-size: 16px; }
+html.tk-touch .tk-clock .tk-key { display: none; }
+html.tk-touch .tk-timepop { right: calc(var(--m) + var(--sr)); top: var(--row2); max-width: calc(100vw - 24px); }
+
+html.tk-touch .tk-touchbar { display: flex; right: calc(var(--m) + var(--sr)); top: var(--row2); gap: 6px; }
+html.tk-touch .tk-touchbar button { height: 40px; min-width: 44px; padding: 0 12px; font-size: 13px; }
+html.tk-touch .tk-minimap { left: calc(var(--m) + var(--sl)); top: var(--row2); bottom: auto; width: 102px; }
+html.tk-touch .tk-minimap-view { width: 96px; height: 96px; }
+html.tk-touch .tk-minimap .tk-north { right: 4px; top: 4px; font-size: 10px; }
+html.tk-touch .tk-fps { left: calc(var(--m) + var(--sl) + 112px); top: var(--row2); max-width: calc(100vw - 300px); overflow: hidden; white-space: nowrap; }
+/* flight numbers: one line under Places / Menu */
+html.tk-touch .tk-readout { right: calc(var(--m) + var(--sr)); top: calc(var(--row2) + 48px); bottom: auto; display: flex; align-items: baseline; gap: 6px; padding: 7px 10px; }
+html.tk-touch .tk-readout dt { font-size: 10.5px; letter-spacing: 0.1em; }
+html.tk-touch .tk-readout dd { min-width: 0; font-size: 14px; margin-right: 6px; }
+html.tk-touch .tk-readout dd:last-child { margin-right: 0; }
+/* the prompt: above the controls, never under a thumb */
+html.tk-touch .tk-prompt { left: calc(var(--m) + var(--sl)); right: calc(var(--m) + var(--sr)); bottom: calc(var(--sb) + 176px); transform: none; width: fit-content; max-width: calc(100vw - 24px - var(--sl) - var(--sr)); margin-inline: auto; height: 42px; padding: 0 14px; font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; display: block; line-height: 42px; }
+html.tk-touch .gm-tour { bottom: calc(var(--sb) + 176px); }
+html.tk-touch .tk-lcard { top: auto; left: 0; width: auto; max-height: 72vh; padding-bottom: var(--sb); box-shadow: inset 0 1px 0 var(--hair); }
+
+@media (orientation: landscape) and (max-height: 520px) {
+  html.tk-touch .tk-loc { max-width: 30vw; }
+  html.tk-touch .tk-compass { right: auto; left: 50%; transform: translateX(-50%); width: 200px; }
+  html.tk-touch .tk-minimap { width: 86px; }
+  html.tk-touch .tk-minimap-view { width: 80px; height: 80px; }
+  /* between the joystick thumb and the buttons */
+  html.tk-touch .tk-prompt, html.tk-touch .gm-tour { bottom: calc(var(--sb) + 14px); max-width: calc(100vw - 420px - var(--sl) - var(--sr)); }
+  html.tk-touch .tk-lcard { left: auto; top: 0; width: min(400px, 56vw); max-height: none; padding-right: var(--sr); }
+  html.tk-touch .tk-lcard figure img { height: 130px; }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Toshkent 3D</title>
+    <meta name="description" content="Toshkent shahrining uch oʻlchamli modeli: koʻchalarda yuring yoki shahar ustidan uching. 3D model of Tashkent: walk the streets or fly over the city." />
+    <!-- data and fonts the first screen always needs: fetched in parallel with the scripts -->
+    <link rel="preload" as="fetch" href="/tiles/manifest.json" crossorigin />
+    <link rel="preload" as="fetch" href="/tiles/global.json" crossorigin fetchpriority="low" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/unbounded-latin-wght-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/oswald-latin-wght-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/onest-latin-wght-normal.woff2" crossorigin />
+    <meta name="theme-color" content="#11181e" />
+    <meta property="og:title" content="Toshkent 3D" />
+    <meta property="og:description" content="Toshkent shahrining uch oʻlchamli modeli. 3D model of Tashkent you can walk and fly through." />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

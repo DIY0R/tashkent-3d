@@ -1,0 +1,15 @@
+{
+  "name": "toshkent3d-pipeline",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "OSM -> tile JSON pipeline for Toshkent 3D (no dependencies, Node >= 20)",
+  "scripts": {
+    "download": "node src/download.mjs",
+    "extract": "node src/extract.mjs",
+    "build": "node --max-old-space-size=2048 src/build.mjs",
+    "tag-landmarks": "node src/tag-landmarks.mjs",
+    "validate": "node src/validate.mjs",
+    "build-data": "npm run -s download && npm run -s extract && npm run -s build && npm run -s tag-landmarks && npm run -s validate"
+  }
+}

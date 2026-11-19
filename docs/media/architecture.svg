@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-labelledby="t d">
+  <title id="t">Toshkent 3D architecture</title>
+  <desc id="d">OpenStreetMap data goes through the Node pipeline into 500 m tile files. In the browser, web workers turn tiles into geometry for the three.js engine, which shares a zustand store with the React UI. content/landmarks.json feeds the pipeline, the engine and the UI.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8fa3b5"/>
+    </marker>
+    <style>
+      .bg { fill: #0f161d; }
+      .box { fill: #17222d; stroke: #2e4052; stroke-width: 1.5; }
+      .key { fill: #13262b; stroke: #3fb8ad; stroke-width: 1.5; }
+      .h { font: 600 17px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #f1f5f8; }
+      .p { font: 400 13.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #b4c2ce; }
+      .m { font: 400 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; fill: #5fd6ca; }
+      .lane { font: 600 12px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #7f93a6; letter-spacing: 1.5px; }
+      .note { font: 400 12.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #8fa3b5; }
+      .ar { fill: none; stroke: #8fa3b5; stroke-width: 1.6; }
+      .rule { stroke: #233241; stroke-width: 1; stroke-dasharray: 4 6; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="640" rx="10"/>
+
+  <!-- lanes -->
+  <text class="lane" x="40" y="44">BUILD TIME</text>
+  <line class="rule" x1="40" y1="296" x2="1160" y2="296"/>
+  <text class="lane" x="40" y="322">IN THE BROWSER</text>
+
+  <!-- build row -->
+  <rect class="box" x="40" y="64" width="250" height="128" rx="6"/>
+  <text class="h" x="60" y="96">OpenStreetMap</text>
+  <text class="p" x="60" y="122">Geofabrik extract of Uzbekistan</text>
+  <text class="m" x="60" y="146">uzbekistan-latest.osm.pbf</text>
+  <text class="p" x="60" y="170">120 MB, one download, cached</text>
+
+  <rect class="box" x="360" y="64" width="440" height="128" rx="6"/>
+  <text class="h" x="380" y="96">Data pipeline</text>
+  <text class="m" x="494" y="96">pipeline/</text>
+  <text class="p" x="380" y="122">Node, no dependencies, about 8 s per run</text>
+  <text class="m" x="380" y="146">download · extract · build · tag-landmarks · validate</text>
+  <text class="p" x="380" y="170">heights, building kinds, names in uz / ru / en, street trees</text>
+
+  <rect class="key" x="870" y="64" width="290" height="128" rx="6"/>
+  <text class="h" x="890" y="96">City tiles</text>
+  <text class="m" x="976" y="96">public/tiles/</text>
+  <text class="p" x="890" y="122">2533 tiles of 500 m, JSON</text>
+  <text class="p" x="890" y="146">295 316 buildings, 582 771 trees</text>
+  <text class="p" x="890" y="170">13.6 MB gzip + manifest, global.json</text>
+
+  <path class="ar" d="M290 128 H352" marker-end="url(#a)"/>
+  <path class="ar" d="M800 128 H862" marker-end="url(#a)"/>
+
+  <!-- landmarks.json -->
+  <rect class="box" x="360" y="232" width="440" height="52" rx="6"/>
+  <text class="m" x="380" y="263">content/landmarks.json</text>
+  <text class="p" x="566" y="263">25 landmarks: position, texts, photos</text>
+  <path class="ar" d="M580 232 V200" marker-end="url(#a)"/>
+  <path class="ar" d="M580 284 V400" marker-end="url(#a)"/>
+  <path class="ar" d="M360 258 H230 V400" marker-end="url(#a)"/>
+  <text class="note" x="592" y="220">sets the lm tag on footprints</text>
+  <text class="note" x="592" y="340">where each model stands</text>
+  <text class="note" x="242" y="340">card texts and photo credits</text>
+
+  <!-- tiles to workers -->
+  <path class="ar" d="M1015 192 V400" marker-end="url(#a)"/>
+  <text class="note" x="1027" y="340">fetch t_x_z.json</text>
+  <text class="note" x="1027" y="358">within view radius</text>
+
+  <!-- browser row -->
+  <rect class="box" x="40" y="408" width="250" height="192" rx="6"/>
+  <text class="h" x="60" y="440">React UI</text>
+  <text class="m" x="60" y="464">src/ui/</text>
+  <text class="p" x="60" y="492">shadcn/ui, Tailwind</text>
+  <text class="p" x="60" y="516">HUD, menu, map, search</text>
+  <text class="p" x="60" y="540">landmark cards</text>
+  <text class="p" x="60" y="564">Uzbek, Russian, English</text>
+
+  <rect class="key" x="360" y="408" width="440" height="192" rx="6"/>
+  <text class="h" x="380" y="440">three.js engine</text>
+  <text class="m" x="522" y="440">src/engine/</text>
+  <text class="p" x="380" y="468">TileManager: streaming, LRU cache, far skyline</text>
+  <text class="p" x="380" y="492">Environment, Sky, PostFX: sun, night lights, fog, bloom</text>
+  <text class="p" x="380" y="516">Player: walk and fly, camera, 2D collision</text>
+  <text class="p" x="380" y="540">Landmarks: 25 models built in code, lazy loaded</text>
+  <text class="p" x="380" y="564">Ambient life, metro halls, scripted cameras, audio</text>
+  <text class="p" x="380" y="588">Governor: keeps the frame rate on weak GPUs</text>
+
+  <rect class="box" x="870" y="408" width="290" height="192" rx="6"/>
+  <text class="h" x="890" y="440">Web Workers</text>
+  <text class="m" x="890" y="468">tile.worker</text>
+  <text class="p" x="890" y="486">merged meshes, collision grid</text>
+  <text class="m" x="890" y="512">detail.worker</text>
+  <text class="p" x="890" y="530">balconies, shop fronts, street props</text>
+  <text class="m" x="890" y="556">net · map · audio workers</text>
+  <text class="p" x="890" y="574">road graph, map drawing, sound</text>
+
+  <path class="ar" d="M862 504 H808" marker-end="url(#a)"/>
+  <text class="note" x="835" y="490" text-anchor="middle">typed</text>
+  <text class="note" x="835" y="528" text-anchor="middle">arrays</text>
+  <path class="ar" d="M298 504 H352" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text class="note" x="325" y="490" text-anchor="middle">zustand</text>
+  <text class="note" x="325" y="528" text-anchor="middle">store</text>
+</svg>

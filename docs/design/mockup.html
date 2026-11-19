@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>Toshkent 3D — UI maketi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="theme.css">
+<style>
+/* Fonts: same files @fontsource-variable ships; unicode-ranges copied from its CSS. */
+@font-face{font-family:"Onest Variable";font-weight:100 900;font-display:block;src:url(fonts/onest-latin-wght-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Onest Variable";font-weight:100 900;font-display:block;src:url(fonts/onest-latin-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Onest Variable";font-weight:100 900;font-display:block;src:url(fonts/onest-cyrillic-wght-normal.woff2) format("woff2-variations");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Onest Variable";font-weight:100 900;font-display:block;src:url(fonts/onest-cyrillic-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:"Source Serif 4 Variable";font-weight:200 900;font-display:block;src:url(fonts/source-serif-4-latin-wght-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4 Variable";font-weight:200 900;font-display:block;src:url(fonts/source-serif-4-latin-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Source Serif 4 Variable";font-weight:200 900;font-display:block;src:url(fonts/source-serif-4-cyrillic-wght-normal.woff2) format("woff2-variations");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Source Serif 4 Variable";font-weight:200 900;font-display:block;src:url(fonts/source-serif-4-cyrillic-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+
+:root{
+  --font-sans:"Onest Variable",ui-sans-serif,system-ui,sans-serif;
+  --font-serif:"Source Serif 4 Variable",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#5a6066;padding:32px;display:flex;flex-direction:column;gap:32px;align-items:center}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ---------- artboard ---------- */
+.ab{position:relative;width:1440px;height:900px;overflow:hidden;background:var(--ink-900);color:var(--foreground);font-size:14px;line-height:1.45}
+.scene{position:absolute;inset:0;width:100%;height:100%}
+/* legibility scrims: the only gradients in the product. Flat ink, top and bottom edge. */
+.hud::before,.hud::after{content:"";position:absolute;left:0;right:0;pointer-events:none}
+.hud::before{top:0;height:150px;background:linear-gradient(oklch(0.165 0.014 245/.44),oklch(0.165 0.014 245/0))}
+.hud::after{bottom:0;height:130px;background:linear-gradient(oklch(0.165 0.014 245/0),oklch(0.165 0.014 245/.38))}
+.hud{position:absolute;inset:0}
+.hud>*{position:absolute;z-index:1}
+
+/* ---------- primitives ---------- */
+.serif{font-family:var(--font-serif)}
+.tab{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted-foreground)}
+.plate{background:var(--hud-plate);color:var(--foreground);border-radius:var(--radius);box-shadow:var(--shadow-plate),inset 0 0 0 1px oklch(1 0 0/.09)}
+kbd{font:600 11.5px/1 var(--font-sans);display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border:1px solid var(--input);border-bottom-width:2px;border-radius:3px;color:var(--foreground);background:var(--card);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ico{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:40px;padding:0 18px;border-radius:var(--radius);font-weight:550;font-size:14px;white-space:nowrap}
+.btn-primary{background:var(--primary);color:var(--primary-foreground)}
+.btn-outline{border:1px solid var(--input);color:var(--foreground)}
+.btn-ghost{color:var(--foreground);padding:0 10px}
+.btn kbd{height:20px;min-width:20px;font-size:11px}
+.btn-primary kbd{background:transparent;border-color:oklch(1 0 0/.45);color:inherit}
+.rule{height:1px;background:var(--border)}
+
+/* ---------- HUD: location ---------- */
+.loc{left:28px;top:22px;color:oklch(0.985 0.002 240);text-shadow:var(--hud-text-shadow)}
+.loc .name{font:600 27px/1.15 var(--font-serif);letter-spacing:-.005em}
+.loc .district{margin-top:3px;font-size:13.5px;font-weight:500;opacity:.92}
+
+/* ---------- HUD: compass ---------- */
+.compass{left:50%;top:22px;transform:translateX(-50%);width:400px;height:36px;overflow:hidden}
+.compass svg{display:block}
+.compass .needle{position:absolute;left:50%;top:0;width:0;height:0;margin-left:-5px;border:5px solid transparent;border-top:6px solid var(--foreground)}
+.dest{left:50%;top:65px;transform:translateX(-50%);font-size:13px;font-weight:500;color:oklch(0.985 0.002 240);text-shadow:var(--hud-text-shadow);white-space:nowrap;display:flex;gap:8px;align-items:center}
+.dest i{width:7px;height:7px;background:var(--primary);display:block}
+
+/* ---------- HUD: clock ---------- */
+.clock{right:28px;top:22px;height:36px;display:flex;align-items:center;gap:10px;padding:0 10px 0 12px;font-weight:550;font-size:15px}
+.clock kbd{background:transparent}
+.timepop{right:28px;top:66px;width:308px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:calc(var(--radius) + 2px);box-shadow:var(--shadow-panel)}
+.timepop h4{font-size:13px;font-weight:500;color:var(--muted-foreground);display:flex;justify-content:space-between}
+.timepop h4 b{color:var(--foreground);font-weight:600}
+.slider{position:relative;height:28px;margin-top:10px}
+.slider .track{position:absolute;left:0;right:0;top:9px;height:2px;background:var(--border)}
+.slider .fill{position:absolute;left:0;top:9px;height:2px;background:var(--primary)}
+.slider .thumb{position:absolute;top:2px;width:4px;height:16px;margin-left:-2px;background:var(--foreground);border-radius:1px}
+.slider .ticks{position:absolute;left:0;right:0;top:21px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted-foreground)}
+.presets{display:grid;grid-template-columns:repeat(4,1fr);margin-top:22px;border:1px solid var(--border);border-radius:var(--radius)}
+.presets button{height:32px;font-size:13px;font-weight:500;color:var(--muted-foreground)}
+.presets button+button{border-left:1px solid var(--border)}
+.presets .on{background:var(--foreground);color:var(--background)}
+.switchrow{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:13.5px}
+.switch{width:32px;height:18px;border-radius:9px;background:var(--primary);position:relative}
+.switch::after{content:"";position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:7px;background:var(--primary-foreground)}
+.switch.off{background:var(--input)}
+.switch.off::after{right:auto;left:2px;background:var(--card)}
+
+/* ---------- HUD: minimap ---------- */
+.minimap{left:28px;bottom:28px;width:212px;padding:3px}
+.minimap svg{display:block;border-radius:2px}
+.minimap .foot{display:flex;justify-content:space-between;align-items:center;height:30px;padding:0 8px 0 8px;font-size:12px}
+.scale{display:flex;align-items:center;gap:8px;color:var(--muted-foreground)}
+.scale i{display:block;width:48px;height:5px;border:1px solid var(--muted-foreground);border-top:0}
+.minimap .foot span{display:flex;gap:7px;align-items:center;color:var(--muted-foreground)}
+.minimap kbd{background:transparent;height:20px;min-width:20px}
+
+/* ---------- HUD: mode + hints ---------- */
+.mode{right:28px;bottom:28px;display:flex;align-items:center;gap:10px;padding:4px 10px 4px 4px;height:40px}
+.seg{display:flex;height:32px;border-radius:3px;overflow:hidden}
+.seg span{display:flex;align-items:center;padding:0 12px;font-size:13.5px;font-weight:550;color:var(--muted-foreground)}
+.seg .on{background:var(--foreground);color:var(--background)}
+.mode kbd{background:transparent}
+.readout{right:28px;bottom:78px;display:grid;grid-template-columns:auto auto;column-gap:14px;row-gap:2px;padding:9px 12px;font-size:13px}
+.readout dt{color:var(--muted-foreground)}
+.readout dd{text-align:right;font-weight:550}
+.hints{right:28px;bottom:80px;display:flex;gap:18px;font-size:13px;font-weight:500;color:oklch(0.985 0.002 240);text-shadow:var(--hud-text-shadow)}
+.hints span{display:flex;gap:7px;align-items:center}
+.hints kbd{background:var(--hud-plate);border-color:oklch(1 0 0/.35);text-shadow:none}
+.prompt{left:50%;bottom:30px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;height:40px;padding:0 14px 0 9px;font-size:14.5px;font-weight:500;white-space:nowrap}
+.prompt kbd{background:var(--foreground);color:var(--background);border-color:var(--foreground)}
+
+/* ---------- landmark card ---------- */
+.lcard{right:28px;top:76px;width:384px;background:var(--card);color:var(--card-foreground);border-radius:calc(var(--radius) + 2px);box-shadow:var(--shadow-panel);overflow:hidden}
+.lcard figure{position:relative}
+.lcard figure svg{display:block;width:100%;height:auto}
+.lcard figcaption{padding:6px 20px 0;font-size:11.5px;color:var(--muted-foreground)}
+.lcard .x{position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:var(--radius);background:var(--card);display:grid;place-items:center}
+.lcard .body{padding:16px 20px 20px}
+.lcard .kind{font-size:13px;color:var(--muted-foreground)}
+.lcard h2{font:600 29px/1.12 var(--font-serif);letter-spacing:-.01em;margin-top:4px}
+.lcard p{margin-top:12px;font-size:14px;line-height:1.5}
+.facts{margin-top:16px;border-top:1px solid var(--border)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+.facts dt{color:var(--muted-foreground)}
+.facts dd{font-weight:500;text-align:right}
+.lcard .actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+.lcard .dist{font-size:13px;color:var(--muted-foreground)}
+
+/* ---------- start / loading / pause column ---------- */
+.sheet{position:absolute;left:0;top:0;bottom:0;width:496px;background:var(--background);color:var(--foreground);padding:52px 56px 36px;display:flex;flex-direction:column;border-right:1px solid var(--border)}
+.sheet h1{font:600 62px/1 var(--font-serif);letter-spacing:-.02em}
+.sheet h1 span{font-family:var(--font-sans);font-weight:500;font-size:.56em;letter-spacing:0;margin-left:.12em;color:var(--muted-foreground);vertical-align:.12em}
+.sheet .lede{margin-top:18px;font-size:16.5px;line-height:1.45;max-width:23em}
+.sheet .cta{display:flex;gap:10px;margin-top:30px}
+.sheet .cta .btn{height:44px;font-size:15px}
+.keys{margin-top:56px}
+.keys h3,.sheet h3{font-size:13px;font-weight:500;color:var(--muted-foreground);padding-bottom:8px}
+.keys dl{border-top:1px solid var(--border)}
+.keys dl div{display:flex;justify-content:space-between;align-items:center;height:33px;border-bottom:1px solid var(--border);font-size:13.5px}
+.keys dd{display:flex;gap:4px}
+.sheet footer{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--muted-foreground)}
+.langs{display:flex;gap:16px;font-size:13.5px}
+.langs b{color:var(--foreground);font-weight:600;border-bottom:2px solid var(--foreground);padding-bottom:2px}
+.caption{position:absolute;right:28px;bottom:24px;text-align:right;color:oklch(0.985 0.002 240);text-shadow:var(--hud-text-shadow);font-size:13px}
+.caption b{display:block;font:600 20px/1.2 var(--font-serif)}
+.progress{margin-top:34px}
+.progress .bar{height:2px;background:var(--border);position:relative}
+.progress .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--primary)}
+.progress .row{display:flex;justify-content:space-between;margin-top:10px;font-size:13.5px}
+.menu{margin-top:30px;border-top:1px solid var(--border)}
+.menu a{display:flex;justify-content:space-between;align-items:center;height:50px;border-bottom:1px solid var(--border);font-size:17px;font-weight:500;color:inherit;text-decoration:none}
+.menu a.on{font-weight:650}
+.menu a.on::before{content:"";width:7px;height:7px;background:var(--primary);margin-right:12px}
+.menu a.on span{margin-right:auto}
+.menu a small{font-size:13px;font-weight:400;color:var(--muted-foreground)}
+
+/* ---------- dialogs ---------- */
+.dim{position:absolute;inset:0;background:var(--scrim)}
+.dialog{position:absolute;left:50%;transform:translateX(-50%);background:var(--card);color:var(--card-foreground);border-radius:calc(var(--radius) + 2px);box-shadow:var(--shadow-panel);overflow:hidden}
+.cmd{top:112px;width:600px}
+.cmd .in{display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border-bottom:1px solid var(--border);font-size:16px}
+.cmd .in .caret{width:1.5px;height:20px;background:var(--primary);margin-left:-10px}
+.cmd .in kbd{margin-left:auto}
+.cmd h5{padding:12px 16px 4px;font-size:12.5px;font-weight:500;color:var(--muted-foreground)}
+.cmd .row{display:flex;align-items:baseline;gap:10px;height:38px;line-height:38px;padding:0 16px;font-size:14.5px}
+.cmd .row em{font-style:normal;font-size:13px;color:var(--muted-foreground)}
+.cmd .row .d{margin-left:auto;font-size:13px;color:var(--muted-foreground)}
+.cmd .row.on{background:var(--accent)}
+.cmd .row mark{background:none;color:inherit;font-weight:650;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:var(--primary)}
+.cmd .foot{display:flex;gap:18px;align-items:center;height:40px;padding:0 16px;margin-top:8px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted-foreground)}
+.cmd .foot span{display:flex;gap:6px;align-items:center}
+.cmd .foot kbd{height:20px;min-width:20px;font-size:11px}
+.cmd .foot .n{margin-left:auto}
+
+.settings{top:118px;width:640px;display:grid;grid-template-columns:168px 1fr;min-height:520px}
+.settings nav{background:var(--background);border-right:1px solid var(--border);padding:20px 10px}
+.settings nav h2{font:600 21px/1.2 var(--font-serif);padding:0 10px 14px}
+.settings nav a{display:block;padding:7px 10px;border-radius:3px;font-size:14px;color:var(--muted-foreground)}
+.settings nav a.on{background:var(--accent);color:var(--foreground);font-weight:550}
+.settings .pane{padding:22px 24px 20px;display:flex;flex-direction:column}
+.field+.field{margin-top:22px}
+.field>label{display:block;font-size:14px;font-weight:600}
+.field>small{display:block;font-size:13px;color:var(--muted-foreground);margin-top:2px}
+.choice{display:grid;grid-template-columns:repeat(3,1fr);margin-top:10px;border:1px solid var(--input);border-radius:var(--radius);overflow:hidden}
+.choice div{padding:9px 12px 10px}
+.choice div+div{border-left:1px solid var(--border)}
+.choice b{display:block;font-size:14px;font-weight:600}
+.choice small{display:block;font-size:12px;line-height:1.35;color:var(--muted-foreground);margin-top:2px}
+.choice .on{background:var(--foreground);color:var(--background)}
+.choice .on small{color:inherit;opacity:.72}
+.rows{margin-top:10px;border-top:1px solid var(--border)}
+.rows div{display:flex;justify-content:space-between;align-items:center;height:40px;border-bottom:1px solid var(--border);font-size:14px}
+.rows .v{color:var(--muted-foreground);font-size:13.5px}
+.settings .end{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted-foreground)}
+
+.tag{font:500 12px/1 var(--font-sans);color:#dfe3e6;align-self:flex-start;margin:0 0 -22px calc(50% - 720px)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ 1. HUD, walking, day ============ -->
+<div class="tag">1 · HUD — piyoda, kunduzi (uz)</div>
+<section class="ab" id="hud-day">
+  <svg class="scene" data-scene="day"></svg>
+  <div class="hud dark">
+    <div class="loc">
+      <div class="name">Amir Temur shoh koʻchasi</div>
+      <div class="district">Yunusobod tumani</div>
+    </div>
+    <div class="compass plate" data-heading="24" data-lang="uz"><i class="needle"></i></div>
+    <div class="clock plate"><svg class="ico"><use href="#i-sun"/></svg><time class="tab">14:20</time><kbd>T</kbd></div>
+    <div class="minimap plate" data-map="24"></div>
+    <div class="prompt plate"><kbd>E</kbd>Toshkent teleminorasi haqida</div>
+    <div class="hints"><span><kbd>/</kbd>Joylar</span><span><kbd>Esc</kbd>Menyu</span></div>
+    <div class="mode plate"><div class="seg"><span class="on">Piyoda</span><span>Parvoz</span></div><kbd>F</kbd></div>
+  </div>
+</section>
+
+<!-- ============ 2. Landmark card ============ -->
+<div class="tag">2 · Joy kartasi (uz)</div>
+<section class="ab" id="card">
+  <svg class="scene" data-scene="day"></svg>
+  <div class="hud dark">
+    <div class="loc">
+      <div class="name">Amir Temur shoh koʻchasi</div>
+      <div class="district">Yunusobod tumani</div>
+    </div>
+    <div class="compass plate" data-heading="24" data-lang="uz"><i class="needle"></i></div>
+    <div class="clock plate"><svg class="ico"><use href="#i-sun"/></svg><time class="tab">14:20</time><kbd>T</kbd></div>
+    <div class="minimap plate" data-map="24"></div>
+  </div>
+  <article class="lcard" style="position:absolute;z-index:2">
+    <figure>
+      <svg viewBox="0 0 384 232" id="tower-art"></svg>
+      <button class="x" aria-label="Yopish"><svg class="ico"><use href="#i-x"/></svg></button>
+      <figcaption>Rasm: maket uchun chizma. Ilovada: muallif, litsenziya, manba.</figcaption>
+    </figure>
+    <div class="body">
+      <div class="kind">Minora · Yunusobod tumani</div>
+      <h2>Toshkent teleminorasi</h2>
+      <p>Temir-beton va poʻlatdan qurilgan teleradio minorasi. Uch tayanchli tuzilishi zilzilaga chidamlilik uchun tanlangan. 1985-yil yanvarda ishga tushgan.</p>
+      <dl class="facts">
+        <div><dt>Balandligi</dt><dd class="tab">375 m</dd></div>
+        <div><dt>Qurilgan yillari</dt><dd class="tab">1978–1985</dd></div>
+        <div><dt>Kuzatuv maydonchasi</dt><dd class="tab">97 m balandlikda</dd></div>
+      </dl>
+      <div class="actions">
+        <span class="dist tab">380 m shimolda</span>
+        <button class="btn btn-primary">Shu yerga borish</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 3. HUD, flying, night, time control open ============ -->
+<div class="tag">3 · HUD — parvoz, tun, vaqt boshqaruvi ochiq (uz)</div>
+<section class="ab dark" id="hud-night">
+  <svg class="scene" data-scene="night"></svg>
+  <div class="hud dark">
+    <div class="loc">
+      <div class="name">Anhor kanali</div>
+      <div class="district">Shayxontohur tumani</div>
+    </div>
+    <div class="compass plate" data-heading="291" data-lang="uz" data-dest="262"><i class="needle"></i></div>
+    <div class="dest"><i></i>Chorsu bozori <span class="tab" style="opacity:.85">1,8 km</span></div>
+    <div class="clock plate"><svg class="ico"><use href="#i-moon"/></svg><time class="tab">21:40</time><kbd>T</kbd></div>
+    <div class="timepop">
+      <h4>Kun vaqti <b class="tab">21:40</b></h4>
+      <div class="slider"><div class="track"></div><div class="fill" style="width:90.3%"></div><div class="thumb" style="left:90.3%"></div>
+        <div class="ticks tab"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></div>
+      <div class="presets"><button>Tong</button><button>Kun</button><button>Oqshom</button><button class="on">Tun</button></div>
+      <div class="switchrow"><span>Vaqt oʻzi oʻtsin</span><i class="switch off"></i></div>
+    </div>
+    <div class="minimap plate" data-map="291"></div>
+    <dl class="readout plate tab"><dt>Balandlik</dt><dd>184 m</dd><dt>Tezlik</dt><dd>62 km/soat</dd></dl>
+    <div class="mode plate"><div class="seg"><span>Piyoda</span><span class="on">Parvoz</span></div><kbd>F</kbd></div>
+  </div>
+</section>
+
+<!-- ============ 4. Start ============ -->
+<div class="tag">4 · Boshlangʻich ekran (uz)</div>
+<section class="ab" id="start">
+  <svg class="scene" data-scene="day" data-shift="248"></svg>
+  <div class="sheet">
+    <h1>Toshkent<span>3D</span></h1>
+    <p class="lede">Toshkent shahrining uch oʻlchamli modeli. Koʻchalarda piyoda yuring yoki shahar ustidan uching.</p>
+    <div class="cta"><button class="btn btn-primary">Boshlash <kbd>Enter</kbd></button><button class="btn btn-outline">Joylar roʻyxati</button></div>
+    <div class="keys">
+      <h3>Boshqaruv</h3>
+      <dl>
+        <div><dt>Yurish</dt><dd><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dd></div>
+        <div><dt>Yugurish, parvozda tezroq</dt><dd><kbd>Shift</kbd></dd></div>
+        <div><dt>Sakrash, parvozda yuqoriga</dt><dd><kbd>Space</kbd></dd></div>
+        <div><dt>Piyoda yoki parvoz</dt><dd><kbd>F</kbd></dd></div>
+        <div><dt>Xarita</dt><dd><kbd>M</kbd></dd></div>
+        <div><dt>Kun vaqti</dt><dd><kbd>T</kbd></dd></div>
+        <div><dt>Menyu</dt><dd><kbd>Esc</kbd></dd></div>
+      </dl>
+    </div>
+    <footer><div class="langs"><b>Oʻzbekcha</b><span>Русский</span><span>English</span></div><span>Xarita: © OpenStreetMap</span></footer>
+  </div>
+  <div class="caption"><b>Amir Temur xiyoboni</b>Boshlanish nuqtasi · 41.3111° sh.k., 69.2797° shq.u.</div>
+</section>
+
+<!-- ============ 5. Loading ============ -->
+<div class="tag">5 · Yuklanish (uz)</div>
+<section class="ab" id="loading">
+  <svg class="scene" data-scene="haze" data-shift="248"></svg>
+  <div class="sheet">
+    <h1>Toshkent<span>3D</span></h1>
+    <p class="lede">Toshkent shahrining uch oʻlchamli modeli. Koʻchalarda piyoda yuring yoki shahar ustidan uching.</p>
+    <div class="progress">
+      <div class="bar"><i style="width:39%"></i></div>
+      <div class="row"><span>Binolar yuklanmoqda</span><span class="muted tab">46 / 118</span></div>
+    </div>
+    <div class="keys">
+      <h3>Boshqaruv</h3>
+      <dl>
+        <div><dt>Yurish</dt><dd><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dd></div>
+        <div><dt>Yugurish, parvozda tezroq</dt><dd><kbd>Shift</kbd></dd></div>
+        <div><dt>Sakrash, parvozda yuqoriga</dt><dd><kbd>Space</kbd></dd></div>
+        <div><dt>Piyoda yoki parvoz</dt><dd><kbd>F</kbd></dd></div>
+        <div><dt>Xarita</dt><dd><kbd>M</kbd></dd></div>
+        <div><dt>Kun vaqti</dt><dd><kbd>T</kbd></dd></div>
+        <div><dt>Menyu</dt><dd><kbd>Esc</kbd></dd></div>
+      </dl>
+    </div>
+    <footer><div class="langs"><b>Oʻzbekcha</b><span>Русский</span><span>English</span></div><span>Xarita: © OpenStreetMap</span></footer>
+  </div>
+</section>
+
+<!-- ============ 6. Places search ============ -->
+<div class="tag">6 · Joylar roʻyxati — shadcn Command (uz)</div>
+<section class="ab" id="search">
+  <svg class="scene" data-scene="day"></svg>
+  <div class="dim"></div>
+  <div class="dialog cmd">
+    <div class="in"><svg class="ico muted" style="width:18px;height:18px"><use href="#i-search"/></svg><span>ma</span><i class="caret"></i><kbd>Esc</kbd></div>
+    <h5>Masjid va madrasalar</h5>
+    <div class="row on"><span>Koʻkaldosh <mark>ma</mark>drasasi</span><em>Shayxontohur tumani</em><span class="d tab">3,1 km</span></div>
+    <div class="row"><span>Hazrati Imom <mark>ma</mark>jmuasi</span><em>Olmazor tumani</em><span class="d tab">3,6 km</span></div>
+    <div class="row"><span>Minor <mark>ma</mark>sjidi</span><em>Yunusobod tumani</em><span class="d tab">2,2 km</span></div>
+    <h5>Maydon va bogʻlar</h5>
+    <div class="row"><span>Mustaqillik <mark>ma</mark>ydoni</span><span class="d tab">1,1 km</span></div>
+    <div class="row"><span>Xotira <mark>ma</mark>ydoni</span><span class="d tab">1,4 km</span></div>
+    <h5>Muzeylar</h5>
+    <div class="row"><span>A<mark>ma</mark>liy sanʼat muzeyi</span><em>Yakkasaroy tumani</em><span class="d tab">2,7 km</span></div>
+    <div class="foot"><span><kbd>↑</kbd><kbd>↓</kbd>tanlash</span><span><kbd>Enter</kbd>shu yerga borish</span><span class="n tab">6 ta joy</span></div>
+  </div>
+</section>
+
+<!-- ============ 7. Pause ============ -->
+<div class="tag">7 · Pause menu (en)</div>
+<section class="ab" id="pause" lang="en">
+  <svg class="scene" data-scene="day" data-shift="248"></svg>
+  <div class="dim"></div>
+  <div class="sheet">
+    <h1 style="font-size:40px">Paused</h1>
+    <p class="lede" style="font-size:14.5px;margin-top:10px;color:var(--muted-foreground)">Amir Temur Avenue, Yunusobod district · 14:20</p>
+    <nav class="menu">
+      <a class="on"><span>Resume</span><kbd>Esc</kbd></a>
+      <a><span>Places</span><kbd>/</kbd></a>
+      <a><span>Map</span><kbd>M</kbd></a>
+      <a><span>Settings</span></a>
+      <a><span>Controls</span></a>
+      <a><span>About and credits</span></a>
+      <a><span>Back to start</span><small>Returns to Amir Temur Square</small></a>
+    </nav>
+    <footer><div class="langs"><span>Oʻzbekcha</span><span>Русский</span><b>English</b></div><span>Map data: © OpenStreetMap</span></footer>
+  </div>
+</section>
+
+<!-- ============ 8. Settings ============ -->
+<div class="tag">8 · Настройки (ru)</div>
+<section class="ab" id="settings" lang="ru">
+  <svg class="scene" data-scene="day"></svg>
+  <div class="dim"></div>
+  <div class="dialog settings">
+    <nav>
+      <h2>Настройки</h2>
+      <a class="on">Графика</a><a>Язык</a><a>Управление</a><a>О проекте</a>
+    </nav>
+    <div class="pane">
+      <div class="field">
+        <label>Качество графики</label>
+        <small>Если картинка идёт рывками, выберите уровень ниже.</small>
+        <div class="choice">
+          <div><b>Низкое</b><small>Без теней, обзор 800 м</small></div>
+          <div class="on"><b>Среднее</b><small>Тени, обзор 1,2 км</small></div>
+          <div><b>Высокое</b><small>Чёткие тени, обзор 2 км</small></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Изображение</label>
+        <div class="rows">
+          <div><span>Тени</span><i class="switch"></i></div>
+          <div><span>Сглаживание</span><i class="switch"></i></div>
+          <div><span>Счётчик кадров</span><i class="switch off"></i></div>
+          <div><span>Чувствительность мыши</span><span class="v tab">1,0</span></div>
+        </div>
+      </div>
+      <div class="end"><span>Изменения применяются сразу.</span><button class="btn btn-outline" style="height:34px">Закрыть <kbd>Esc</kbd></button></div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ---------- placeholder 3D city (stands in for the real WebGL view) ---------- */
+function rng(seed){return()=>((seed=Math.imul(seed^seed>>>15,2246822507)^Math.imul(seed^seed>>>13,3266489909))>>>0)/4294967296}
+const PAL={
+  day:{sky:['#7fa6c9','#b9cddb','#dde3e2'],far:'#b7c2c8',mid:'#a3adb1',near:['#c9c6bd','#b9b7b0','#d6d3ca','#aeb4b8'],shade:'#8d9296',win:'#6f7f8c',ground:'#8d9488',road:'#6c7176',line:'#d9dcdc',tree:['#5f7f5a','#6d8c63','#557552'],trunk:'#5b564e',dome:'#3e8f9a',body:'#2c343b'},
+  haze:{sky:['#aebccb','#cfd6db','#e3e6e6'],far:'#c9d0d4',mid:'#bcc4c8',near:['#cfcfca','#c5c6c3','#d7d7d2','#bfc5c8'],shade:'#a9aeb1',win:'#9aa5ad',ground:'#a9aea7',road:'#8f9498',line:'#e0e2e2',tree:['#8a9c87','#93a48f','#82957f'],trunk:'#85827c',dome:'#7fb0b6',body:'#2c343b'},
+  night:{sky:['#0c1420','#16222f','#243240'],far:'#1c2732',mid:'#18212a',near:['#1e2730','#232c35','#1a222a','#27303a'],shade:'#141b22',win:'#d9d4c2',ground:'#161d22',road:'#1d242a',line:'#59636b',tree:['#18261f','#1c2c23','#15221b'],trunk:'#11161a',dome:'#2c6f78',body:'#0b1014'}
+};
+function scene(svg){
+  const kind=svg.dataset.scene, p=PAL[kind], sh=+(svg.dataset.shift||0), R=rng(kind==='night'?77:41);
+  const W=1440,H=900,hz=kind==='night'?470:540; let s='';
+  s+=`<defs><linearGradient id="sky-${svg.parentNode.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[0]}"/><stop offset=".62" stop-color="${p.sky[1]}"/><stop offset="1" stop-color="${p.sky[2]}"/></linearGradient></defs>`;
+  s+=`<rect width="${W}" height="${hz+4}" fill="url(#sky-${svg.parentNode.id})"/>`;
+  // far skyline
+  for(let x=-20;x<W;){const w=18+R()*46,h=14+R()*R()*120;s+=`<rect x="${x}" y="${hz-h}" width="${w}" height="${h}" fill="${p.far}"/>`;x+=w+R()*10}
+  // tower on the horizon
+  const tx=760+sh*.4;
+  s+=`<g fill="${p.mid}"><path d="M${tx-1.5} ${hz-300}h3l3 190h-9z"/><path d="M${tx-26} ${hz}l22-150h8l22 150h-7l-19-120-19 120z"/><rect x="${tx-9}" y="${hz-176}" width="18" height="16"/><rect x="${tx-6}" y="${hz-214}" width="12" height="9"/></g>`;
+  if(kind==='night') s+=`<circle cx="${tx}" cy="${hz-300}" r="2.5" fill="#d86a70"/><rect x="${tx-9}" y="${hz-170}" width="18" height="3" fill="${p.win}" opacity=".8"/>`;
+  // ground
+  s+=`<rect y="${hz}" width="${W}" height="${H-hz}" fill="${p.ground}"/>`;
+  const cx=720+sh; // vanishing point
+  s+=`<path d="M${cx-26} ${hz}L${cx+26} ${hz}L${cx+560} ${H}L${cx-560} ${H}z" fill="${p.road}"/>`;
+  for(let i=0;i<7;i++){const t0=(i/7)**2.1,t1=((i+.45)/7)**2.1,y0=hz+t0*(H-hz),y1=hz+t1*(H-hz),w0=1+t0*9,w1=1+t1*9;s+=`<path d="M${cx-w0/2} ${y0}h${w0}L${cx+w1/2} ${y1}h${-w1}z" fill="${p.line}" opacity=".8"/>`}
+  // building rows both sides, back to front
+  const rows=[[.10,56],[.2,84],[.36,120],[.6,170]];
+  rows.forEach(([t,base],ri)=>{const y=hz+t*(H-hz)*.55,half=40+t*520;
+    for(const side of[-1,1]){let x=cx+side*half;const lim=side<0?-80:W+80;let n=0;
+      while(side<0?x>lim:x<lim){const w=base*(.8+R()*1.3),h=base*(.7+R()*2.1)*(ri===3?1.15:1),bx=side<0?x-w:x,c=p.near[(R()*p.near.length)|0];
+        const fill=ri<1?p.mid:c;
+        s+=`<rect x="${bx}" y="${y-h}" width="${w}" height="${h}" fill="${fill}"/>`;
+        s+=`<rect x="${side<0?bx+w-w*.16:bx}" y="${y-h}" width="${w*.16}" height="${h}" fill="${p.shade}" opacity=".55"/>`;
+        if(ri>0){const cw=ri*3+3,chh=ri*4+4,gx=cw*2.1,gy=chh*1.9;let k=0;
+          for(let wy=y-h+gy*.6;wy<y-chh*2;wy+=gy)for(let wx=bx+gx*.6+(side>0?w*.16:0);wx<bx+w-gx*.5-(side<0?w*.16:0);wx+=gx){k++;
+            if(kind==='night'){if(R()<.28)s+=`<rect x="${wx}" y="${wy}" width="${cw}" height="${chh}" fill="${p.win}" opacity="${.5+R()*.45}"/>`}
+            else s+=`<rect x="${wx}" y="${wy}" width="${cw}" height="${chh}" fill="${p.win}" opacity=".5"/>`}}
+        x+=side*(w+base*(.12+R()*.5));if(++n>9)break}
+      // trees along the avenue
+      for(let k=0;k<4;k++){const tt=t+k*.035,ty=hz+tt*(H-hz)*.55+ri*10+10,txx=cx+side*(30+tt*470),r=10+tt*74;
+        s+=`<rect x="${txx-r*.07}" y="${ty-r*.9}" width="${r*.14}" height="${r*.9}" fill="${p.trunk}"/><ellipse cx="${txx}" cy="${ty-r*1.5}" rx="${r*.62}" ry="${r*.95}" fill="${p.tree[(k+ri)%3]}"/>`}
+    }});
+  // a dome in the middle distance
+  const dx=cx-250,dy=hz+6;
+  s+=`<rect x="${dx-30}" y="${dy-40}" width="60" height="40" fill="${p.near[2]}"/><path d="M${dx-22} ${dy-40}a22 26 0 0 1 44 0z" fill="${p.dome}"/>`;
+  // third-person figure (walk scenes only)
+  if(kind!=='night'&&!sh){const fx=cx-8,fy=806;s+=`<ellipse cx="${fx}" cy="${fy+2}" rx="26" ry="6" fill="#000" opacity=".22"/><g fill="${p.body}"><circle cx="${fx}" cy="${fy-112}" r="11"/><path d="M${fx-17} ${fy-96}q17-9 34 0l-4 50h-26z"/><rect x="${fx-12}" y="${fy-48}" width="10" height="48" rx="3"/><rect x="${fx+2}" y="${fy-48}" width="10" height="48" rx="3"/></g>`}
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('preserveAspectRatio','xMidYMid slice');svg.innerHTML=s;
+}
+document.querySelectorAll('svg.scene').forEach(scene);
+
+/* ---------- compass tape ---------- */
+const CARD={uz:['Sh','Shq','J','Gʻ'],ru:['С','В','Ю','З'],en:['N','E','S','W']};
+document.querySelectorAll('.compass').forEach(el=>{
+  const h=+el.dataset.heading,W=400,H=36,ppd=3,c=CARD[el.dataset.lang];let s='';
+  for(let d=Math.ceil((h-64)/5)*5;d<=h+64;d+=5){const x=W/2+(d-h)*ppd,a=((d%360)+360)%360;
+    if(a%90===0){const n=a===0;s+=`<text x="${x}" y="23" text-anchor="middle" font-size="15" font-weight="650" fill="${n?'var(--north)':'var(--foreground)'}">${c[a/90]}</text>`}
+    else if(a%30===0){s+=`<text x="${x}" y="22.5" text-anchor="middle" font-size="11.5" font-weight="500" fill="var(--muted-foreground)" style="font-variant-numeric:tabular-nums">${a}</text>`}
+    else s+=`<rect x="${x-.5}" y="${a%15===0?26:29}" width="1" height="${a%15===0?7:4}" fill="var(--muted-foreground)" opacity="${a%15===0?.9:.55}"/>`}
+  if(el.dataset.dest){const x=W/2+(+el.dataset.dest-h)*ppd;s+=`<rect x="${x-3.5}" y="27" width="7" height="7" fill="var(--primary)"/>`}
+  const fade=`<linearGradient id="f${h}"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".1" stop-color="#fff"/><stop offset=".9" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="m${h}"><rect width="${W}" height="${H}" fill="url(#f${h})"/></mask>`;
+  el.insertAdjacentHTML('afterbegin',`<svg width="${W}" height="${H}" font-family="Onest Variable"><defs>${fade}</defs><g mask="url(#m${h})">${s}</g></svg>`);
+});
+
+/* ---------- minimap ---------- */
+document.querySelectorAll('.minimap').forEach(el=>{
+  const hd=+el.dataset.map,S=206,R=rng(9);let s=`<rect width="${S}" height="${S}" fill="var(--map-ground)"/>`;
+  s+=`<g transform="rotate(-11 103 103)">`;
+  for(let i=-1;i<6;i++)for(let j=-1;j<6;j++){const x=i*46+6+R()*3,y=j*40+4+R()*3,w=36-R()*4,h=30-R()*4;
+    if((i===3&&j===1)||(i===0&&j===3))s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="var(--map-green)"/>`;
+    else{s+=`<rect x="${x}" y="${y}" width="${w*.56}" height="${h*.42}" fill="var(--map-block)"/><rect x="${x+w*.64}" y="${y}" width="${w*.36}" height="${h}" fill="var(--map-block)"/><rect x="${x}" y="${y+h*.56}" width="${w*.5}" height="${h*.44}" fill="var(--map-block)"/>`}}
+  s+=`<path d="M-20 122H240" stroke="var(--map-road)" stroke-width="4.5"/><path d="M95 -20V240" stroke="var(--map-road)" stroke-width="5.5"/><path d="M187 -20V240M-20 42H240M-20 202H240M3 -20V240" stroke="var(--map-road)" stroke-width="2" opacity=".6"/>`;
+  s+=`</g><path d="M-10 168C40 150 62 196 104 186S168 150 220 160" fill="none" stroke="var(--map-water)" stroke-width="8"/>`;
+  s+=`<rect x="121" y="52" width="9" height="9" fill="var(--primary)" stroke="var(--map-ground)" stroke-width="1.5"/><rect x="48" y="96" width="7" height="7" fill="var(--primary)" stroke="var(--map-ground)" stroke-width="1.5"/>`;
+  s+=`<g transform="translate(103 108) rotate(${hd})"><path d="M0 -44L26 -40A48 48 0 0 0 -26 -40z" fill="oklch(0.985 0.002 240)" opacity=".13"/><path d="M0 -12L8.5 9L0 5L-8.5 9z" fill="oklch(0.985 0.002 240)" stroke="var(--map-ground)" stroke-width="1.5" stroke-linejoin="round"/></g>`;
+  s+=`<path d="M194 7l4.5 8h-9z" fill="var(--north)"/><text x="194" y="27" text-anchor="middle" font-family="Onest Variable" font-size="10.5" font-weight="650" fill="var(--foreground)">Sh</text>`;
+  el.innerHTML=`<svg width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">${s}</svg><div class="foot"><div class="scale tab"><i></i>200 m</div><span>Xarita<kbd>M</kbd></span></div>`;
+});
+
+/* ---------- landmark illustration (stands in for a credited photo) ---------- */
+(function(){const el=document.getElementById('tower-art');if(!el)return;const R=rng(5);let s=`<rect width="384" height="232" fill="#a9c2d6"/><rect y="150" width="384" height="82" fill="#c3d2dc"/>`;
+  for(let x=-10;x<384;){const w=14+R()*30,h=8+R()*34;s+=`<rect x="${x}" y="${204-h}" width="${w}" height="${h}" fill="#93a6b3"/>`;x+=w+R()*6}
+  const x=206;s+=`<g fill="#5d6a73"><path d="M${x-1} 14h2l2.5 96h-7z"/><path d="M${x-4} 104h8l5 46h-18z"/><path d="M${x-40} 212l31-74h18l31 74h-9l-28-58h-6l-28 58z"/><rect x="${x-13}" y="128" width="26" height="14"/><rect x="${x-9}" y="98" width="18" height="9"/></g><path d="M${x-13} 131h26v3h-26z" fill="#dfe6ea"/>`;
+  s+=`<path d="M${x-1} 14h2l.4 16h-2.8z" fill="#ad2c3a"/><path d="M${x-1.6} 40h3.2l.4 14h-4z" fill="#ad2c3a"/>`;
+  for(let i=0;i<16;i++){const tx=i*27-6+R()*8,r=13+R()*9;s+=`<ellipse cx="${tx}" cy="${214-r*.3}" rx="${r}" ry="${r*1.25}" fill="${['#58785a','#64845f','#4e6e52'][i%3]}"/>`}
+  s+=`<rect y="216" width="384" height="16" fill="#4e6e52"/>`;el.innerHTML=s})();
+</script>
+</body>
+</html>

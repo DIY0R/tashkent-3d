@@ -1,0 +1,2264 @@
+[
+  {
+    "id": "tv-tower",
+    "category": "tower",
+    "lat": 41.34568,
+    "lon": 69.28483,
+    "rotationDeg": 65,
+    "osmIds": [
+      "way/325125766"
+    ],
+    "name": {
+      "uz": "Toshkent teleminorasi",
+      "ru": "Ташкентская телебашня",
+      "en": "Tashkent TV Tower"
+    },
+    "year": "1985",
+    "short": {
+      "uz": "Balandligi 375 metr boʻlgan teleminora, Markaziy Osiyodagi eng baland minora.",
+      "ru": "Телебашня высотой 375 метров, самая высокая башня в Центральной Азии.",
+      "en": "A 375-metre television tower, the tallest tower in Central Asia."
+    },
+    "text": {
+      "uz": "Minora 1978-yildan qurila boshlagan va 1985-yil 15-yanvarda ishga tushirilgan. Uning poʻlat panjarali tanasi uchta qiya tayanchga suyanadi, bu inshootni zilzilaga chidamli qiladi. Taxminan 100 metr balandlikda tomosha maydonchasi, undan yuqorida aylanuvchi restoran joylashgan. Minora radio va televideniye signallarini tarqatadi.",
+      "ru": "Башню строили с 1978 года, в эксплуатацию она введена 15 января 1985 года. Стальной решётчатый ствол опирается на три наклонные опоры, что делает сооружение устойчивым к землетрясениям. На высоте около 100 метров находится смотровая площадка, над ней — вращающийся ресторан. Башня передаёт теле- и радиосигнал.",
+      "en": "Construction began in 1978 and the tower went into service on 15 January 1985. Its steel lattice shaft rests on three inclined legs, which makes the structure resistant to earthquakes. An observation deck is located about 100 metres above the ground, with a revolving restaurant above it. The tower broadcasts television and radio."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1985-yil 15-yanvar",
+          "ru": "15 января 1985 года",
+          "en": "15 January 1985"
+        }
+      },
+      {
+        "key": "height",
+        "value": {
+          "uz": "375 m",
+          "ru": "375 м",
+          "en": "375 m"
+        }
+      },
+      {
+        "key": "architects",
+        "value": {
+          "uz": "N. Terziyev-Sarukov, Y. Semashko",
+          "ru": "Н. Терзиев-Царуков, Ю. Семашко",
+          "en": "N. Terziev-Tsarukov, Yu. Semashko"
+        }
+      },
+      {
+        "key": "weight",
+        "value": {
+          "uz": "6000 t dan ortiq",
+          "ru": "более 6000 т",
+          "en": "over 6,000 t"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/tv-tower/1.jpg",
+        "author": "Farangiz0123",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Toshkent_minorasi.jpg"
+      },
+      {
+        "file": "/places/tv-tower/2.jpg",
+        "author": "Alpasli",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Toshkent_teleminorasining_uzoqdan_ko%CA%BBrinishi_05.jpg"
+      },
+      {
+        "file": "/places/tv-tower/3.jpg",
+        "author": "Humoyun Mehridinov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Toshkent_Teleminorasi_05.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        100,
+        88
+      ],
+      "heightM": 375,
+      "priority": 1
+    }
+  },
+  {
+    "id": "amir-temur-square",
+    "category": "square",
+    "lat": 41.31118,
+    "lon": 69.27976,
+    "rotationDeg": 291,
+    "osmIds": [],
+    "name": {
+      "uz": "Amir Temur xiyoboni",
+      "ru": "Сквер Амира Темура",
+      "en": "Amir Temur Square"
+    },
+    "year": "1882; monument 1993",
+    "short": {
+      "uz": "Toshkent markazidagi xiyobon, oʻrtasida Amir Temurning otliq haykali turadi.",
+      "ru": "Сквер в центре Ташкента с конным памятником Амиру Темуру посередине.",
+      "en": "A small park in the centre of Tashkent with an equestrian statue of Amir Temur in the middle."
+    },
+    "text": {
+      "uz": "Xiyobon 1882-yilda meʼmor Nikolay Ulyanov loyihasi asosida barpo etilgan. Dastlab Konstantin xiyoboni, sovet davrida Inqilob xiyoboni deb atalgan. 1993-yil 31-avgustda bu yerda haykaltaroshlar Ilhom va Kamol Jabborovlar ishlagan Amir Temurning bronza otliq haykali ochilgan. Haykal poyiga «Kuch – adolatda» shiori toʻrt tilda yozilgan.",
+      "ru": "Сквер заложен в 1882 году по проекту архитектора Николая Ульянова. До революции он назывался Константиновским, в советское время — сквером Революции. 31 августа 1993 года здесь открыли бронзовый конный памятник Амиру Темуру работы скульпторов Ильхома и Камола Джаббаровых. На постаменте на четырёх языках выбит девиз «Сила — в справедливости».",
+      "en": "The square was laid out in 1882 to a design by architect Nikolay Ulyanov. It was first called Konstantin Square and, in Soviet times, Revolution Square. On 31 August 1993 a bronze equestrian statue of Amir Temur by sculptors Ilhom and Kamol Jabbarov was unveiled here. The pedestal carries the motto \"Strength is in justice\" in four languages."
+    },
+    "facts": [
+      {
+        "key": "founded",
+        "value": {
+          "uz": "1882-yil",
+          "ru": "1882 год",
+          "en": "1882"
+        }
+      },
+      {
+        "label": {
+          "uz": "Haykal ochilgan",
+          "ru": "Открытие памятника",
+          "en": "Statue unveiled"
+        },
+        "value": {
+          "uz": "1993-yil 31-avgust",
+          "ru": "31 августа 1993 года",
+          "en": "31 August 1993"
+        }
+      },
+      {
+        "key": "rebuilt",
+        "value": {
+          "uz": "2009-yil",
+          "ru": "2009 год",
+          "en": "2009"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/amir-temur-square/1.jpg",
+        "author": "შალვა მინდაძე 11",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Equestrian_statue_of_Timur_in_Tashkent.jpg"
+      },
+      {
+        "file": "/places/amir-temur-square/2.jpg",
+        "author": "Екатерина Борисова",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82,_%D1%81%D0%BA%D0%B2%D0%B5%D1%80_%D0%90%D0%BC%D0%B8%D1%80%D0%B0_%D0%A2%D0%B5%D0%BC%D1%83%D1%80%D0%B0_02.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        10,
+        6
+      ],
+      "heightM": 14,
+      "priority": 1
+    }
+  },
+  {
+    "id": "hotel-uzbekistan",
+    "category": "hotel",
+    "lat": 41.31136,
+    "lon": 69.28275,
+    "rotationDeg": 265,
+    "osmIds": [
+      "way/44491343"
+    ],
+    "name": {
+      "uz": "«Oʻzbekiston» mehmonxonasi",
+      "ru": "Гостиница «Узбекистан»",
+      "en": "Hotel Uzbekistan"
+    },
+    "year": "1974",
+    "short": {
+      "uz": "Amir Temur xiyoboni qarshisidagi 17 qavatli mehmonxona, sovet modernizmi namunasi.",
+      "ru": "17-этажная гостиница напротив сквера Амира Темура, образец советского модернизма.",
+      "en": "A 17-storey hotel facing Amir Temur Square, an example of Soviet modernism."
+    },
+    "text": {
+      "uz": "Mehmonxona 1969–1974-yillarda meʼmor Ilya Merport boshchiligidagi jamoa loyihasi asosida qurilgan. Bino ochiq kitob shaklida biroz egilgan, fasadi quyoshdan toʻsuvchi beton panjara bilan qoplangan. 2024-yildan Oʻzbekistonning moddiy madaniy merosi milliy roʻyxatiga kiritilgan. Bino hozir ham mehmonxona sifatida ishlaydi.",
+      "ru": "Гостиница построена в 1969–1974 годах по проекту коллектива под руководством архитектора Ильи Мерпорта. Здание слегка изогнуто, как раскрытая книга, а фасад закрыт бетонной солнцезащитной решёткой. С 2024 года оно входит в национальный перечень объектов культурного наследия Узбекистана. Здание по-прежнему работает как гостиница.",
+      "en": "The hotel was built in 1969–1974 by a team led by architect Ilya Merport. The slab is slightly curved like an open book, and its facade is covered with a concrete sun-screen lattice. Since 2024 it has been on Uzbekistan's national list of cultural heritage sites. It still operates as a hotel."
+    },
+    "facts": [
+      {
+        "key": "floors",
+        "value": "17"
+      },
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1974-yil oktabr",
+          "ru": "октябрь 1974 года",
+          "en": "October 1974"
+        }
+      },
+      {
+        "label": {
+          "uz": "Loyiha rahbari",
+          "ru": "Руководитель проекта",
+          "en": "Lead architect"
+        },
+        "value": {
+          "uz": "Ilya Merport",
+          "ru": "Илья Мерпорт",
+          "en": "Ilya Merport"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/hotel-uzbekistan/1.jpg",
+        "author": "Just2Roz",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Hotel_Uzbekistan.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        90,
+        37
+      ],
+      "heightM": 62,
+      "priority": 1
+    }
+  },
+  {
+    "id": "hazrati-imam",
+    "category": "religious",
+    "lat": 41.33722,
+    "lon": 69.2401,
+    "rotationDeg": 0,
+    "osmIds": [
+      "relation/19934455",
+      "relation/1553869",
+      "way/141617154",
+      "way/141624570",
+      "way/141617158"
+    ],
+    "name": {
+      "uz": "Hazrati Imom majmuasi",
+      "ru": "Ансамбль Хазрати Имам",
+      "en": "Hazrati Imam Complex"
+    },
+    "year": "16th–19th centuries; mosque 2007",
+    "short": {
+      "uz": "Eski shahardagi diniy majmua: masjid, madrasalar va Qaffol Shoshiy maqbarasi.",
+      "ru": "Религиозный ансамбль в старом городе: мечеть, медресе и мавзолей Каффаля Шаши.",
+      "en": "A religious ensemble in the old city: a mosque, madrasahs and the Qaffol Shoshiy mausoleum."
+    },
+    "text": {
+      "uz": "Majmua X asrda yashagan olim Qaffol Shoshiy qabri atrofida shakllangan. Uning tarkibiga Baroqxon madrasasi (XVI asr), Qaffol Shoshiy maqbarasi (1542), Moʻyi Muborak madrasasi (1856–1857), Tilla Shayx masjidi va 2007-yilda qurilgan ikki minorali Hazrati Imom jome masjidi kiradi. Moʻyi Muborak madrasasida uzoq yillar Usmon Musʼhafi – Qurʼonning eng qadimiy qoʻlyozmalaridan biri saqlangan. Majmua 1966-yilgi zilziladan omon qolgan.",
+      "ru": "Ансамбль сложился вокруг могилы учёного X века Каффаля Шаши. В него входят медресе Баракхана (XVI век), мавзолей Каффаля Шаши (1542), медресе Муйи Муборак (1856–1857), мечеть Тилля Шейх и соборная мечеть Хазрати Имам с двумя минаретами, построенная в 2007 году. В медресе Муйи Муборак много лет хранился Коран Усмана — одна из древнейших рукописей Корана. Ансамбль уцелел при землетрясении 1966 года.",
+      "en": "The ensemble grew around the tomb of the 10th-century scholar Qaffol Shoshiy. It includes the Barakhan Madrasah (16th century), the Qaffol Shoshiy Mausoleum (1542), the Moyi Muborak Madrasah (1856–1857), the Tilla Shaykh Mosque and the Hazrati Imam Friday Mosque with two minarets, built in 2007. For many years the Moyi Muborak Madrasah kept the Uthman Quran, one of the oldest Quran manuscripts. The ensemble survived the 1966 earthquake."
+    },
+    "facts": [
+      {
+        "label": {
+          "uz": "Jome masjidi",
+          "ru": "Соборная мечеть",
+          "en": "Friday mosque"
+        },
+        "value": {
+          "uz": "2007-yil, 2 ta minora",
+          "ru": "2007 год, 2 минарета",
+          "en": "2007, 2 minarets"
+        }
+      },
+      {
+        "label": {
+          "uz": "Qaffol Shoshiy maqbarasi",
+          "ru": "Мавзолей Каффаля Шаши",
+          "en": "Qaffol Shoshiy Mausoleum"
+        },
+        "value": {
+          "uz": "1542-yil",
+          "ru": "1542 год",
+          "en": "1542"
+        }
+      },
+      {
+        "label": {
+          "uz": "Moʻyi Muborak madrasasi",
+          "ru": "Медресе Муйи Муборак",
+          "en": "Moyi Muborak Madrasah"
+        },
+        "value": {
+          "uz": "1856–1857-yillar",
+          "ru": "1856–1857 годы",
+          "en": "1856–1857"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/hazrati-imam/1.jpg",
+        "author": "Jean Housen",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:20230606_Tashkent097.jpg"
+      },
+      {
+        "file": "/places/hazrati-imam/2.jpg",
+        "author": "Bgag",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Barak-Khan_Madrasa.jpg"
+      },
+      {
+        "file": "/places/hazrati-imam/3.jpg",
+        "author": "Jamshid Nurkulov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mo%CA%BByi_muborak_madrasasining_old_tomondan_ko%CA%BBrinishi.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        330,
+        230
+      ],
+      "heightM": 53,
+      "priority": 1
+    },
+    "parts": [
+      {
+        "id": "hazrati-imam-mosque",
+        "name": "Hazrati Imom jome masjidi",
+        "osmId": "relation/19934455",
+        "lat": 41.33746,
+        "lon": 69.24123,
+        "x": 94.5,
+        "z": -26.5,
+        "rotationDeg": 253,
+        "footprintM": [
+          77,
+          57
+        ],
+        "heightM": 53
+      },
+      {
+        "id": "barakhan-madrasah",
+        "name": "Baroqxon madrasasi",
+        "osmId": "relation/1553869",
+        "lat": 41.33693,
+        "lon": 69.23892,
+        "x": -98.7,
+        "z": 32.1,
+        "rotationDeg": 74,
+        "footprintM": [
+          43,
+          67
+        ],
+        "heightM": 18
+      },
+      {
+        "id": "moyi-muborak",
+        "name": "Moʻyi Muborak madrasasi",
+        "osmId": "way/141617154",
+        "lat": 41.33706,
+        "lon": 69.24032,
+        "x": 18.4,
+        "z": 17.7,
+        "rotationDeg": 357,
+        "footprintM": [
+          26,
+          21
+        ],
+        "heightM": 13
+      },
+      {
+        "id": "tilla-shayx-mosque",
+        "name": "Tilla Shayx masjidi",
+        "osmId": "way/141617158",
+        "lat": 41.33676,
+        "lon": 69.2399,
+        "x": -16.7,
+        "z": 50.9,
+        "rotationDeg": 346,
+        "footprintM": [
+          37,
+          14
+        ],
+        "heightM": 11
+      },
+      {
+        "id": "qaffol-shoshiy-mausoleum",
+        "name": "Qaffol Shoshiy maqbarasi",
+        "osmId": "way/141624570",
+        "lat": 41.33818,
+        "lon": 69.23808,
+        "x": -168.9,
+        "z": -106.2,
+        "rotationDeg": 0,
+        "footprintM": [
+          12,
+          21
+        ],
+        "heightM": 14
+      }
+    ]
+  },
+  {
+    "id": "chorsu-bazaar",
+    "category": "market",
+    "lat": 41.32678,
+    "lon": 69.23511,
+    "rotationDeg": 0,
+    "osmIds": [
+      "way/95639945"
+    ],
+    "name": {
+      "uz": "Chorsu bozori",
+      "ru": "Базар Чорсу",
+      "en": "Chorsu Bazaar"
+    },
+    "year": "1980s",
+    "short": {
+      "uz": "Eski shaharning asosiy bozori, katta koʻk gumbaz ostida joylashgan.",
+      "ru": "Главный базар старого города под большим голубым куполом.",
+      "en": "The main bazaar of the old city, under a large blue dome."
+    },
+    "text": {
+      "uz": "Chorsu maydonida asrlar davomida savdo qilib kelinadi. Hozirgi gumbazli bino 1980-yilda meʼmorlar Vladimir Azimov va Sobir Odilov tomonidan loyihalangan. Asosiy gumbaz feruza va koʻk rangli sopol naqsh bilan qoplangan, atrofida kichikroq gumbazlar joylashgan. Gumbaz ostida goʻsht, sut mahsulotlari, quritilgan meva va ziravorlar sotiladi.",
+      "ru": "На площади Чорсу торгуют уже много веков. Нынешнее купольное здание спроектировали в 1980 году архитекторы Владимир Азимов и Сабир Адылов. Главный купол покрыт бирюзовым и синим керамическим орнаментом, вокруг стоят купола поменьше. Под куполом продают мясо, молочные продукты, сухофрукты и специи.",
+      "en": "Trade has gone on at Chorsu square for centuries. The present domed building was designed in 1980 by architects Vladimir Azimov and Sabir Adylov. The main dome is covered with a turquoise and blue ceramic pattern, and smaller domes stand around it. Meat, dairy products, dried fruit and spices are sold under the dome."
+    },
+    "facts": [
+      {
+        "key": "domeDiameter",
+        "value": {
+          "uz": "taxminan 86 m",
+          "ru": "около 86 м",
+          "en": "about 86 m"
+        }
+      },
+      {
+        "label": {
+          "uz": "Kichik gumbazlar",
+          "ru": "Малых куполов",
+          "en": "Smaller domes"
+        },
+        "value": "7"
+      },
+      {
+        "label": {
+          "uz": "Nomining maʼnosi",
+          "ru": "Значение названия",
+          "en": "Name means"
+        },
+        "value": {
+          "uz": "«toʻrt yoʻl»",
+          "ru": "«четыре пути»",
+          "en": "\"four ways\""
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/chorsu-bazaar/1.jpg",
+        "author": "Farangiz0123",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Chorsu_bozorining_Timi.jpg"
+      },
+      {
+        "file": "/places/chorsu-bazaar/2.jpg",
+        "author": "Bestalex",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%9A%D1%83%D0%BF%D0%BE%D0%BB_%D0%B1%D0%B0%D0%B7%D0%B0%D1%80%D0%B0_%D0%A7%D0%BE%D1%80%D1%81%D1%83_%D0%B2_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%D0%B5_2026-04-26.jpg"
+      },
+      {
+        "file": "/places/chorsu-bazaar/3.jpg",
+        "author": "ElenaLitera",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD,_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82,_%D1%80%D1%8B%D0%BD%D0%BE%D0%BA_%D0%A7%D0%BE%D1%80%D1%81%D1%83_(1).jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        89,
+        89
+      ],
+      "heightM": 30,
+      "priority": 1
+    }
+  },
+  {
+    "id": "amir-temur-museum",
+    "category": "museum",
+    "lat": 41.31368,
+    "lon": 69.27898,
+    "rotationDeg": 136,
+    "osmIds": [
+      "way/31972619"
+    ],
+    "name": {
+      "uz": "Temuriylar tarixi davlat muzeyi",
+      "ru": "Государственный музей истории Тимуридов",
+      "en": "State Museum of Timurid History"
+    },
+    "year": "1996",
+    "short": {
+      "uz": "Amir Temur va temuriylar davriga bagʻishlangan, koʻk gumbazli dumaloq muzey.",
+      "ru": "Круглый музей с голубым куполом, посвящённый Амиру Темуру и эпохе Тимуридов.",
+      "en": "A round museum with a blue dome, dedicated to Amir Temur and the Timurid era."
+    },
+    "text": {
+      "uz": "Muzey 1996-yil 18-oktabrda Amir Temur tavalludining 660 yilligi munosabati bilan ochilgan. Bino doira shaklida boʻlib, tepasida qovurgʻali feruza gumbaz, atrofida ustunli ayvon bor. Uch qavatli muzeyda Temur va temuriylar davriga oid 5 mingdan ortiq eksponat saqlanadi. Muzey Amir Temur xiyobonining shimoliy tomonida joylashgan.",
+      "ru": "Музей открыт 18 октября 1996 года к 660-летию Амира Темура. Здание круглое в плане, с ребристым бирюзовым куполом и колоннадой по периметру. На трёх этажах музея хранится более 5 тысяч экспонатов эпохи Темура и Тимуридов. Музей стоит у северной стороны сквера Амира Темура.",
+      "en": "The museum opened on 18 October 1996 for the 660th anniversary of Amir Temur. The building is circular, with a ribbed turquoise dome and a colonnade around it. Its three floors hold more than 5,000 exhibits from the time of Temur and the Timurids. The museum stands on the north side of Amir Temur Square."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1996-yil 18-oktabr",
+          "ru": "18 октября 1996 года",
+          "en": "18 October 1996"
+        }
+      },
+      {
+        "key": "diameter",
+        "value": {
+          "uz": "70 m",
+          "ru": "70 м",
+          "en": "70 m"
+        }
+      },
+      {
+        "key": "height",
+        "value": {
+          "uz": "31 m",
+          "ru": "31 м",
+          "en": "31 m"
+        }
+      },
+      {
+        "key": "exhibits",
+        "value": {
+          "uz": "5 mingdan ortiq",
+          "ru": "более 5 тысяч",
+          "en": "more than 5,000"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/amir-temur-museum/1.jpg",
+        "author": "Petar Milošević",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Amir_Timur_Museum,_Taskhent_(%D0%A2%D0%B5%D0%BC%D1%83%D1%80%D0%B8%D0%B9%D0%BB%D0%B0%D1%80_%D1%82%D0%B0%D1%80%D0%B8%D1%85%D0%B8_%D0%B4%D0%B0%D0%B2%D0%BB%D0%B0%D1%82_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9%D0%B8,_%D0%A2%D0%BE%D1%88%D0%BA%D0%B5%D0%BD%D1%82,_%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%A2%D0%B8%D0%BC%D1%83%D1%80%D0%B8%D0%B4%D0%BE%D0%B2).jpg"
+      },
+      {
+        "file": "/places/amir-temur-museum/2.jpg",
+        "author": "BeshevI",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Temurids_History_121.jpg"
+      },
+      {
+        "file": "/places/amir-temur-museum/3.jpg",
+        "author": "BeshevI",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Temurids_History_120.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        73,
+        73
+      ],
+      "heightM": 31,
+      "priority": 1
+    }
+  },
+  {
+    "id": "nest-one",
+    "category": "modern",
+    "lat": 41.31207,
+    "lon": 69.25195,
+    "rotationDeg": 184,
+    "osmIds": [
+      "way/878651866"
+    ],
+    "name": {
+      "uz": "Nest One",
+      "ru": "Nest One",
+      "en": "Nest One"
+    },
+    "year": "2023",
+    "short": {
+      "uz": "Oʻzbekistondagi eng baland bino – 266,5 metrli osmonoʻpar.",
+      "ru": "Самое высокое здание Узбекистана — небоскрёб высотой 266,5 метра.",
+      "en": "The tallest building in Uzbekistan, a 266.5-metre skyscraper."
+    },
+    "text": {
+      "uz": "Nest One «Tashkent City» xalqaro biznes markazi hududida joylashgan. Markaziy minora 51 qavatdan iborat boʻlib, unda turar joylar, ofislar va restoranlar bor. Bino 2023-yilda qurib bitkazilgan. U Markaziy Osiyoda Ostonadagi «Abu Dabi Plaza»dan keyin ikkinchi eng baland binodir.",
+      "ru": "Nest One стоит на территории международного делового центра «Tashkent City». В центральной башне 51 этаж: апартаменты, офисы и рестораны. Здание достроено в 2023 году. В Центральной Азии оно второе по высоте после «Абу-Даби Плаза» в Астане.",
+      "en": "Nest One stands in the Tashkent City international business centre. The central tower has 51 floors with apartments, offices and restaurants. The building was completed in 2023. It is the second tallest building in Central Asia after Abu Dhabi Plaza in Astana."
+    },
+    "facts": [
+      {
+        "key": "height",
+        "value": {
+          "uz": "266,5 m",
+          "ru": "266,5 м",
+          "en": "266.5 m"
+        }
+      },
+      {
+        "key": "floors",
+        "value": "51"
+      },
+      {
+        "key": "completed",
+        "value": {
+          "uz": "2023-yil",
+          "ru": "2023 год",
+          "en": "2023"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/nest-one/1.jpg",
+        "author": "Carl Ha",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tashkent,_Tashkent_City_from_Hotel_Shodlik_Palace.jpg"
+      },
+      {
+        "file": "/places/nest-one/2.jpg",
+        "author": "Farrukh Askaraliev",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tashkentcity.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        42,
+        44
+      ],
+      "heightM": 266.5,
+      "priority": 1
+    }
+  },
+  {
+    "id": "minor-mosque",
+    "category": "religious",
+    "lat": 41.33545,
+    "lon": 69.27519,
+    "rotationDeg": 134,
+    "osmIds": [
+      "relation/4827007"
+    ],
+    "name": {
+      "uz": "Minor masjidi",
+      "ru": "Мечеть Минор",
+      "en": "Minor Mosque"
+    },
+    "year": "2014",
+    "short": {
+      "uz": "Anhor kanali boʻyidagi oq marmar masjid, ikki minorasi va koʻk gumbazi bor.",
+      "ru": "Беломраморная мечеть на берегу канала Анхор с двумя минаретами и голубым куполом.",
+      "en": "A white marble mosque on the Anhor canal with two minarets and a blue dome."
+    },
+    "text": {
+      "uz": "Masjid qurilishi 2013-yil yozida boshlangan, 2014-yil 1-oktabrda, Qurbon hayiti kuni ochilgan. Bino anʼanaviy sharqona uslubda qurilgan va oq marmar bilan qoplangan. Xonaqoh ichki bezagi naqsh uslubida ishlangan, mehrobga Qurʼon oyatlari va hadislar yozilgan. Masjid 2400 dan ortiq namozxonga moʻljallangan.",
+      "ru": "Мечеть начали строить летом 2013 года и открыли 1 октября 2014 года, в праздник Курбан-хайит. Здание выполнено в традиционном восточном стиле и облицовано белым мрамором. Интерьер зала оформлен в технике «накш», михраб украшен аятами Корана и хадисами. Мечеть рассчитана более чем на 2400 человек.",
+      "en": "Construction began in the summer of 2013 and the mosque opened on 1 October 2014, on the Eid al-Adha holiday. It is built in a traditional eastern style and faced with white marble. The prayer hall is decorated in the naqsh technique, and the mihrab carries verses from the Quran and hadiths. The mosque holds more than 2,400 worshippers."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2014-yil 1-oktabr",
+          "ru": "1 октября 2014 года",
+          "en": "1 October 2014"
+        }
+      },
+      {
+        "key": "capacity",
+        "value": {
+          "uz": "2400 dan ortiq kishi",
+          "ru": "более 2400 человек",
+          "en": "more than 2,400 people"
+        }
+      },
+      {
+        "label": {
+          "uz": "Minoralar",
+          "ru": "Минаретов",
+          "en": "Minarets"
+        },
+        "value": "2"
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/minor-mosque/1.jpg",
+        "author": "Yuriy Pavlovich",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Minor_Mosque_Tashkent.jpg"
+      },
+      {
+        "file": "/places/minor-mosque/2.jpg",
+        "author": "Humoyun Mehridinov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Minor_masjidi_16.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        89,
+        45
+      ],
+      "heightM": 38,
+      "priority": 1
+    }
+  },
+  {
+    "id": "mustaqillik-square",
+    "category": "square",
+    "lat": 41.31643,
+    "lon": 69.2668,
+    "rotationDeg": 110,
+    "osmIds": [
+      "way/378941212"
+    ],
+    "name": {
+      "uz": "Mustaqillik maydoni",
+      "ru": "Площадь Мустакиллик",
+      "en": "Independence Square"
+    },
+    "year": "1991",
+    "short": {
+      "uz": "Toshkentning markaziy maydoni, davlat bayramlari shu yerda oʻtkaziladi.",
+      "ru": "Центральная площадь Ташкента, где проходят государственные праздники.",
+      "en": "The central square of Tashkent, where state celebrations are held."
+    },
+    "text": {
+      "uz": "Maydon dastlab Sobor maydoni, 1930-yillardan Qizil maydon, 1956–1992-yillarda Lenin maydoni deb atalgan. Mustaqillikdan soʻng Lenin haykali oʻrniga Oʻzbekiston xaritasi tushirilgan globus – Mustaqillik monumenti oʻrnatilgan. Maydonga oq ustunli «Ezgulik» arkasi orqali kiriladi, uning tepasida laylaklar haykali bor. Maydon Anhor kanali boʻyida joylashgan, atrofida hukumat binolari turadi.",
+      "ru": "Сначала площадь называлась Соборной, с 1930-х годов — Красной, а в 1956–1992 годах — площадью Ленина. После обретения независимости на месте памятника Ленину поставили монумент Независимости — глобус с картой Узбекистана. На площадь входят через арку «Эзгулик» с белыми колоннами, наверху которой установлены фигуры аистов. Площадь расположена у канала Анхор, вокруг стоят правительственные здания.",
+      "en": "The square was first called Cathedral Square, from the 1930s Red Square, and from 1956 to 1992 Lenin Square. After independence the Lenin statue was replaced by the Independence Monument, a globe with the map of Uzbekistan. The entrance is through the white-columned Ezgulik Arch, topped with figures of storks. The square lies by the Anhor canal and is surrounded by government buildings."
+    },
+    "facts": [
+      {
+        "key": "named",
+        "value": {
+          "uz": "1992-yildan",
+          "ru": "с 1992 года",
+          "en": "since 1992"
+        }
+      },
+      {
+        "label": {
+          "uz": "«Ezgulik» arkasi ustunlari",
+          "ru": "Колонн в арке «Эзгулик»",
+          "en": "Ezgulik Arch columns"
+        },
+        "value": "16"
+      },
+      {
+        "label": {
+          "uz": "Arka uzunligi",
+          "ru": "Длина арки",
+          "en": "Arch length"
+        },
+        "value": {
+          "uz": "taxminan 150 m",
+          "ru": "около 150 м",
+          "en": "about 150 m"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/mustaqillik-square/1.jpg",
+        "author": "Diloromkhan",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mustaqillik_maydoni.jpg"
+      },
+      {
+        "file": "/places/mustaqillik-square/2.jpg",
+        "author": "BeshevI",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Arch_of_Good_116.jpg"
+      },
+      {
+        "file": "/places/mustaqillik-square/3.jpg",
+        "author": "Petar Milošević",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mustaqillik_Maydoni_(%D0%A4%D0%BE%D0%BD%D1%82%D0%B0%D0%BD_%D0%B8_%D0%90%D1%80%D0%BA%D0%B0_%D0%95%D0%B7%D0%B3%D1%83%D0%BB%D0%B8%D0%BA,_%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C_%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BA%D0%B8%D0%BB%D0%BB%D0%B8%D0%BA,_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82).jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        148,
+        13
+      ],
+      "heightM": 20,
+      "priority": 1
+    },
+    "parts": [
+      {
+        "id": "independence-monument",
+        "name": "Mustaqillik monumenti (globus)",
+        "osmId": null,
+        "lat": 41.31643,
+        "lon": 69.2668,
+        "x": 0.0,
+        "z": 0.0,
+        "rotationDeg": 110,
+        "footprintM": [
+          23,
+          16
+        ],
+        "heightM": 12
+      },
+      {
+        "id": "ezgulik-arch",
+        "name": "Ezgulik arkasi",
+        "osmId": "way/378941212",
+        "lat": 41.31581,
+        "lon": 69.26906,
+        "x": 189.0,
+        "z": 68.6,
+        "rotationDeg": 110,
+        "footprintM": [
+          148,
+          13
+        ],
+        "heightM": 20
+      }
+    ]
+  },
+  {
+    "id": "navoi-theatre",
+    "category": "theatre",
+    "lat": 41.30922,
+    "lon": 69.27152,
+    "rotationDeg": 287,
+    "osmIds": [
+      "way/31962395"
+    ],
+    "name": {
+      "uz": "Alisher Navoiy nomidagi davlat akademik katta teatri",
+      "ru": "Большой театр имени Алишера Навои",
+      "en": "Alisher Navoi Opera and Ballet Theatre"
+    },
+    "year": "1947",
+    "short": {
+      "uz": "Oʻzbekistonning asosiy opera va balet teatri, meʼmor Aleksey Shchusev loyihasi.",
+      "ru": "Главный театр оперы и балета Узбекистана, построенный по проекту Алексея Щусева.",
+      "en": "Uzbekistan's main opera and ballet theatre, designed by Alexey Shchusev."
+    },
+    "text": {
+      "uz": "Teatr jamoasi 1939-yilda tashkil topgan, bino esa 1947-yilda ochilgan. Loyiha muallifi – akademik Aleksey Shchusev. Qurilishning yakuniy bosqichida yapon harbiy asirlari ham ishlagan. Foyedagi oltita zal Oʻzbekistonning turli viloyatlari uslubida bezatilgan. Bino 1966-yilgi zilzilaga bardosh bergan.",
+      "ru": "Труппа театра создана в 1939 году, а здание открыто в 1947 году. Автор проекта — академик Алексей Щусев. На завершающем этапе стройки работали японские военнопленные. Шесть залов фойе оформлены в стилях разных областей Узбекистана. Здание выдержало землетрясение 1966 года.",
+      "en": "The company was founded in 1939 and the building opened in 1947. It was designed by academician Alexey Shchusev. Japanese prisoners of war took part in the final stage of construction. Six foyer halls are decorated in the styles of different regions of Uzbekistan. The building withstood the 1966 earthquake."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1947-yil",
+          "ru": "1947 год",
+          "en": "1947"
+        }
+      },
+      {
+        "key": "architect",
+        "value": {
+          "uz": "Aleksey Shchusev",
+          "ru": "Алексей Щусев",
+          "en": "Alexey Shchusev"
+        }
+      },
+      {
+        "label": {
+          "uz": "Teatr tashkil etilgan",
+          "ru": "Основание театра",
+          "en": "Company founded"
+        },
+        "value": {
+          "uz": "1939-yil 11-iyun",
+          "ru": "11 июня 1939 года",
+          "en": "11 June 1939"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/navoi-theatre/1.jpg",
+        "author": "Галиев Ярослав",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Alisher_Navoiy_nomli_DAKT_teatri_binosi_0.jpg"
+      },
+      {
+        "file": "/places/navoi-theatre/2.jpg",
+        "author": "Bgag",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Alisher_Navoi_Opera_and_Ballet_Theatre,_Tashkent.jpg"
+      },
+      {
+        "file": "/places/navoi-theatre/3.jpg",
+        "author": "Jamshid Nurkulov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Alisher_Navoiy_nomidagi_DAKT_01.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        46,
+        106
+      ],
+      "heightM": 21,
+      "priority": 1
+    }
+  },
+  {
+    "id": "islamic-civilization-center",
+    "category": "museum",
+    "lat": 41.33523,
+    "lon": 69.24036,
+    "rotationDeg": 343,
+    "osmIds": [
+      "way/835335605"
+    ],
+    "name": {
+      "uz": "Islom sivilizatsiyasi markazi",
+      "ru": "Центр исламской цивилизации",
+      "en": "Center of Islamic Civilization"
+    },
+    "year": "2026",
+    "short": {
+      "uz": "Hazrati Imom majmuasi yonidagi yirik muzey va ilmiy markaz, 2026-yilda ochilgan.",
+      "ru": "Крупный музей и научный центр рядом с ансамблем Хазрати Имам, открыт в 2026 году.",
+      "en": "A large museum and research centre next to the Hazrati Imam complex, opened in 2026."
+    },
+    "text": {
+      "uz": "Markaz sakkiz yillik qurilishdan soʻng 2026-yil 17-martda rasman ochilgan. Bino toʻrt tomonida baland peshtoqlar va markazida katta koʻk gumbaz bilan qurilgan. Unda muzey, kutubxona, ilmiy-tadqiqot instituti va qoʻlyozmalarni taʼmirlash laboratoriyalari joylashgan. Muzeyning asosiy eksponati – Usmon Musʼhafi nomi bilan mashhur qadimiy Qurʼon qoʻlyozmasi.",
+      "ru": "Центр официально открыт 17 марта 2026 года после восьми лет строительства. Здание имеет высокие порталы с четырёх сторон и большой голубой купол в центре. В нём работают музей, библиотека, научно-исследовательский институт и лаборатории реставрации рукописей. Главный экспонат музея — древняя рукопись Корана, известная как Коран Усмана.",
+      "en": "The centre officially opened on 17 March 2026 after eight years of construction. The building has tall portals on four sides and a large blue dome in the middle. It houses a museum, a library, a research institute and manuscript restoration laboratories. The main exhibit is an early Quran manuscript known as the Uthman Quran."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2026-yil 17-mart",
+          "ru": "17 марта 2026 года",
+          "en": "17 March 2026"
+        }
+      },
+      {
+        "label": {
+          "uz": "Gumbaz balandligi",
+          "ru": "Высота купола",
+          "en": "Dome height"
+        },
+        "value": {
+          "uz": "65 m",
+          "ru": "65 м",
+          "en": "65 m"
+        }
+      },
+      {
+        "label": {
+          "uz": "Peshtoqlar",
+          "ru": "Порталы",
+          "en": "Portals"
+        },
+        "value": {
+          "uz": "4 ta, har biri 34 m",
+          "ru": "4, высотой по 34 м",
+          "en": "4, each 34 m high"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/islamic-civilization-center/1.jpg",
+        "author": "Зинҳор Насрӣ",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Center_of_Islamic_Civilization_of_Uzbekistan_Tashkent_2026_002.jpg"
+      },
+      {
+        "file": "/places/islamic-civilization-center/2.jpg",
+        "author": "Зинҳор Насрӣ",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Center_of_Islamic_Civilization_of_Uzbekistan_Tashkent_2026_001.jpg"
+      },
+      {
+        "file": "/places/islamic-civilization-center/3.jpg",
+        "author": "Abdufattohov Ibrohimjon",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Islom_sivilizatsiyasi_markazi_asosiy_kirish_qismi.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        119,
+        161
+      ],
+      "heightM": 65,
+      "priority": 1
+    }
+  },
+  {
+    "id": "kukeldash-madrasah",
+    "category": "religious",
+    "lat": 41.32342,
+    "lon": 69.23626,
+    "rotationDeg": 168,
+    "osmIds": [
+      "relation/2324986"
+    ],
+    "name": {
+      "uz": "Koʻkaldosh madrasasi",
+      "ru": "Медресе Кукельдаш",
+      "en": "Kukeldash Madrasah"
+    },
+    "year": "c. 1570",
+    "short": {
+      "uz": "Chorsu yonidagi XVI asr madrasasi, eski Toshkentdagi eng yirik madrasa.",
+      "ru": "Медресе XVI века у Чорсу, крупнейшее в старом Ташкенте.",
+      "en": "A 16th-century madrasah by Chorsu, the largest in old Tashkent."
+    },
+    "text": {
+      "uz": "Madrasa taxminan 1570-yilda shayboniylar davrida «koʻkaldosh» laqabli vazir tomonidan qurdirilgan. U sariq pishiq gʻishtdan terilgan: baland peshtoq, ikki burchak minorasi va ikki qavatli hujralar bilan oʻralgan ichki hovli. Bino XIX asrdagi zilzilalarda shikastlangan va 1950-yillarda tiklangan. XX asrda muzey boʻlgan, 1990-yillardan yana madrasa sifatida ishlaydi.",
+      "ru": "Медресе построено около 1570 года при Шейбанидах визирем по прозвищу «кукельдаш». Оно сложено из жёлтого жжёного кирпича: высокий портал, две угловые башни и внутренний двор, окружённый двухэтажными кельями-худжрами. Здание пострадало от землетрясений XIX века и было восстановлено в 1950-х годах. В XX веке здесь был музей, с 1990-х это снова действующее медресе.",
+      "en": "The madrasah was built around 1570 under the Shaybanids by a vizier known as Kukeldash. It is made of yellow baked brick: a tall portal, two corner towers and a courtyard surrounded by two storeys of student cells. The building was damaged by earthquakes in the 19th century and restored in the 1950s. It was a museum in the 20th century and has been a working madrasah again since the 1990s."
+    },
+    "facts": [
+      {
+        "key": "built",
+        "value": {
+          "uz": "taxminan 1570-yil",
+          "ru": "около 1570 года",
+          "en": "around 1570"
+        }
+      },
+      {
+        "key": "restored",
+        "value": {
+          "uz": "1950–1961-yillar",
+          "ru": "1950–1961 годы",
+          "en": "1950–1961"
+        }
+      },
+      {
+        "uz": "Eski Toshkentdagi 23 madrasaning eng yirigi.",
+        "ru": "Крупнейшее из 23 медресе старого Ташкента.",
+        "en": "The largest of the 23 madrasahs of old Tashkent."
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/kukeldash-madrasah/1.jpg",
+        "author": "Lillimor",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ko%27kaldosh_madrasasi.jpg"
+      },
+      {
+        "file": "/places/kukeldash-madrasah/2.jpg",
+        "author": "Murodbek Yusupov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:HSA_1514.jpg"
+      },
+      {
+        "file": "/places/kukeldash-madrasah/3.jpg",
+        "author": "Jamshid Nurkulov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ko%CA%BBkaldosh_madrasasi_03.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        57,
+        80
+      ],
+      "heightM": 20,
+      "priority": 1
+    }
+  },
+  {
+    "id": "forums-palace",
+    "category": "government",
+    "lat": 41.30954,
+    "lon": 69.28258,
+    "rotationDeg": 307,
+    "osmIds": [
+      "way/44351799"
+    ],
+    "name": {
+      "uz": "Xalqaro anjumanlar saroyi",
+      "ru": "Дворец международных форумов «Узбекистан»",
+      "en": "Palace of International Forums"
+    },
+    "year": "2009",
+    "short": {
+      "uz": "Amir Temur xiyoboni yonidagi oq ustunli saroy, davlat tadbirlari oʻtkaziladi.",
+      "ru": "Дворец с белой колоннадой у сквера Амира Темура, место государственных мероприятий.",
+      "en": "A white-columned palace by Amir Temur Square used for state events."
+    },
+    "text": {
+      "uz": "Saroy 2009-yilda Toshkentning 2200 yilligi arafasida qurilgan. Fasadi oq tosh bilan qoplangan, baland ustunlar orasida qoramtir oynali devorlar joylashgan. Tomidagi gumbaz ustiga laylaklar haykali oʻrnatilgan. Bu yerda sammitlar, anjumanlar va konsertlar oʻtkaziladi.",
+      "ru": "Дворец построен в 2009 году к 2200-летию Ташкента. Фасад облицован белым камнем, между высокими колоннами — тёмные стеклянные стены. Купол на крыше увенчан фигурами аистов. Здесь проходят саммиты, конференции и концерты.",
+      "en": "The palace was built in 2009 for the 2,200th anniversary of Tashkent. The facade is clad in white stone, with dark glass walls between tall columns. The roof dome is topped with figures of storks. Summits, conferences and concerts are held here."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2009-yil",
+          "ru": "2009 год",
+          "en": "2009"
+        }
+      },
+      {
+        "key": "mainHall",
+        "value": {
+          "uz": "1850 oʻrin",
+          "ru": "1850 мест",
+          "en": "1,850 seats"
+        }
+      },
+      {
+        "key": "footprint",
+        "value": {
+          "uz": "taxminan 114 × 87 m",
+          "ru": "около 114 × 87 м",
+          "en": "about 114 × 87 m"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/forums-palace/1.jpg",
+        "author": "Bobyrr",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Palace_of_International_Forums.JPG"
+      },
+      {
+        "file": "/places/forums-palace/2.jpg",
+        "author": "Enric",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:114_Amir_Temur_Xiyoboni_(Taixkent),_amb_el_Palau_dels_F%C3%B2rums_Internacionals.jpg"
+      },
+      {
+        "file": "/places/forums-palace/3.jpg",
+        "author": "Enric",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:115_Amir_Temur_Xiyoboni_(Taixkent),_amb_el_Palau_dels_F%C3%B2rums_Internacionals.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        114,
+        87
+      ],
+      "heightM": 50,
+      "priority": 2
+    }
+  },
+  {
+    "id": "tashkent-chimes",
+    "category": "monument",
+    "lat": 41.30962,
+    "lon": 69.27976,
+    "rotationDeg": 10,
+    "osmIds": [
+      "way/83581462",
+      "way/83581461"
+    ],
+    "name": {
+      "uz": "Toshkent kurantlari",
+      "ru": "Ташкентские куранты",
+      "en": "Tashkent Chimes"
+    },
+    "year": "1947; second tower 2009",
+    "short": {
+      "uz": "Amir Temur xiyoboni yonidagi soatli minora, shahar ramzlaridan biri.",
+      "ru": "Часовая башня у сквера Амира Темура, один из символов города.",
+      "en": "A clock tower by Amir Temur Square, one of the symbols of the city."
+    },
+    "text": {
+      "uz": "Minora 1947-yilda meʼmor A. Muhamedshin loyihasi asosida qurilgan. Soat mexanizmini soatsoz Ishiya Ayzenshteyn 1945-yilda Sharqiy Prussiyaning Allenshteyn shahridan olib kelib, shaharga sovgʻa qilgan. Minoraning toʻrt tomonida siferblat bor. 2009-yilda yonida xuddi shunday ikkinchi minora qurilgan.",
+      "ru": "Башня построена в 1947 году по проекту архитектора А. Мухамедшина. Часовой механизм привёз в 1945 году из города Алленштайн в Восточной Пруссии часовщик Ишия Айзенштейн и подарил его городу. Циферблаты расположены на четырёх сторонах башни. В 2009 году рядом построили вторую такую же башню.",
+      "en": "The tower was built in 1947 to a design by architect A. Mukhamedshin. The clock mechanism was brought in 1945 from Allenstein in East Prussia by watchmaker Ishiya Ayzenshteyn, who gave it to the city. There are clock faces on all four sides. In 2009 a second, identical tower was built next to it."
+    },
+    "facts": [
+      {
+        "key": "built",
+        "value": {
+          "uz": "1947-yil, ikkinchi minora – 2009-yil",
+          "ru": "1947 год, вторая башня — 2009 год",
+          "en": "1947, second tower 2009"
+        }
+      },
+      {
+        "label": {
+          "uz": "Minora balandligi",
+          "ru": "Высота башни",
+          "en": "Tower height"
+        },
+        "value": {
+          "uz": "30 m",
+          "ru": "30 м",
+          "en": "30 m"
+        }
+      },
+      {
+        "label": {
+          "uz": "Siferblatlar",
+          "ru": "Циферблатов",
+          "en": "Clock faces"
+        },
+        "value": "4"
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/tashkent-chimes/1.jpg",
+        "author": "Panpanchik",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tashkent_chime1.jpg"
+      },
+      {
+        "file": "/places/tashkent-chimes/2.jpg",
+        "author": "Daniil 3535",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:20261015_171807_%D0%B2%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%B1%D0%B0%D1%88%D0%BD%D1%8F_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B8%D1%85_%D0%BA%D1%83%D1%80%D0%B0%D0%BD%D1%82%D0%BE%D0%B2.jpg"
+      },
+      {
+        "file": "/places/tashkent-chimes/3.jpg",
+        "author": "Said228332",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:17.10.2024_kuranti.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        6,
+        6
+      ],
+      "heightM": 30,
+      "priority": 2
+    },
+    "parts": [
+      {
+        "id": "chimes-old",
+        "name": "Kurantlar (1947)",
+        "osmId": "way/83581462",
+        "lat": 41.30962,
+        "lon": 69.27976,
+        "x": 0.0,
+        "z": 0.0,
+        "rotationDeg": 10,
+        "footprintM": [
+          6,
+          6
+        ],
+        "heightM": 30
+      },
+      {
+        "id": "chimes-new",
+        "name": "Kurantlar (2009)",
+        "osmId": "way/83581461",
+        "lat": 41.30966,
+        "lon": 69.28079,
+        "x": 86.1,
+        "z": -4.4,
+        "rotationDeg": 10,
+        "footprintM": [
+          6,
+          6
+        ],
+        "heightM": 30
+      }
+    ]
+  },
+  {
+    "id": "tashkent-circus",
+    "category": "theatre",
+    "lat": 41.32441,
+    "lon": 69.24296,
+    "rotationDeg": 183,
+    "osmIds": [
+      "relation/2312684"
+    ],
+    "name": {
+      "uz": "Toshkent davlat sirki",
+      "ru": "Ташкентский государственный цирк",
+      "en": "Tashkent State Circus"
+    },
+    "year": "1976",
+    "short": {
+      "uz": "Xadra maydonidagi gumbazli sirk binosi, sovet modernizmi yodgorligi.",
+      "ru": "Купольное здание цирка на площади Хадра, памятник советского модернизма.",
+      "en": "A domed circus building on Khadra Square, a monument of Soviet modernism."
+    },
+    "text": {
+      "uz": "Avvalgi sirk binosi 1966-yilgi zilzilada vayron boʻlgan, yangisi 1976-yilda ochilgan. Loyiha mualliflari – meʼmorlar Genrix Aleksandrovich va Gennadiy Masyagin. Koʻk gumbazli dumaloq binoni koʻpincha uchar likopchaga oʻxshatishadi. 2026-yil iyulda sirk «Toshkent modernizmi meʼmorchiligi» tarkibida YUNESKO Jahon merosi roʻyxatiga kiritilgan.",
+      "ru": "Прежнее здание цирка разрушило землетрясение 1966 года, новое открылось в 1976 году. Авторы проекта — архитекторы Генрих Александрович и Геннадий Масягин. Круглое здание с голубым куполом часто сравнивают с летающей тарелкой. В июле 2026 года цирк включён в Список всемирного наследия ЮНЕСКО в составе номинации «Модернистская архитектура Ташкента».",
+      "en": "The previous circus building was destroyed by the 1966 earthquake, and the new one opened in 1976. It was designed by architects Genrikh Aleksandrovich and Gennady Masyagin. The round building with a blue dome is often compared to a flying saucer. In July 2026 the circus was inscribed on the UNESCO World Heritage List as part of \"Tashkent Modernist Architecture\"."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1976-yil",
+          "ru": "1976 год",
+          "en": "1976"
+        }
+      },
+      {
+        "key": "domeDiameter",
+        "value": {
+          "uz": "taxminan 70 m",
+          "ru": "около 70 м",
+          "en": "about 70 m"
+        }
+      },
+      {
+        "key": "unesco",
+        "value": {
+          "uz": "2026-yildan",
+          "ru": "с 2026 года",
+          "en": "since 2026"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/tashkent-circus/1.jpg",
+        "author": "Aza Olimjonovv",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sirk_uzb.jpg"
+      },
+      {
+        "file": "/places/tashkent-circus/2.jpg",
+        "author": "Zoirovna",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Davlat_sirk.jpg"
+      },
+      {
+        "file": "/places/tashkent-circus/3.jpg",
+        "author": "ElenaLitera",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82,_%D1%83%D0%BB._%D0%A1%D0%B5%D0%B1%D0%B7%D0%B0%D1%80,_1B,_%D1%86%D0%B8%D1%80%D0%BA_(2).jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        70,
+        70
+      ],
+      "heightM": 27,
+      "priority": 2
+    }
+  },
+  {
+    "id": "xalqlar-dostligi-palace",
+    "category": "theatre",
+    "lat": 41.30864,
+    "lon": 69.24136,
+    "rotationDeg": 4,
+    "osmIds": [
+      "way/528058882"
+    ],
+    "name": {
+      "uz": "Xalqlar doʻstligi saroyi",
+      "ru": "Дворец дружбы народов",
+      "en": "Peoples' Friendship Palace"
+    },
+    "year": "1981",
+    "short": {
+      "uz": "Oʻzbekistonning asosiy konsert zali, 1981-yilda ochilgan.",
+      "ru": "Главный концертный зал Узбекистана, открыт в 1981 году.",
+      "en": "Uzbekistan's main concert hall, opened in 1981."
+    },
+    "text": {
+      "uz": "Saroy 1980-yilda qurilgan va 1981-yilda foydalanishga topshirilgan; loyiha rahbari – meʼmor Yevgeniy Rozanov. U 1966-yilgi zilziladan soʻng Toshkentni tiklashga yordam bergan xalqlar doʻstligi xotirasiga shunday nomlangan. Fasadlaridagi quyoshdan toʻsuvchi beton shakllar milliy meʼmorchilikdagi muqarnasni eslatadi. 2026-yil iyulda bino YUNESKO Jahon merosi roʻyxatiga kiritilgan.",
+      "ru": "Дворец построен в 1980 году и открыт в 1981 году; руководитель проекта — архитектор Евгений Розанов. Он назван в память о дружбе народов, помогавших восстанавливать Ташкент после землетрясения 1966 года. Бетонные солнцезащитные формы на фасадах напоминают мукарнасы национальной архитектуры. В июле 2026 года здание включено в Список всемирного наследия ЮНЕСКО.",
+      "en": "The palace was built in 1980 and opened in 1981; the lead architect was Yevgeny Rozanov. It is named in memory of the friendship of the peoples who helped rebuild Tashkent after the 1966 earthquake. The concrete sun-shading forms on its facades recall the muqarnas of national architecture. In July 2026 the building was inscribed on the UNESCO World Heritage List."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1981-yil",
+          "ru": "1981 год",
+          "en": "1981"
+        }
+      },
+      {
+        "key": "mainHall",
+        "value": {
+          "uz": "taxminan 4 ming oʻrin",
+          "ru": "около 4 тысяч мест",
+          "en": "about 4,000 seats"
+        }
+      },
+      {
+        "key": "unesco",
+        "value": {
+          "uz": "2026-yildan",
+          "ru": "с 2026 года",
+          "en": "since 2026"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/xalqlar-dostligi-palace/1.jpg",
+        "author": "Lasterna",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Xalqlar_do%CA%BBstligi_saroyi.jpg"
+      },
+      {
+        "file": "/places/xalqlar-dostligi-palace/2.jpg",
+        "author": "Panpanchik",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:People%27s_Friendship_Palace.jpg"
+      },
+      {
+        "file": "/places/xalqlar-dostligi-palace/3.jpg",
+        "author": "26D",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Xalqlar_do%CA%BBstligi_saroyi._%D0%94%D0%B2%D0%BE%D1%80%D0%B5%D1%86_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D1%8B_%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D0%BE%D0%B2_%D0%B2_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%D0%B5.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        110,
+        103
+      ],
+      "heightM": 27,
+      "priority": 2
+    }
+  },
+  {
+    "id": "history-museum",
+    "category": "museum",
+    "lat": 41.31165,
+    "lon": 69.26939,
+    "rotationDeg": 19,
+    "osmIds": [
+      "way/31974956"
+    ],
+    "name": {
+      "uz": "Oʻzbekiston tarixi davlat muzeyi",
+      "ru": "Государственный музей истории Узбекистана",
+      "en": "State Museum of History of Uzbekistan"
+    },
+    "year": "1970 (museum founded 1876)",
+    "short": {
+      "uz": "Markaziy Osiyodagi eng qadimgi muzeylardan biri, naqshli panjarali kub shaklidagi binoda joylashgan.",
+      "ru": "Один из старейших музеев Центральной Азии в здании-кубе с узорной решёткой.",
+      "en": "One of the oldest museums in Central Asia, housed in a cube with a patterned lattice."
+    },
+    "text": {
+      "uz": "Muzey 1876-yilda Turkiston xalq muzeyi sifatida tashkil etilgan. Hozirgi bino 1970-yilda Lenin muzeyi uchun qurilgan: oynali birinchi qavat ustida naqshli beton panjara bilan oʻralgan kub turadi. Muzey 2024-yil iyunda taʼmirlash uchun yopilgan va 2026-yil iyulda qayta ochilgan. Oʻsha oyda bino YUNESKO Jahon merosi roʻyxatiga kiritilgan.",
+      "ru": "Музей основан в 1876 году как Народный музей Туркестана. Нынешнее здание построено в 1970 году для музея Ленина: над остеклённым первым этажом стоит куб, закрытый узорной бетонной решёткой. В июне 2024 года музей закрылся на ремонт и снова открылся в июле 2026 года. В том же месяце здание включили в Список всемирного наследия ЮНЕСКО.",
+      "en": "The museum was founded in 1876 as the People's Museum of Turkestan. The present building was constructed in 1970 for the Lenin Museum: a cube wrapped in a patterned concrete lattice above a glazed ground floor. The museum closed for renovation in June 2024 and reopened in July 2026. In the same month the building was inscribed on the UNESCO World Heritage List."
+    },
+    "facts": [
+      {
+        "label": {
+          "uz": "Muzey tashkil etilgan",
+          "ru": "Основание музея",
+          "en": "Museum founded"
+        },
+        "value": {
+          "uz": "1876-yil",
+          "ru": "1876 год",
+          "en": "1876"
+        }
+      },
+      {
+        "key": "built",
+        "value": {
+          "uz": "1970-yil",
+          "ru": "1970 год",
+          "en": "1970"
+        }
+      },
+      {
+        "label": {
+          "uz": "Qayta ochilgan",
+          "ru": "Повторное открытие",
+          "en": "Reopened"
+        },
+        "value": {
+          "uz": "2026-yil iyul",
+          "ru": "июль 2026 года",
+          "en": "July 2026"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/history-museum/1.jpg",
+        "author": "26D",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Building_of_the_State_Museum_of_the_History_of_Uzbekistan.jpg"
+      },
+      {
+        "file": "/places/history-museum/2.jpg",
+        "author": "Галиев Ярослав",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:O%CA%BBzbekiston_tarixi_davlat_muzeyi_binosi_1.jpg"
+      },
+      {
+        "file": "/places/history-museum/3.jpg",
+        "author": "Oqsaqol",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:State_Museum_of_History_of_Uzbekistan_1.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        55,
+        53
+      ],
+      "heightM": 24,
+      "priority": 2
+    }
+  },
+  {
+    "id": "humo-arena",
+    "category": "modern",
+    "lat": 41.30794,
+    "lon": 69.25189,
+    "rotationDeg": 105,
+    "osmIds": [
+      "way/636288920"
+    ],
+    "name": {
+      "uz": "Humo Arena",
+      "ru": "Хумо Арена",
+      "en": "Humo Arena"
+    },
+    "year": "2019",
+    "short": {
+      "uz": "Koʻp funksiyali muz saroyi, Markaziy Osiyodagi eng yirik xokkey arenasi.",
+      "ru": "Многофункциональный ледовый дворец, крупнейшая хоккейная арена Центральной Азии.",
+      "en": "A multi-purpose ice arena, the largest hockey arena in Central Asia."
+    },
+    "text": {
+      "uz": "Arena 2019-yil 15-martda ochilgan. Asosiy zal 12 500 tomoshabinga moʻljallangan. Bu yerda xokkey, basketbol, boks va figurali uchish musobaqalari hamda konsertlar oʻtkaziladi. Arena «Humo» xokkey klubining uy maydoni hisoblanadi.",
+      "ru": "Арена открыта 15 марта 2019 года. Главный зал вмещает 12 500 зрителей. Здесь проходят соревнования по хоккею, баскетболу, боксу и фигурному катанию, а также концерты. Это домашняя арена хоккейного клуба «Хумо».",
+      "en": "The arena opened on 15 March 2019. The main hall holds 12,500 spectators. It hosts ice hockey, basketball, boxing and figure skating events as well as concerts. It is the home arena of the Humo hockey club."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2019-yil 15-mart",
+          "ru": "15 марта 2019 года",
+          "en": "15 March 2019"
+        }
+      },
+      {
+        "key": "seats",
+        "value": {
+          "uz": "12 500",
+          "ru": "12 500",
+          "en": "12,500"
+        }
+      },
+      {
+        "key": "footprint",
+        "value": {
+          "uz": "taxminan 198 × 118 m",
+          "ru": "около 198 × 118 м",
+          "en": "about 198 × 118 m"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/humo-arena/1.jpg",
+        "author": "Mysportedit",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Humo_Arena_(Tashkent,_UZB)_2019.jpg"
+      },
+      {
+        "file": "/places/humo-arena/2.jpg",
+        "author": "Mysportedit",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Humo_Arena_2019.jpg"
+      },
+      {
+        "file": "/places/humo-arena/3.jpg",
+        "author": "Behruznurullayevv",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Humo_arena.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        118,
+        198
+      ],
+      "heightM": 32,
+      "priority": 2
+    }
+  },
+  {
+    "id": "magic-city",
+    "category": "park",
+    "lat": 41.30317,
+    "lon": 69.24347,
+    "rotationDeg": 253,
+    "osmIds": [
+      "way/1156064841"
+    ],
+    "name": {
+      "uz": "Magic City",
+      "ru": "Magic City",
+      "en": "Magic City"
+    },
+    "year": "2021",
+    "short": {
+      "uz": "Milliy bogʻ yonidagi koʻngilochar park: qasr, akvarium va musiqali favvora.",
+      "ru": "Парк развлечений рядом с Национальным парком: замок, океанариум и музыкальный фонтан.",
+      "en": "An amusement park next to the National Park with a castle, an aquarium and a musical fountain."
+    },
+    "text": {
+      "uz": "Park 2021-yil 1-iyunda, Xalqaro bolalarni himoya qilish kunida ochilgan. Uning koʻchalari Yevropa shaharlari uslubida qurilgan, markazida koʻl va qasr joylashgan. Hududda akvarium, attraksionlar va restoranlar bor. Qasr koʻrinishi Germaniyadagi Noyshvanshtayn qasriga oʻxshatib ishlangan.",
+      "ru": "Парк открылся 1 июня 2021 года, в Международный день защиты детей. Его улицы построены в стиле европейских городов, в центре — озеро и замок. На территории есть океанариум, аттракционы и рестораны. Облик замка навеян замком Нойшванштайн в Германии.",
+      "en": "The park opened on 1 June 2021, International Children's Day. Its streets are built in the style of European towns, with a lake and a castle in the middle. It has an aquarium, rides and restaurants. The castle design draws on Neuschwanstein Castle in Germany."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2021-yil 1-iyun",
+          "ru": "1 июня 2021 года",
+          "en": "1 June 2021"
+        }
+      },
+      {
+        "key": "area",
+        "value": {
+          "uz": "taxminan 21 ga",
+          "ru": "около 21 га",
+          "en": "about 21 ha"
+        }
+      },
+      {
+        "label": {
+          "uz": "Akvarium maydoni",
+          "ru": "Площадь океанариума",
+          "en": "Aquarium area"
+        },
+        "value": {
+          "uz": "taxminan 2700 m²",
+          "ru": "около 2700 м²",
+          "en": "about 2,700 m²"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/magic-city/1.jpg",
+        "author": "Omina Sayfullayeva",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Magic_city_manzarasi.jpg"
+      },
+      {
+        "file": "/places/magic-city/2.jpg",
+        "author": "Шухрат Саъдиев",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D0%BE%D0%B4_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82_(14).jpg"
+      },
+      {
+        "file": "/places/magic-city/3.jpg",
+        "author": "Шухрат Саъдиев",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D0%BE%D0%B4_%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82_(13).jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        71,
+        28
+      ],
+      "heightM": 35,
+      "priority": 2
+    },
+    "parts": [
+      {
+        "id": "magic-city-gate",
+        "name": "Kirish darvozasi (Magic Castle)",
+        "osmId": "way/1156064841",
+        "lat": 41.30317,
+        "lon": 69.24347,
+        "x": 0.0,
+        "z": 0.0,
+        "rotationDeg": 253,
+        "footprintM": [
+          71,
+          28
+        ],
+        "heightM": 35
+      },
+      {
+        "id": "magic-city-lake-castle",
+        "name": "Koʻl boʻyidagi qasr",
+        "osmId": "way/1156064842",
+        "lat": 41.30256,
+        "lon": 69.24418,
+        "x": 59.4,
+        "z": 67.5,
+        "rotationDeg": 0,
+        "footprintM": [
+          40,
+          32
+        ],
+        "heightM": 40
+      }
+    ]
+  },
+  {
+    "id": "oliy-majlis",
+    "category": "government",
+    "lat": 41.30558,
+    "lon": 69.23874,
+    "rotationDeg": 0,
+    "osmIds": [
+      "way/31742442"
+    ],
+    "name": {
+      "uz": "Oliy Majlis Qonunchilik palatasi binosi",
+      "ru": "Здание Законодательной палаты Олий Мажлиса",
+      "en": "Legislative Chamber of the Oliy Majlis"
+    },
+    "year": "1990s",
+    "short": {
+      "uz": "Oʻzbekiston parlamenti quyi palatasi binosi, Milliy bogʻ hududida joylashgan.",
+      "ru": "Здание нижней палаты парламента Узбекистана на территории Национального парка.",
+      "en": "The building of the lower house of Uzbekistan's parliament, in the National Park."
+    },
+    "text": {
+      "uz": "Bino Alisher Navoiy nomidagi Oʻzbekiston milliy bogʻida, koʻl boʻyida joylashgan. U kvadrat shaklda: toʻrt tomonida baland oq ustunlar, oltin tusli oynali devorlar va tepasida koʻk gumbaz bor. Bu yerda Oliy Majlisning Qonunchilik palatasi majlislari oʻtadi. Milliy bogʻ 1938-yilda tashkil etilgan.",
+      "ru": "Здание стоит в Национальном парке Узбекистана имени Алишера Навои, у озера. Оно квадратное в плане: высокие белые колонны с четырёх сторон, стеклянные стены золотистого оттенка и голубой купол наверху. Здесь заседает Законодательная палата Олий Мажлиса. Национальный парк основан в 1938 году.",
+      "en": "The building stands by a lake in the Alisher Navoi National Park of Uzbekistan. It is square in plan, with tall white columns on all four sides, gold-tinted glass walls and a blue dome on top. The Legislative Chamber of the Oliy Majlis sits here. The National Park was founded in 1938."
+    },
+    "facts": [
+      {
+        "label": {
+          "uz": "Deputatlar soni",
+          "ru": "Депутатов",
+          "en": "Deputies"
+        },
+        "value": "150"
+      },
+      {
+        "key": "footprint",
+        "value": {
+          "uz": "taxminan 87 × 87 m",
+          "ru": "около 87 × 87 м",
+          "en": "about 87 × 87 m"
+        }
+      },
+      {
+        "label": {
+          "uz": "Bogʻ tashkil etilgan",
+          "ru": "Основание парка",
+          "en": "Park founded"
+        },
+        "value": {
+          "uz": "1938-yil",
+          "ru": "1938 год",
+          "en": "1938"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/oliy-majlis/1.jpg",
+        "author": "Yodgor Sharipov",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Oliy_Majlis_(2475).jpg"
+      },
+      {
+        "file": "/places/oliy-majlis/2.jpg",
+        "author": "Bobyrr",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Oliy_Majlis_parliament_of_Uzbekistana.jpg"
+      },
+      {
+        "file": "/places/oliy-majlis/3.jpg",
+        "author": "Davide Mauro",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Oliy_Majlis_03.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        87,
+        87
+      ],
+      "heightM": 27,
+      "priority": 2
+    }
+  },
+  {
+    "id": "khoja-ahror-mosque",
+    "category": "religious",
+    "lat": 41.32374,
+    "lon": 69.23712,
+    "rotationDeg": 72,
+    "osmIds": [
+      "way/95639944"
+    ],
+    "name": {
+      "uz": "Xoʻja Ahror Valiy jome masjidi",
+      "ru": "Джума-мечеть Ходжа Ахрар Вали",
+      "en": "Khoja Ahror Valiy Juma Mosque"
+    },
+    "year": "1451; rebuilt 1888 and 1997–2003",
+    "short": {
+      "uz": "Chorsu yonidagi tepalikda joylashgan uch gumbazli jome masjidi.",
+      "ru": "Трёхкупольная соборная мечеть на холме у Чорсу.",
+      "en": "A three-domed Friday mosque on a hill by Chorsu."
+    },
+    "text": {
+      "uz": "Masjidga 1451-yilda soʻfiylik shayxi Xoʻja Ahror Valiy asos solgan. U Toshkentdagi hovlili jome masjidining yagona namunasi boʻlib, Chorsu maydonidagi Registon ansambli asosini tashkil qiladi. Bino 1868-yilgi zilzilada vayron boʻlgan va 1888-yilda qayta tiklangan. Hozirgi uch gumbazli bino 1997–2003-yillarda qurilgan.",
+      "ru": "Мечеть основал в 1451 году суфийский шейх Ходжа Ахрар Вали. Это единственный в Ташкенте образец пятничной мечети дворового типа и основа ансамбля Регистан у площади Чорсу. Здание было разрушено землетрясением 1868 года и восстановлено в 1888 году. Нынешнее трёхкупольное здание построено в 1997–2003 годах.",
+      "en": "The mosque was founded in 1451 by the Sufi sheikh Khoja Ahror Valiy. It is the only courtyard-type Friday mosque in Tashkent and the core of the Registan ensemble by Chorsu square. The building was destroyed by the 1868 earthquake and rebuilt in 1888. The present three-domed building was constructed in 1997–2003."
+    },
+    "facts": [
+      {
+        "key": "founded",
+        "value": {
+          "uz": "1451-yil",
+          "ru": "1451 год",
+          "en": "1451"
+        }
+      },
+      {
+        "label": {
+          "uz": "Hozirgi bino",
+          "ru": "Нынешнее здание",
+          "en": "Present building"
+        },
+        "value": {
+          "uz": "1997–2003-yillar",
+          "ru": "1997–2003 годы",
+          "en": "1997–2003"
+        }
+      },
+      {
+        "label": {
+          "uz": "Gumbazlar",
+          "ru": "Куполов",
+          "en": "Domes"
+        },
+        "value": "3"
+      },
+      {
+        "uz": "Koʻkaldosh madrasasidan taxminan 80 metr sharqda joylashgan.",
+        "ru": "Стоит примерно в 80 метрах к востоку от медресе Кукельдаш.",
+        "en": "It stands about 80 metres east of the Kukeldash Madrasah."
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/khoja-ahror-mosque/1.jpg",
+        "author": "Muzaffar Murodovich",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khodja_Akhrar_Vali_Mosque.jpg"
+      },
+      {
+        "file": "/places/khoja-ahror-mosque/2.jpg",
+        "author": "Olimidono",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Xoja_Axror_Valiy_masjidi_3.jpg"
+      },
+      {
+        "file": "/places/khoja-ahror-mosque/3.jpg",
+        "author": "Bobyrr",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mosque_Khoja_Akhrar_12-13.JPG"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        50,
+        29
+      ],
+      "heightM": 20,
+      "priority": 2
+    }
+  },
+  {
+    "id": "romanov-palace",
+    "category": "monument",
+    "lat": 41.31433,
+    "lon": 69.27055,
+    "rotationDeg": 201,
+    "osmIds": [
+      "way/141175715"
+    ],
+    "name": {
+      "uz": "Romanov saroyi",
+      "ru": "Дворец великого князя Николая Константиновича",
+      "en": "Romanov Palace"
+    },
+    "year": "1891",
+    "short": {
+      "uz": "Buyuk knyaz Nikolay Konstantinovich uchun 1891-yilda qurilgan saroy.",
+      "ru": "Дворец, построенный в 1891 году для великого князя Николая Константиновича.",
+      "en": "A palace built in 1891 for Grand Duke Nikolai Konstantinovich."
+    },
+    "text": {
+      "uz": "Saroy 1891-yilda meʼmorlar Vilgelm Geynselman va Aleksey Benua loyihasi asosida qurilgan. U Toshkentga surgun qilingan buyuk knyaz Nikolay Konstantinovich Romanovga tegishli edi. Bino sargʻish gʻishtdan terilgan, burchaklarida minorachalar, kirish qismida bugʻu va it haykallari bor. Hozir undan Tashqi ishlar vazirligining qabullar uyi sifatida foydalaniladi.",
+      "ru": "Дворец построен в 1891 году по проекту архитекторов Вильгельма Гейнцельмана и Алексея Бенуа. Он принадлежал великому князю Николаю Константиновичу Романову, сосланному в Ташкент. Здание сложено из желтоватого кирпича, по углам — башенки, у входа — скульптуры оленей и собак. Сейчас это дом приёмов Министерства иностранных дел.",
+      "en": "The palace was built in 1891 to a design by architects Wilhelm Heinzelmann and Alexey Benois. It belonged to Grand Duke Nikolai Konstantinovich Romanov, who had been exiled to Tashkent. The building is of yellowish brick with corner turrets, and sculptures of deer and dogs stand at the entrance. It now serves as the reception house of the Ministry of Foreign Affairs."
+    },
+    "facts": [
+      {
+        "key": "built",
+        "value": {
+          "uz": "1891-yil",
+          "ru": "1891 год",
+          "en": "1891"
+        }
+      },
+      {
+        "key": "architects",
+        "value": {
+          "uz": "V. Geynselman, A. Benua",
+          "ru": "В. Гейнцельман, А. Бенуа",
+          "en": "W. Heinzelmann, A. Benois"
+        }
+      },
+      {
+        "key": "footprint",
+        "value": {
+          "uz": "taxminan 41 × 25 m",
+          "ru": "около 41 × 25 м",
+          "en": "about 41 × 25 m"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/romanov-palace/1.jpg",
+        "author": "Jamshid Nurkulov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Knyaz_Romanov_saroyi.jpg"
+      },
+      {
+        "file": "/places/romanov-palace/2.jpg",
+        "author": "St. Christofor",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Palace_of_Grand_Prince_Nikolai_Konstantinovich_Romanov.jpg"
+      },
+      {
+        "file": "/places/romanov-palace/3.jpg",
+        "author": "BeshevI",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Romanov_Palace_721.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        41,
+        25
+      ],
+      "heightM": 11,
+      "priority": 3
+    }
+  },
+  {
+    "id": "courage-monument",
+    "category": "monument",
+    "lat": 41.3239,
+    "lon": 69.27238,
+    "rotationDeg": 144,
+    "osmIds": [],
+    "name": {
+      "uz": "Jasorat monumenti",
+      "ru": "Монумент «Мужество»",
+      "en": "Monument of Courage"
+    },
+    "year": "1976",
+    "short": {
+      "uz": "1966-yilgi Toshkent zilzilasi va shaharni tiklaganlar xotirasiga oʻrnatilgan yodgorlik.",
+      "ru": "Памятник в память о ташкентском землетрясении 1966 года и о тех, кто восстанавливал город.",
+      "en": "A memorial to the 1966 Tashkent earthquake and to those who rebuilt the city."
+    },
+    "text": {
+      "uz": "Yodgorlik 1976-yilda, zilzilaning oʻn yilligida ochilgan; muallifi – haykaltarosh Dmitriy Ryabichev. Qora tosh kubga 1966-yil 26-aprel sanasi va zilzila vaqtini koʻrsatuvchi soat tasvirlangan. Kubdan boshlangan yoriq ayol va bolani toʻsib turgan erkak haykaliga borib taqaladi. Orqadagi boʻrtma tasvirlar shaharning qayta tiklanishini aks ettiradi.",
+      "ru": "Памятник открыт в 1976 году, к десятилетию землетрясения; автор — скульптор Дмитрий Рябичев. На кубе из чёрного камня выбиты дата 26 апреля 1966 года и циферблат с временем толчка. Трещина от куба тянется к фигуре мужчины, заслоняющего женщину с ребёнком. Рельефы позади рассказывают о восстановлении города.",
+      "en": "The memorial was unveiled in 1976, on the tenth anniversary of the earthquake; the sculptor was Dmitry Ryabichev. A black stone cube carries the date 26 April 1966 and a clock face showing the time of the shock. A crack runs from the cube to the figure of a man shielding a woman and a child. Reliefs behind them show the rebuilding of the city."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "1976-yil 20-may",
+          "ru": "20 мая 1976 года",
+          "en": "20 May 1976"
+        }
+      },
+      {
+        "key": "sculptor",
+        "value": {
+          "uz": "Dmitriy Ryabichev",
+          "ru": "Дмитрий Рябичев",
+          "en": "Dmitry Ryabichev"
+        }
+      },
+      {
+        "label": {
+          "uz": "Zilzila",
+          "ru": "Землетрясение",
+          "en": "Earthquake"
+        },
+        "value": {
+          "uz": "1966-yil 26-aprel, 05:23",
+          "ru": "26 апреля 1966 года, 05:23",
+          "en": "26 April 1966, 05:23"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/courage-monument/1.jpg",
+        "author": "26D",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jasorat_monumenti.jpg"
+      },
+      {
+        "file": "/places/courage-monument/2.jpg",
+        "author": "Farangiz0123",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jasorat_Monumenti.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        40,
+        30
+      ],
+      "heightM": 10,
+      "priority": 3
+    }
+  },
+  {
+    "id": "shahidlar-xotirasi",
+    "category": "monument",
+    "lat": 41.34781,
+    "lon": 69.28814,
+    "rotationDeg": 123,
+    "osmIds": [
+      "way/140356382"
+    ],
+    "name": {
+      "uz": "«Shahidlar xotirasi» yodgorlik majmuasi",
+      "ru": "Мемориальный комплекс «Шахидлар хотираси»",
+      "en": "Shahidlar Xotirasi Memorial"
+    },
+    "year": "2000; museum 2002",
+    "short": {
+      "uz": "Qatagʻon qurbonlari xotirasiga bagʻishlangan majmua, Boʻzsuv kanali boʻyida joylashgan.",
+      "ru": "Мемориал памяти жертв репрессий на берегу канала Бозсу.",
+      "en": "A memorial to the victims of repression on the bank of the Bozsu canal."
+    },
+    "text": {
+      "uz": "Majmua 1930–1950-yillarda ommaviy qatl va dafn joyi boʻlgan Boʻzsuv kanali boʻyidagi jarlikda barpo etilgan. Markazida feruza gumbazli rotonda, uning ichida ramziy qabr toshi bor. 2002-yilda bu yerda Qatagʻon qurbonlari xotirasi muzeyi ochilgan. Majmua kanalning ikki qirgʻogʻini egallaydi, ular piyodalar koʻprigi bilan bogʻlangan.",
+      "ru": "Комплекс создан в овраге у канала Бозсу — на месте массовых расстрелов и захоронений 1930–1950-х годов. В центре стоит ротонда с бирюзовым куполом, внутри неё — символическое надгробие. В 2002 году здесь открыли Музей памяти жертв репрессий. Комплекс занимает оба берега канала, соединённые пешеходным мостом.",
+      "en": "The complex was laid out in a ravine by the Bozsu canal, a site of mass executions and burials in the 1930s–1950s. At its centre stands a rotunda with a turquoise dome and a symbolic tombstone inside. The Museum of Victims of Repression opened here in 2002. The complex occupies both banks of the canal, linked by a footbridge."
+    },
+    "facts": [
+      {
+        "key": "area",
+        "value": {
+          "uz": "17 ga dan ortiq",
+          "ru": "более 17 га",
+          "en": "more than 17 ha"
+        }
+      },
+      {
+        "label": {
+          "uz": "Muzey ochilgan",
+          "ru": "Открытие музея",
+          "en": "Museum opened"
+        },
+        "value": {
+          "uz": "2002-yil",
+          "ru": "2002 год",
+          "en": "2002"
+        }
+      },
+      {
+        "label": {
+          "uz": "Qatl etilganlar",
+          "ru": "Расстреляно",
+          "en": "People executed"
+        },
+        "value": {
+          "uz": "13 mingdan ortiq kishi",
+          "ru": "более 13 тысяч человек",
+          "en": "more than 13,000"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/shahidlar-xotirasi/1.jpg",
+        "author": "Игорь Улитин",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Rotunda_at_the_Martyrs%27_Memorial_Complex.jpg"
+      },
+      {
+        "file": "/places/shahidlar-xotirasi/2.jpg",
+        "author": "Murodbek Yusupov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:HSA_8814.jpg"
+      },
+      {
+        "file": "/places/shahidlar-xotirasi/3.jpg",
+        "author": "Humoyun Mehridinov",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shahidlar_xotirasi_yodgorligi_01.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        16,
+        16
+      ],
+      "heightM": 22,
+      "priority": 3
+    },
+    "parts": [
+      {
+        "id": "shahidlar-rotunda",
+        "name": "Rotonda",
+        "osmId": null,
+        "lat": 41.34781,
+        "lon": 69.28814,
+        "x": 0.0,
+        "z": 0.0,
+        "rotationDeg": 0,
+        "footprintM": [
+          16,
+          16
+        ],
+        "heightM": 22
+      },
+      {
+        "id": "repression-museum",
+        "name": "Qatagʻon qurbonlari xotirasi muzeyi",
+        "osmId": "way/140356382",
+        "lat": 41.34698,
+        "lon": 69.2882,
+        "x": 5.0,
+        "z": 91.8,
+        "rotationDeg": 278,
+        "footprintM": [
+          55,
+          28
+        ],
+        "heightM": 14
+      }
+    ]
+  },
+  {
+    "id": "tashkent-city-park",
+    "category": "park",
+    "lat": 41.31654,
+    "lon": 69.24841,
+    "rotationDeg": 0,
+    "osmIds": [],
+    "name": {
+      "uz": "Tashkent City bogʻi",
+      "ru": "Парк Tashkent City",
+      "en": "Tashkent City Park"
+    },
+    "year": "2019",
+    "short": {
+      "uz": "«Tashkent City» biznes markazi oʻrtasidagi koʻlli bogʻ, atrofida osmonoʻpar binolar turadi.",
+      "ru": "Парк с озером в центре делового района Tashkent City, окружённый высотными зданиями.",
+      "en": "A park with a lake in the middle of the Tashkent City business district, surrounded by towers."
+    },
+    "text": {
+      "uz": "Bogʻ 2019-yil 13-oktabrda ochilgan. Uning markazida sunʼiy koʻl va musiqali favvora, atrofida sayr yoʻlaklari va amfiteatr joylashgan. «Tashkent City» xalqaro biznes markazi Olmazor va Oʻqchi mahallalari oʻrnida, 80 gektar maydonda qurilgan. Bogʻ atrofida mehmonxonalar, bank minoralari, kongress-xoll va savdo markazi joylashgan.",
+      "ru": "Парк открыт 13 октября 2019 года. В центре — искусственное озеро с музыкальным фонтаном, вокруг — прогулочные дорожки и амфитеатр. Международный деловой центр Tashkent City построен на месте махаллей Олмазор и Укчи, на площади 80 гектаров. Вокруг парка стоят гостиницы, башни банков, конгресс-холл и торговый центр.",
+      "en": "The park opened on 13 October 2019. An artificial lake with a musical fountain lies at its centre, with walking paths and an amphitheatre around it. The Tashkent City international business centre was built on 80 hectares on the site of the Olmazor and Oqchi neighbourhoods. Hotels, bank towers, a congress hall and a shopping mall stand around the park."
+    },
+    "facts": [
+      {
+        "key": "opened",
+        "value": {
+          "uz": "2019-yil 13-oktabr",
+          "ru": "13 октября 2019 года",
+          "en": "13 October 2019"
+        }
+      },
+      {
+        "label": {
+          "uz": "Bogʻ maydoni",
+          "ru": "Площадь парка",
+          "en": "Park area"
+        },
+        "value": {
+          "uz": "taxminan 18 ga",
+          "ru": "около 18 га",
+          "en": "about 18 ha"
+        }
+      },
+      {
+        "label": {
+          "uz": "Biznes markaz maydoni",
+          "ru": "Площадь делового центра",
+          "en": "Business centre area"
+        },
+        "value": {
+          "uz": "80 ga",
+          "ru": "80 га",
+          "en": "80 ha"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "file": "/places/tashkent-city-park/1.jpg",
+        "author": "tatarstan.ru",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Minnikhanov_on_Vladimir_Putin%27s_state_visit_to_Uzbekistan_(2024-05-27)_01.jpg"
+      },
+      {
+        "file": "/places/tashkent-city-park/2.jpg",
+        "author": "Drksll",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tashkent_City_Downtown_Towers.jpg"
+      },
+      {
+        "file": "/places/tashkent-city-park/3.jpg",
+        "author": "Drksll",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tashkent_City_Mall_and_Towers.jpg"
+      }
+    ],
+    "model": {
+      "footprintM": [
+        486,
+        451
+      ],
+      "heightM": 0,
+      "priority": 3
+    }
+  }
+]
