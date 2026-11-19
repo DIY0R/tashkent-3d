@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://tashkent-3d.ulussolutions.uz/">
-    <img src="docs/media/hero.jpg" alt="Start screen: the camera passes the Tashkent TV tower at sunset" width="960">
+    <img src="docs/media/hero.gif" alt="Flying over Tashkent at sunset toward the TV tower" width="960">
   </a>
 </p>
 
@@ -58,11 +58,11 @@ there are no goals and no score.
     <td align="center">The centre at night.</td>
   </tr>
   <tr>
-    <td><img src="docs/media/hazrati-imam.jpg" alt="Model of the Hazrati Imam mosque"></td>
+    <td><img src="docs/media/hazrati-imam.jpg" alt="Start screen over the Hazrati Imam complex"></td>
     <td><img src="docs/media/metro.jpg" alt="Metro station hall with a train"></td>
   </tr>
   <tr>
-    <td align="center">Hazrati Imam mosque, one of 25 hand-made models (preview page).</td>
+    <td align="center">The Hazrati Imam complex behind the start screen.</td>
     <td align="center">A metro station hall.</td>
   </tr>
   <tr>

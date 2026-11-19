@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://tashkent-3d.ulussolutions.uz/">
-    <img src="docs/media/hero.jpg" alt="Стартовый экран: камера пролетает мимо Ташкентской телебашни на закате" width="960">
+    <img src="docs/media/hero.gif" alt="Полёт над Ташкентом на закате к телебашне" width="960">
   </a>
 </p>
 
@@ -58,11 +58,11 @@ Toshkent 3D — веб-страница, которая рисует Ташке�
     <td align="center">Центр города ночью.</td>
   </tr>
   <tr>
-    <td><img src="docs/media/hazrati-imam.jpg" alt="Модель мечети Хазрати Имам"></td>
+    <td><img src="docs/media/hazrati-imam.jpg" alt="Стартовый экран над комплексом Хазрати Имам"></td>
     <td><img src="docs/media/metro.jpg" alt="Зал станции метро с поездом"></td>
   </tr>
   <tr>
-    <td align="center">Мечеть Хазрати Имам, одна из 25 ручных моделей (страница предпросмотра).</td>
+    <td align="center">Комплекс Хазрати Имам за стартовым экраном.</td>
     <td align="center">Зал станции метро.</td>
   </tr>
   <tr>

@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://tashkent-3d.ulussolutions.uz/">
-    <img src="docs/media/hero.jpg" alt="Boshlangʻich ekran: kamera quyosh botishida Toshkent teleminorasi yonidan oʻtmoqda" width="960">
+    <img src="docs/media/hero.gif" alt="Quyosh botishida Toshkent ustidan teleminora tomon parvoz" width="960">
   </a>
 </p>
 
@@ -59,11 +59,11 @@ vazifa ham, ochko ham yoʻq.
     <td align="center">Tungi shahar markazi.</td>
   </tr>
   <tr>
-    <td><img src="docs/media/hazrati-imam.jpg" alt="Hazrati Imom masjidi modeli"></td>
+    <td><img src="docs/media/hazrati-imam.jpg" alt="Hazrati Imom majmuasi ustidagi boshlangʻich ekran"></td>
     <td><img src="docs/media/metro.jpg" alt="Poyezd turgan metro bekati zali"></td>
   </tr>
   <tr>
-    <td align="center">Hazrati Imom masjidi, qoʻlda yasalgan 25 modeldan biri (koʻrib chiqish sahifasi).</td>
+    <td align="center">Boshlangʻich ekran ortida Hazrati Imom majmuasi.</td>
     <td align="center">Metro bekati zali.</td>
   </tr>
   <tr>
