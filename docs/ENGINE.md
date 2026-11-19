@@ -73,7 +73,9 @@ ambient systems -> PostFX.render -> store sync (player 10 Hz, stats 2 Hz).
 - Trees: one unit model scaled per instance to (crown width, height, crown width); the shader
   keeps trunks at a real radius, turns height/width > 3 into columnar poplars, sways them and
   switches level of detail per tree: detailed model (leafy cut-out outline) within 70 m while the
-  camera is below 70 m, medium in tiles within 40 m, low up to `treeRadius`, and beyond that a
+  camera is below 70 m, medium up to 120 m, a 20 m size crossfade to the low model (distance =
+  hypot(horizontal, 0.6 x camera height); instances near the camera are kept sorted at the front of
+  the shared instance buffers, re-sorted every 6 m of camera movement), low up to `treeRadius`, and beyond that a
   6-triangle blob per tree baked into the end of the building mesh (index >= `blobStart`, cut
   off with the draw range when instanced trees are shown). Shadows come from the simple models,
   with noise holes for dappled light.

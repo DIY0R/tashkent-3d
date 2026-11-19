@@ -63,7 +63,18 @@ const RENDER_FLAT = 13
 const RENDER_DECAL = 14
 /** Detailed trees are used within this distance (m) of the camera, while it is close to the ground. */
 const TREE_DETAIL_RADIUS = 70
-const TREE_DETAIL_MARGIN = 50
+/**
+ * Medium trees within this distance (m; horizontal distance and 0.6 x camera height), the low model
+ * beyond TREE_MID_RADIUS + TREE_MID_BAND; in the band both are drawn with a size crossfade (trees.ts).
+ */
+const TREE_MID_RADIUS = 120
+const TREE_MID_BAND = 20
+/**
+ * Instances are re-sorted by distance whenever the camera has moved TREE_RESORT m, so the sorted
+ * prefixes only need this much slack beyond the shader's exact per-tree radius.
+ */
+const TREE_DETAIL_MARGIN = 8
+const TREE_RESORT = 6
 const LAMP_POST_RADIUS = 280
 /** Lamp glow sprites are drawn up to this distance (m); farther away only the lit road remains. */
 const LAMP_GLOW_RADIUS = 1600
@@ -123,6 +134,9 @@ export class TileManager {
   private readonly lampMat: THREE.Material
   private readonly lampGeo: THREE.BufferGeometry
   private treeDetailRadius = 0
+  /** camera position (x, 0.6 y, z) of the last per-tree LOD sort */
+  private readonly treeSortPos = new THREE.Vector3(1e9, 0, 0)
+  private treeSortR = 0
   private readonly camPos = new THREE.Vector3()
   private readonly ground: THREE.Mesh
   private readonly trees: TreeLibrary
@@ -262,18 +276,31 @@ export class TileManager {
     this.skyline?.update(camera.x, camera.z, this.settings.skylineRadius)
     this.camPos.copy(camera)
     this.treeDetailRadius = camera.y < 70 ? TREE_DETAIL_RADIUS : 0
-    this.trees.setLod(camera, this.treeDetailRadius)
+    this.trees.setLod(camera, this.treeDetailRadius, TREE_MID_RADIUS, TREE_MID_BAND)
     if (!this.manifest) return
 
     const moved = Math.hypot(camera.x - this.scanPos.x, camera.z - this.scanPos.y)
     if (this.lastScan < 0 || moved > 40 || this.frame - this.lastScan > 30) {
       this.scan(camera.x, camera.z)
+      this.treeSortPos.set(camera.x, camera.y * 0.6, camera.z)
       this.lastScan = this.frame
       this.scanPos.set(camera.x, camera.z)
     }
+    else if (this.treeSortR !== this.treeDetailRadius || this.treeSortPos.distanceTo(this.tmpV.set(camera.x, camera.y * 0.6, camera.z)) > TREE_RESORT) {
+      // per-tree LOD prefixes between scans (scan() does the same for every tile)
+      for (const t of this.tiles.values()) {
+        if (t.state !== 'ready' || !t.group?.visible || t.trees.length === 0) continue
+        t.dist = this.tileDistance(t.tx, t.tz, camera.x, camera.z)
+        this.setTreeLod(t, true)
+      }
+      this.treeSortPos.set(camera.x, camera.y * 0.6, camera.z)
+    }
+    this.treeSortR = this.treeDetailRadius
     this.commit()
     this.pump()
   }
+
+  private readonly tmpV = new THREE.Vector3()
 
   private tileDistance(tx: number, tz: number, x: number, z: number): number {
     const ts = this.tileSize
@@ -323,9 +350,8 @@ export class TileManager {
   }
 
   /**
-   * Tree level of detail per tile: medium / low / far blob by tile distance. Tiles close to the
-   * camera also draw the detailed model for the trees inside the detail radius: those instances are
-   * moved to the front of the instance buffers here and the shaders do the exact per-tree switch.
+   * Tree level of detail: the low model for the whole tile within `treeRadius` (far blobs beyond),
+   * plus, near the camera, the medium and detailed models for a sorted prefix of the instances.
    */
   private setTreeLod(t: Tile, visible: boolean) {
     const night = this.shared.uNight.value > 0.01
@@ -337,37 +363,53 @@ export class TileManager {
       t.decals.geometry.setDrawRange(0, shadows ? Infinity : t.glowCount)
     }
     if (t.trees.length === 0) return
-    const d = Math.hypot(t.dist, this.camPos.y * 0.6)
-    // 1 medium, 2 low, 3 far blobs (part of the building mesh, no extra draw call)
-    const level = !visible ? -1 : d <= 40 ? 1 : d <= this.settings.treeRadius ? 2 : 3
-    for (let i = 1; i < 3; i++) t.trees[i].visible = i === level
+    const hy = this.camPos.y * 0.6
+    const d = Math.hypot(t.dist, hy)
+    // 2 low (whole tile), 3 far blobs (part of the building mesh, no extra draw call)
+    const level = !visible ? -1 : d <= this.settings.treeRadius ? 2 : 3
+    t.trees[2].visible = level === 2
     // from the ground, blobs farther than ~1.1 km are almost never seen: skip their triangles
     const blobs = level === 3 && (this.camPos.y > 40 || t.dist < 1100)
     t.buildings?.geometry.setDrawRange(0, blobs ? Infinity : t.blobStart)
+    // Per-tree LOD inside the tile: instances near the camera are moved to the front of the shared
+    // instance buffers, so the medium and detailed meshes draw only a prefix. The shaders do the
+    // exact per-tree switch (detailed < uLodR < medium < uMidR (+band crossfade) < low).
+    const midLim = TREE_MID_RADIUS + TREE_MID_BAND + TREE_DETAIL_MARGIN
     const R = this.treeDetailRadius
-    let near = 0
-    if (visible && R > 0 && t.dist <= R + TREE_DETAIL_MARGIN) {
+    let near = 0, mid = 0
+    if (level === 2 && d <= midLim) {
       const m = t.trees[0].instanceMatrix.array as Float32Array
       const c = t.trees[0].instanceColor!.array as Float32Array
-      const lim = (R + TREE_DETAIL_MARGIN) ** 2
       const cx = this.camPos.x, cz = this.camPos.z
       const n = t.treeCount
+      const swap = (i: number, j: number) => {
+        for (let k = 0; k < 16; k++) { const a = m[i * 16 + k]; m[i * 16 + k] = m[j * 16 + k]; m[j * 16 + k] = a }
+        for (let k = 0; k < 3; k++) { const a = c[i * 3 + k]; c[i * 3 + k] = c[j * 3 + k]; c[j * 3 + k] = a }
+      }
       let moved = false
+      const midH2 = midLim * midLim - hy * hy
       for (let i = 0; i < n; i++) {
         const dx = m[i * 16 + 12] - cx, dz = m[i * 16 + 14] - cz
-        if (dx * dx + dz * dz > lim) continue
-        if (i !== near) {
-          for (let k = 0; k < 16; k++) { const a = m[i * 16 + k]; m[i * 16 + k] = m[near * 16 + k]; m[near * 16 + k] = a }
-          for (let k = 0; k < 3; k++) { const a = c[i * 3 + k]; c[i * 3 + k] = c[near * 3 + k]; c[near * 3 + k] = a }
-          moved = true
+        if (dx * dx + dz * dz > midH2) continue
+        if (i !== mid) { swap(i, mid); moved = true }
+        mid++
+      }
+      if (R > 0 && t.dist <= R + TREE_DETAIL_MARGIN) {
+        const lim = (R + TREE_DETAIL_MARGIN) ** 2
+        for (let i = 0; i < mid; i++) {
+          const dx = m[i * 16 + 12] - cx, dz = m[i * 16 + 14] - cz
+          if (dx * dx + dz * dz > lim) continue
+          if (i !== near) { swap(i, near); moved = true }
+          near++
         }
-        near++
       }
       if (moved) {
         t.trees[0].instanceMatrix.needsUpdate = true
         t.trees[0].instanceColor!.needsUpdate = true
       }
     }
+    t.trees[1].count = mid
+    t.trees[1].visible = mid > 0
     t.trees[0].count = near
     t.trees[0].visible = near > 0
   }
@@ -492,7 +534,7 @@ export class TileManager {
       const ic = new THREE.InstancedBufferAttribute(msg.trees.color, 3)
       t.treeCount = count
       for (let level = 0; level < 3; level++) {
-        const mesh = this.trees.createMesh(level, im, ic, level === 0 ? 0 : count, this.settings.shadows)
+        const mesh = this.trees.createMesh(level, im, ic, level === 2 ? count : 0, this.settings.shadows)
         mesh.boundingSphere = new THREE.Sphere(center.clone().setY(8), ts * 0.75 + this.trees.maxHeight)
         mesh.visible = false
         g.add(mesh)

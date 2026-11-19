@@ -11,7 +11,8 @@ import { NOISE } from './materials'
  * The vertex shader keeps the trunk radius in meters, slides the crown down for columnar trees
  * (height / width > 3), adds wind sway and does the per-tree LOD switch.
  *
- * Geometry levels: 0 detailed (only trees within `uLodR` of the camera), 1 medium, 2 low.
+ * Geometry levels: 0 detailed (only trees within `uLodR` of the camera), 1 medium (up to `uMidR`),
+ * 2 low; medium and low crossfade by size over `uMidR.y` m.
  */
 
 interface Buf {
@@ -79,8 +80,10 @@ function limb(out: Buf, ax: number, ay: number, az: number, bx: number, by: numb
   }
 }
 
-function finish(b: Buf): THREE.BufferGeometry {
+function finish(b: Buf, level: number): THREE.BufferGeometry {
   const g = new THREE.BufferGeometry()
+  // geometry level for the shader's per-tree switch (one program serves the medium and low meshes)
+  g.setAttribute('aLod', new THREE.BufferAttribute(new Float32Array(b.part.length).fill(level), 1))
   g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(b.pos), 3))
   g.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(b.nor), 3))
   g.setAttribute('color', new THREE.BufferAttribute(new Float32Array(b.col), 3))
@@ -110,15 +113,17 @@ function buildGeometry(level: number): THREE.BufferGeometry {
     lobe(b, 0, 0, 0.68, 0, 0.47, 0.33, 1.3, 1)
     limb(b, 0, 0, 0, 0, 0.55, 0, 0.26, 0.14, 3)
   }
-  return finish(b)
+  return finish(b, level)
 }
 
 const VERT_PARS = /* glsl */ `
 attribute float aPart;
 attribute vec3 aRim;
+attribute float aLod;
 uniform float uTime;
 uniform vec3 uCamPos;
 uniform float uLodR;
+uniform vec2 uMidR;
 varying float vPart;
 varying vec3 vTreeW;
 varying vec3 vRimN;`
@@ -140,6 +145,13 @@ vRimN = vec3(0.0, 0.0, 1.0);
     float r = max(length(transformed.xz), 0.3);
     transformed.xz *= (0.5 + 0.035 * H) / W * mix(1.0, 0.3 / r, columnar);
   } else {
+    #ifndef TREE_NEAR
+    // medium -> low crossfade: in the band both are drawn, the medium crown shrinks into the low one
+    // while the low one grows to full size, so the outline changes smoothly (no pop)
+    float fm = smoothstep(uMidR.x, uMidR.x + uMidR.y, length(vec2(distance(ip.xz, uCamPos.xz), uCamPos.y * 0.6)));
+    float cs = aLod < 1.5 ? mix(1.0, 0.78, fm) : mix(0.94, 1.0, fm);
+    transformed = vec3(0.0, 0.68, 0.0) + (transformed - vec3(0.0, 0.68, 0.0)) * cs;
+    #endif
     // columnar trees (poplars): the crown starts close to the ground
     float drop = columnar * (0.8 + 0.12 * rnd);
     transformed.y = mix(transformed.y, 0.1 + (transformed.y - 0.36) * 1.4, drop);
@@ -162,8 +174,14 @@ vRimN = vec3(0.0, 0.0, 1.0);
   float dcam = distance(ip.xz, uCamPos.xz);
   #ifdef TREE_NEAR
   if (dcam > uLodR) transformed = vec3(0.0);
-  #elif !defined(TREE_SHADOW)
+  #else
+  #ifndef TREE_SHADOW
   if (dcam <= uLodR) transformed = vec3(0.0);
+  #endif
+  // medium within uMidR.x, low beyond uMidR.x + uMidR.y (trunks switch in the middle of the band)
+  float dm = length(vec2(dcam, uCamPos.y * 0.6));
+  float sw = aLod < 1.5 ? (aPart > 0.5 ? uMidR.x + 0.5 * uMidR.y : uMidR.x + uMidR.y) : (aPart > 0.5 ? uMidR.x + 0.5 * uMidR.y : uMidR.x);
+  if (aLod < 1.5 ? dm > sw : dm <= sw) transformed = vec3(0.0);
   #endif
 }
 #endif`
@@ -185,6 +203,7 @@ export class TreeLibrary {
   private readonly depthFar: THREE.MeshDepthMaterial
   private readonly uCamPos = { value: new THREE.Vector3() }
   private readonly uLodR = { value: 0 }
+  private readonly uMidR = { value: new THREE.Vector2(0, 1) }
 
   constructor(shared: SharedUniforms) {
     this.geometries = [0, 1, 2].map(buildGeometry)
@@ -192,6 +211,7 @@ export class TreeLibrary {
       shader.uniforms.uTime = shared.uTime
       shader.uniforms.uCamPos = this.uCamPos
       shader.uniforms.uLodR = this.uLodR
+      shader.uniforms.uMidR = this.uMidR
       shader.vertexShader = shader.vertexShader
         .replace('#include <common>', `#include <common>${VERT_PARS}`)
         .replace('#include <begin_vertex>', `#include <begin_vertex>${VERT_BODY}`)
@@ -242,7 +262,7 @@ ${LEAF}`)
 // light scattered through the foliage keeps the shaded side from going black; lamps at night
 totalEmissiveRadiance += diffuseColor.rgb * (uSkyHorizon * (0.3 * uDaylight) + vec3(1.0, 0.72, 0.42) * (0.05 * uNight)) * (1.0 - vPart);`)
       }
-      m.customProgramCacheKey = () => (near ? 'tk-tree-v5-near' : 'tk-tree-v5-far')
+      m.customProgramCacheKey = () => (near ? 'tk-tree-v6-near' : 'tk-tree-v6-far')
       return m
     }
     // shadows always come from the simple models (also for the detailed trees, which do not cast)
@@ -260,7 +280,7 @@ ${NOISE}`)
           .replace('void main() {', `void main() {
   if (vPart < 0.5 && tNoise(vTreeW.xz * 0.8 + vTreeW.y * 0.9) + 0.35 * tNoise(vTreeW.xz * 2.6) < 0.62) discard;`)
       }
-      m.customProgramCacheKey = () => (near ? 'tk-tree-depth4-near' : 'tk-tree-depth4-far')
+      m.customProgramCacheKey = () => (near ? 'tk-tree-depth5-near' : 'tk-tree-depth5-far')
       return m
     }
     this.matNear = lit(true)
@@ -269,10 +289,14 @@ ${NOISE}`)
     this.depthFar = depth(false)
   }
 
-  /** Camera position and the radius (m) inside which the detailed model is used; 0 turns it off. */
-  setLod(camera: THREE.Vector3, radius: number) {
+  /**
+   * Camera position, the radius (m) inside which the detailed model is used (0 turns it off) and the
+   * medium -> low switch: radius and crossfade band (distance = hypot(horizontal, 0.6 camera height)).
+   */
+  setLod(camera: THREE.Vector3, radius: number, midRadius: number, midBand: number) {
     this.uCamPos.value.copy(camera)
     this.uLodR.value = radius
+    this.uMidR.value.set(midRadius, midBand)
   }
 
   /** One InstancedMesh for a geometry level, using the given (shared) instance attributes. */

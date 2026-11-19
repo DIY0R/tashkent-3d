@@ -263,7 +263,7 @@ not been run.
    the remaining first-draw freezes when landmarks and new materials appear - likely the most
    noticeable "lag" left. Risk: objects appear a few frames late; depth warm-up depends on
    three.js r187 internals (a wrong guess only wastes one compile).
-3. **Per-tree level of detail.** A whole tile switches to the 88-triangle tree when its edge is
+3. **Per-tree level of detail.** Done in round 2 (section 7). Was: a whole tile switches to the 88-triangle tree when its edge is
    within 40 m. Sorting instances by distance (as already done for the detailed model) removes
    about 200 k triangles from street views, in both the colour and the shadow pass.
 4. **Cloudflare Cache Rule** for `/tiles/*` (dashboard: "eligible for cache", edge TTL 1 day).
@@ -276,3 +276,48 @@ not been run.
 7. **One fetch per tile.** Tile JSON is fetched and parsed by four workers (tiles, minimap, road
    graph, street detail); a shared fetch or a compact binary layout saves worker CPU while streaming.
 8. `webglcontextlost` recovery; pause or throttle rendering while a full-screen menu is open.
+
+## 7. Round 2 (per-tree LOD, landmark hitches, night calls)
+
+Measured with a Playwright script (headless SwiftShader, 640x360, `?perf=1&q=medium`, one build
+per column, production server). Tree triangles = sum of `count x triangles` of visible tree
+InstancedMeshes (colour pass); frame triangles include the shadow pass.
+
+| | before | after |
+|---|---|---|
+| street day: tree triangles | 590 k | 329 k (-44 %) |
+| street day: frame triangles / draw calls | 1461 k / 179 | 1086 k / 187 |
+| street night: frame triangles / draw calls | 1493 k / 213 | 1119 k / 221 |
+| street day: engine CPU (render) | 7.8 (3.8) ms | 8.0 (4.2) ms (noise in SwiftShader) |
+| fly day / fly night: draw calls | 294 / 316 | 294 / 316 (unchanged) |
+| page errors | 0 | 0 |
+
+**Per-tree LOD** (`world/trees.ts`, `TileManager.setTreeLod`). Before, a whole tile within 40 m drew
+every tree with the 88-triangle medium model, and the detailed model was given to every tree within
+120 m (70 m + 50 m slack for a re-sort every 40 m). Now the low model (26 triangles) covers every tile
+within `treeRadius`, and the medium and detailed meshes draw only a sorted prefix of the shared
+instance buffers: medium up to 120 m, then a 20 m size crossfade (both drawn; the medium crown shrinks
+into the low one while the low one grows to full size, so no pop), low beyond. Distance is
+hypot(horizontal, 0.6 x camera height), so the fly view is unchanged. Instances are re-sorted every
+6 m of camera movement (instead of every 40 m), which lets the slack drop from 50 m to 8 m. One new
+vertex attribute (`aLod`) tells the shared program which mesh it draws: no new shader programs.
+Breakdown after: detailed 109 k, medium 52 k, low 169 k. The rest of the 50 % target is the low model
+drawn (and discarded in the vertex shader) for the trees that are already medium/detailed in the
+camera's tiles (~15 k) and per-instance frustum culling, which is not done. Screenshots before/after
+(street day, fly, street night): mean pixel difference 0.2-0.7 / 255, only moving people and cars.
+
+**Landmark hitches / `?warm=full`: not enabled.** The old-city jump (25 s, landmarks built and
+compiled) gave long tasks 1259 ms total / 598 ms max by default and 1374 / 698 ms with
+`?warm=full`, 0 errors in both. The stall is program time (526-638 ms), not textures. Reason:
+SwiftShader has no `KHR_parallel_shader_compile`, so `RenderGate` (and `compileAsync`) cannot do
+anything here; every compile is synchronous. The fix can only be judged on real hardware with
+`?perf=1` (stall log). Landmarks are already built one per 8 frames and compiled by the gate
+before they are shown. Seen in the probe: entering the old city adds new programs only for
+landmark materials with unique variants (e.g. `g2-ornament`, a `MeshPhysicalMaterial`); folding
+such materials into shared ones is the cheapest real fix.
+
+**Night fly draw calls: not changed.** Breakdown of the 316 calls: landmarks 74 colour + 43
+shadow, buildings 34, flat 34, skyline 24, tile decals (contact shadows + lamp glows) 39 (26 by
+day), other depth 19. The night-only part is ~22 calls (13 glow decal meshes, 6 depth, car lights);
+removing all of them still leaves ~295. The real lever is landmark shadow casting in the fly view
+(43 calls): e.g. landmarks beyond the shadow box stop casting, as tiles already do.

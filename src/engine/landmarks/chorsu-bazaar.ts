@@ -1,5 +1,5 @@
 // Chorsu Bazaar (1980): very wide, flat blue-green mosaic dome on a ring of white concrete arches,
-// standing on a market podium with canopies; one of the small side domes to the north-east.
+// standing on a market podium with canopies and stall rows; smaller domes over the side pavilions.
 import type { LandmarkModule } from './index'
 import { C, F, Kit, O, P, archPts, type Style } from './_g2/kit'
 
@@ -41,17 +41,48 @@ const landmark: LandmarkModule = {
       k.cyl(0, T + 3.0, T + 3.7, 0, RC + 0.1, RC + 0.1, 16, { c: C.cobalt, c2: C.turq, pat: P.GIRIH, p1: 0.7, glow: 0.35 }, { a0, a1 })
       k.cyl(0, T + 3.7, T + 4.0, 0, RC + 0.1, 49.5, 16, { c: 0x8f959a, c2: 0x7c8388, pat: P.STRIPE, p1: 0.5, p2: 0.5 }, { a0, a1 })
     }
-    // open-air stall rows around the podium: blue-tiled counters and fascia under metal roofs
+    // arched roof hoods over the upper trading ring (radial barrel vaults with white arch rims)
+    const hoodRoof: Style = { c: 0x8f959a, c2: 0x7c8388, pat: P.STRIPE, p1: 0.45, p2: 0.5 }
+    const lunette: Style = { c: 0x2c3a44, c2: 0xe9e6dc, pat: P.GLASS, p1: 0.9, p2: 1.2, glow: 0.2 }
+    for (let i = 0; i < 4; i++) for (let j = 0; j < 6; j++) k.at(0, 0, 0, i * 90 + 18 + j * 10.8, () => {
+      const r = 2.3, y = T + 3.7, z1 = 54.6
+      k.barrel(0, y, 49.0, z1, r, hoodRoof, 6)
+      k.box(-r, y - 0.05, 49.0, r, y, z1, hoodRoof, 't')
+      const rim: [number, number][] = [], seg = 8
+      for (let s2 = 0; s2 <= seg; s2++) { const a = (Math.PI * s2) / seg; rim.push([Math.cos(a), Math.sin(a)]) }
+      for (let s2 = 0; s2 < seg; s2++) {
+        const [ca, sa] = rim[s2], [cb, sb] = rim[s2 + 1]
+        k.quad([ca * r, y + sa * r, z1 + 0.06], [ca * (r + 0.45), y + sa * (r + 0.45), z1 + 0.06], [cb * (r + 0.45), y + sb * (r + 0.45), z1 + 0.06], [cb * r, y + sb * r, z1 + 0.06], white)
+        k.quad([cb * (r + 0.45), y + sb * (r + 0.45), z1 + 0.06], [ca * (r + 0.45), y + sa * (r + 0.45), z1 + 0.06], [ca * (r + 0.45), y + sa * (r + 0.45), z1 - 0.6], [cb * (r + 0.45), y + sb * (r + 0.45), z1 - 0.6], white)
+      }
+      const c0 = k.vert(0, y, z1 + 0.03, 0, 0, 1, 0, 0, lunette), b0 = k.vert(r, y, z1 + 0.03, 0, 0, 1, r, 0, lunette)
+      for (let s2 = 1; s2 <= seg; s2++) { const [c, sn] = rim[s2]; k.vert(c * r, y + sn * r, z1 + 0.03, 0, 0, 1, c * r, sn * r, lunette); k.tri(c0, b0 + s2 - 1, b0 + s2) }
+    })
+    // open-air stall rows around the podium: blue-tiled counters heaped with produce, shelves at the
+    // back, dividers between stalls, tiled fascia with a white valance under a metal roof
+    const produce = [0xc8402c, 0x6f9a3a, 0xe08a2a, 0xd9c04a, 0x7a2f4a, 0x9cbf4a, 0xb5482e, 0xe4d7b0]
+    const steel: Style = { c: 0x9aa0a4 }
     for (let i = 0; i < 4; i++) {
       const a0 = (i * 90 + 13) * (Math.PI / 180), a1 = (i * 90 + 77) * (Math.PI / 180)
       const tile: Style = { c: C.cobalt, c2: 0x4fb4c8, pat: P.GIRIH, p1: 0.9, glow: 0.3 }
       k.cyl(0, 0, 1.0, 0, 62.5, 62.5, 16, tile, { a0, a1 })
       k.cyl(0, 1.0, 1.05, 0, 62.5, 61.2, 16, { c: 0xd8d2c4 }, { a0, a1 })
-      k.cyl(0, 1.05, 1.5, 0, 61.9, 61.2, 16, { c: 0xb5482e, c2: 0x6f9a3a, pat: P.GRASS, p1: 0.5 }, { a0, a1 })
+      k.cyl(0, 0, 3.0, 0, 58.2, 58.2, 16, { c: 0x6b5a48, c2: 0xb5482e, pat: P.STRIPE, p1: 0.75, p2: 0.8, glow: 0.25 }, { a0, a1 })
+      k.cyl(0, 2.55, 3.0, 0, 64.15, 64.15, 16, { c: 0xf2f0ea, c2: 0xd5d2c8, pat: P.STRIPE, p1: 0.15, p2: 0.5, glow: 0.5 }, { a0, a1 })
       k.cyl(0, 3.0, 3.7, 0, 64.2, 64.2, 16, tile, { a0, a1 })
       k.cyl(0, 3.7, 4.0, 0, 64.2, 57.5, 16, { c: 0x8f959a, c2: 0x7c8388, pat: P.STRIPE, p1: 0.5, p2: 0.5 }, { a0, a1 })
-      const n = 9
-      for (let j = 0; j <= n; j++) { const a = a0 + ((a1 - a0) * j) / n; k.cyl(Math.sin(a) * 63.9, 0, 3.0, Math.cos(a) * 63.9, 0.09, 0.09, 5, { c: 0x9aa0a4 }) }
+      k.cyl(0, 2.9, 2.95, 0, 57.6, 64.1, 16, { c: 0xe9e6dc, glow: 0.9 }, { a0, a1 }) // lit ceiling
+      const n = 9, da = (a1 - a0) / n
+      for (let j = 0; j <= n; j++) { const a = a0 + da * j; k.cyl(Math.sin(a) * 63.9, 0, 3.0, Math.cos(a) * 63.9, 0.09, 0.09, 5, steel) }
+      for (let j = 0; j < n; j++) k.at(0, 0, 0, ((a0 + da * (j + 0.5)) * 180) / Math.PI, () => {
+        const hw = (da * 61.8) / 2 - 0.25
+        // two tiers of crates on the counter, a sack row on the ground behind it
+        k.box(-hw, 1.05, 61.25, hw, 1.45, 62.35, { c: produce[(i * 9 + j) % 8], pat: P.GRASS, p1: 0.22, c2: produce[(i * 9 + j + 3) % 8], glow: 0.6 }, 'fblrt')
+        k.box(-hw * 0.9, 1.45, 61.3, hw * 0.9, 1.75, 61.85, { c: produce[(i * 9 + j + 5) % 8], pat: P.GRASS, p1: 0.2, c2: produce[(i * 9 + j + 2) % 8], glow: 0.6 }, 'flrt')
+        k.box(-hw, 0, 58.3, hw, 0.9, 59.2, { c: 0xd8cdb5, pat: P.STRIPE, p1: 0.45, c2: 0xc2b496, p2: 0.5 }, 'flrt')
+        // divider panel between stalls
+        k.box(hw + 0.17, 0, 58.2, hw + 0.25, 2.55, 62.5, { c: 0x2a6fa8, glow: 0.2 }, 'lr')
+      })
     }
     // ---- main dome ------------------------------------------------------------------------------
     const RHO = 53, YC = T + 2 - RHO * Math.cos(Math.asin(43 / RHO))
@@ -87,14 +118,26 @@ const landmark: LandmarkModule = {
       for (let j = 1; j < inner.length; j++) { k.vert(inner[j][0], inner[j][1], ZF - 1.6, 0, 0, 1, inner[j][0], inner[j][1] - T, glass); k.tri(gc, g0 + j, g0 + j - 1) }
       k.box(-HW, T + 3.6, ZF - 1.7, HW, T + 4.2, ZF - 1.2, white, 'ftd')
     })
-    // ---- small north-east dome (OSM way 450297905) ---------------------------------------------
-    k.at(48.3, 0, -72.1, 0, () => {
-      const r = 10.2
-      k.cyl(0, 0, 5.2, 0, r, r, 32, { c: 0xe9e6dc, c2: 0xe9e6dc, pat: P.ARCH, p1: 2.9, p2: 4.6, spring: 1.6, fill: F.GLASS, out: O.PLAIN, rep: (Math.PI * 2 * r) / 10 })
-      const rho = 13.5, yc = 5.2 - rho * Math.cos(Math.asin(r / rho))
-      k.lathe(0, 0, capProfile(rho, yc, Math.asin(r / rho), Math.asin(1.4 / rho), 8), 40, mosaic(0.2), 20, undefined, true)
+    // ---- smaller side domes over the market pavilions (OSM footprints around the main dome) -----
+    // the base box encloses the OSM footprint (still extruded by the tiles) so it never shows through
+    const sideDome = (x: number, z: number, w: number, d: number, h: number, round: boolean) => k.at(x, 0, z, 0, () => {
+      const r = Math.min(w, d) / 2 - (round ? 0 : 0.4)
+      const win: Style = { c: 0xe9e6dc, c2: 0xe9e6dc, pat: P.ARCH, p1: 2.6, p2: Math.min(4.6, h - 0.6), spring: Math.min(1.6, h - 2.5), fill: F.GLASS, out: O.PLAIN, rep: round ? (Math.PI * 2 * r) / 10 : 6.6 }
+      if (round) k.cyl(0, 0, h, 0, r, r, 32, win)
+      else {
+        k.box(-w / 2, 0, -d / 2, w / 2, h, d / 2, win, 'fblr')
+        k.box(-w / 2 - 0.1, h, -d / 2 - 0.1, w / 2 + 0.1, h + 0.6, d / 2 + 0.1, { c: C.cobalt, c2: C.turq, pat: P.GIRIH, p1: 0.6, glow: 0.3 }, 'fblr')
+        k.floor(-w / 2, -d / 2, w / 2, d / 2, h + 0.6, { c: 0xbdb7a8, c2: 0xb0aa9b, pat: P.PAVE, p1: 1.5 })
+      }
+      const y0 = round ? h : h + 0.6
+      const rho = r * 1.32, yc = y0 - rho * Math.cos(Math.asin(r / rho))
+      k.lathe(0, 0, capProfile(rho, yc, Math.asin(r / rho), Math.asin(1.4 / rho), 7), 32, mosaic(0.2), 16, undefined, true)
       k.cyl(0, yc + rho - 0.3, yc + rho + 0.7, 0, 1.6, 1.9, 10, white, { cap: true })
     })
+    sideDome(48.2, -72.1, 20.4, 20.4, 5.2, true) // way 450297905
+    sideDome(-58.4, -43.4, 21.4, 23.7, 5.4, false) // relation 8535347
+    sideDome(-70.2, 44.0, 21.1, 18.2, 4.6, false) // way 857899938
+    sideDome(-97.0, 70.0, 25.3, 25.2, 8.2, false) // way 617242216
     return k.group('chorsu-bazaar')
   },
 }

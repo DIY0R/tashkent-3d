@@ -86,13 +86,21 @@ const landmark: LandmarkModule = {
     // roof ring around the courtyard
     k.floor(-BX, BZ, BX, CZ0, WT, roof).floor(-BX, CZ1, -PW, WZ, WT, roof).floor(PW, CZ1, BX, WZ, WT, roof).floor(-PW, CZ1, PW, ZF - 6.2, WT, roof).floor(-BX, CZ0, -CX, CZ1, WT, roof).floor(CX, CZ0, BX, CZ1, WT, roof)
     k.floor(-CX, CZ0, CX, CZ1, H0 + 0.05, pave)
-    // courtyard facades (flat arcades of cells)
-    const cell = (st: number): Style => ({ c: BR, c2: 0x3b2c20, pat: P.ARCH, p1: 1.45, p2: 3.9, spring: 2.5, fill: st ? F.LATTICE : F.VOID, out: O.BRICK_TILE, rep: 4.4 })
-    const court = (len: number) => { for (let st = 0; st < 2; st++) k.rect(-len / 2, H0 + st * 5 + 0.3, len / 2, H0 + st * 5 + 5, 0, cell(st)); k.rect(-len / 2, H0 + 5, len / 2, H0 + 5.3, 0, brick, false) }
-    k.at(CX, 0, (CZ0 + CZ1) / 2, -90, () => court(CZ1 - CZ0))
-    k.at(-CX, 0, (CZ0 + CZ1) / 2, 90, () => court(CZ1 - CZ0))
-    k.at(0, 0, CZ0, 0, () => court(CX * 2))
-    k.at(0, 0, CZ1, 180, () => court(CX * 2))
+    // courtyard facades: two storeys of recessed hujra niches (door below, lattice window above)
+    const cellDoor: Style = { c: BR, c2: 0x5a3520, pat: P.ARCH, p1: 0.55, p2: 2.5, spring: 1.8, fill: F.DOOR, out: O.BRICK, glow: 0.3 }
+    const cellWin: Style = { c: BR, c2: 0x3b2c20, pat: P.ARCH, p1: 0.5, p2: 1.9, spring: 1.35, fill: F.LATTICE, out: O.BRICK, glow: 0.3 }
+    const court = (x0: number, x1: number, n: number) => {
+      k.arcade(x0, x1, H0, H0 + 5, 0, n, { wFrac: 0.72, base: 0.25, apexPad: 0.55, rise: 1.0, depth: 1.5, front: archFront(0.3), reveal: brick, back: cellDoor, floor: pave, n: 6 })
+      k.arcade(x0, x1, H0 + 5, WT, 0, n, { wFrac: 0.72, base: 0.3, apexPad: 0.55, rise: 1.0, depth: 1.5, front: archFront(0.3), reveal: brick, back: cellWin, floor: roof, n: 6 })
+      k.rect(x0, H0 + 4.95, x1, H0 + 5.25, 0.04, { c: C.cobalt, c2: C.turq, pat: P.GIRIH, p1: 0.3, glow: 0.4 }, false)
+      for (let i = 0; i < n; i++) { // wooden rails of the upper cells
+        const bw = (x1 - x0) / n, cx = x0 + bw * (i + 0.5)
+        k.rect(cx - bw * 0.36, H0 + 5.3, cx + bw * 0.36, H0 + 6.2, -0.1, { c: 0x8a4f2c, c2: 0x3a2416, pat: P.STRIPE, p1: 0.3, p2: 0.55 }, false)
+      }
+    }
+    k.at(CX, 0, (CZ0 + CZ1) / 2, -90, () => court(-(CZ1 - CZ0) / 2, (CZ1 - CZ0) / 2, 10))
+    k.at(-CX, 0, (CZ0 + CZ1) / 2, 90, () => court(-(CZ1 - CZ0) / 2, (CZ1 - CZ0) / 2, 10))
+    for (const [z, yaw] of [[CZ0, 0], [CZ1, 180]] as const) k.at(0, 0, z, yaw, () => { court(-CX, -6, 3); court(6, CX, 3) })
     // courtyard iwans (front and back), 15 m in OSM -> about 12 m
     const iwan = () => {
       const a = { cx: 0, hw: 3.6, base: H0, spring: H0 + 5.2, apex: H0 + 9.6 }
